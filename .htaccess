@@ -1,0 +1,4 @@
+DirectoryIndex /src/pages/index.php
+
+RewriteEngine On
+RewriteRule ^$ src/pages/index.php [L]
