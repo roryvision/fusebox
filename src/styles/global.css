@@ -14,9 +14,22 @@
 
 body {
   font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  font-size: 18px;
   color: #0B0B0C;
   background-color: #FBFBFB;
   margin: 0px;
+}
+
+h1 {
+  font-family: 'Visby';
+  font-size: 42px;
+  font-weight: bolder;
+}
+
+h2 {
+  font-family: 'Visby';
+  font-size: 34px;
+  font-weight: bolder;
 }
 
 #container {
@@ -41,6 +54,10 @@ body {
   width: 100%;
 }
 
+.w-fit {
+  width: fit-content;
+}
+
 .flex-btwn {
   display: flex;
   justify-content: space-between;
@@ -60,6 +77,13 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+
+h1, h2, h3, p {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
 button,
