@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'Visby';
-  src: url('../assets/fonts/VisbySemibold.otf') format('otf');
+  src: url('../assets/fonts/VisbySemibold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Visby';
-  src: url('../assets/fonts/VisbyHeavy.otf') format('otf');
+  src: url('../assets/fonts/VisbyHeavy.otf') format('opentype');
   font-weight: bolder;
   font-style: normal;
 }
