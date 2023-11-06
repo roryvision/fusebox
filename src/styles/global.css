@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'Visby';
+  src: url('../assets/fonts/VisbySemibold.otf') format('otf');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Visby';
+  src: url('../assets/fonts/VisbyHeavy.otf') format('otf');
+  font-weight: bolder;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Poppins', Helvetica, Arial, sans-serif;
+  color: #0B0B0C;
+  background-color: #FBFBFB;
+  margin: 0px;
+}
