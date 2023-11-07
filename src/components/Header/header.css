@@ -3,3 +3,27 @@
   height: 30px;
   margin-left: 24px;
 }
+
+.search{
+  display:flex;
+  flex-direction:row;
+  gap:8px;
+  align-items:center;
+}
+
+.show-searchbox {
+  display:flex;
+  flex-direction:row;
+  padding:16px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color:#FBFBFB;
+  color: #BBBBBB;
+  border: #BBBBBB solid 1px;
+  border-radius:20px;
+  width: 250px;
+}
+
+.searchbox {
+  display: none;
+}

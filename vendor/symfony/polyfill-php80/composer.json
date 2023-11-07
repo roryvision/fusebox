@@ -25,7 +25,9 @@
     "autoload": {
         "psr-4": { "Symfony\\Polyfill\\Php80\\": "" },
         "files": [ "bootstrap.php" ],
-        "classmap": [ "Resources/stubs" ]
+        "classmap": [
+          "Resources/stubs"
+        ]
     },
     "minimum-stability": "dev",
     "extra": {

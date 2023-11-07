@@ -96,3 +96,12 @@ input[type="submit"] {
   cursor: pointer;
   outline: inherit;
 }
+
+#project-flex-parent{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 50px;
+  margin: auto;
+}
