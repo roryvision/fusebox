@@ -33,6 +33,7 @@ while($currentrow = mysqli_fetch_array($results)) {
     echo '<br style="clear:both;">';
 
 };
+closeCon($conn);
 echo "<br>";
 
 ?>
