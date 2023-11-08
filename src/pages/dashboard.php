@@ -38,21 +38,18 @@ $conn = openCon();
         <img src='../assets/icons/icon_sort.svg' alt='Sort items'>
         <span>Sort</span>
       </button>
-    </div>
-
-<!--    populating projects-->
-    <?php
-    $sql = "SELECT project_name, logline, category_name FROM project, category WHERE category.category_id = project.category_id";
-    $results = $conn->query($sql);
-
-    if(!$results) { // see if data is empty -> check for error!
-        echo "SQL error: ". $conn->error;
-        exit();
-    }
-    ?>
-
+    <!--    populating projects-->
     <div id="project-flex-parent">
         <?php
+
+        $sql = "SELECT project_name, logline, category_name FROM project, category WHERE category.category_id = project.category_id";
+        $results = $conn->query($sql);
+
+        if (!$results) { // see if data is empty -> check for error!
+            echo "SQL error: " . $conn->error;
+            exit();
+        }
+
         while($currentrow = $results->fetch_assoc()) {
             echo "<div class='card card-project'>";
             echo "<p class='category'>" . $currentrow['category_name'] . "</p>";
@@ -60,16 +57,19 @@ $conn = openCon();
             echo "<p>" . $currentrow['logline'] . "</p>";
             echo "<br />";
             echo "<div class='tags'>
-                    <div class='tag w-fit'>Business</div>
-                    <div class='tag w-fit'>Visual</div>
-                    <div class='tag w-fit'>Tech</div>
-                    <div class='tag w-fit'>Film</div>
-                    </div>
-                    </div><br/>";
+                <div class='tag w-fit'>Business</div>
+                <div class='tag w-fit'>Visual</div>
+                <div class='tag w-fit'>Tech</div>
+                <div class='tag w-fit'>Film</div>
+                </div>
+                </div><br/>";
         }
         closeCon($conn);
         ?>
+        </div>
     </div>
+
+
 
   </body>
 </html>
