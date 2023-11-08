@@ -67,6 +67,7 @@ $conn = openCon();
                     </div>
                     </div><br/>";
         }
+        closeCon($conn);
         ?>
     </div>
 
