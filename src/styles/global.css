@@ -64,6 +64,12 @@ h2 {
   align-items: center;
 }
 
+.flex-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -95,13 +101,4 @@ input[type="submit"] {
   font: inherit;
   cursor: pointer;
   outline: inherit;
-}
-
-#project-flex-parent{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  column-gap: 10px;
-  row-gap: 50px;
-  margin: auto;
 }
