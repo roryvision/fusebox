@@ -12,7 +12,49 @@
   color: #DC1F1F;
 }
 
-#button-sort {
-  width: 120px;
-  margin: 34px 0px;
+#filter-container {
+  width: 343px;
+  display: block;
+  float: left;
+  margin-right: 24px;
+}
+
+#filter-container hr {
+  margin: 24px 0px;
+  color: #BBBBBB;
+  height: 1px;
+}
+
+#filter-container h3 {
+  margin-bottom: 24px;
+  font-size: 20px;
+}
+
+#filter-container p {
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #BBBBBB;
+}
+
+form ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+form ul li ul {
+  margin-left: 24px;
+  margin-bottom: 24px;
+  font-size: 14px;
+}
+
+input[type="checkbox"] {
+  accent-color: #DC1F1F;
+}
+
+#cards-container {
+  display: flex;
+  flex-flow: row wrap;
+  column-gap: 10px;
+  row-gap: 50px;
 }
