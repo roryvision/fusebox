@@ -1,20 +1,20 @@
-const cardTemplate = document.createElement('template');
+const cardPersonTemplate = document.createElement('template');
 
-cardTemplate.innerHTML = `
+cardPersonTemplate.innerHTML = `
   <link rel='stylesheet' href='../styles/global.css'>
   <link rel='stylesheet' href='../components/Card/card.css'>
   <div class='card card-person flex-btwn'>
     <div style='width: 172px;'>
       <div class='img-container'>
-        <img src='../../assets/images/chuubear.jpeg' alt='Profile photo'>
+        <img src='../assets/images/chuubear.jpeg' alt='Profile photo'>
       </div>
-      <p style='color: #878787; text-align: center;'>Joined Oct 1st, 2023</p>
+      <p class='role' style='color: #878787; text-align: center;'>Role??</p>
     </div>
     <div style='margin-left: 16px;'>
-      <h1>RORY AN</h1>
+      <h1 class='name'></h1>
       <hr />
-      <p style='color: #878787; margin-bottom: 4px;'>she/her</p>
-      <p><strong>B.S. of Arts, Technology, and the Business of Innovation</strong></p>
+      <p class='pronouns' style='color: #878787; margin-bottom: 4px;'></p>
+      <p class='major'></p>
     </div>
   </div>
 `;
@@ -22,8 +22,18 @@ cardTemplate.innerHTML = `
 class CardPerson extends HTMLElement {
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: 'closed' });
-    shadow.appendChild(cardTemplate.content);
+    const shadow = this.attachShadow({ mode: 'open' });
+    shadow.appendChild(cardPersonTemplate.content.cloneNode(true));
+  }
+
+  setPersonData(p) {
+    const shadow = this.shadowRoot;
+
+    if (shadow) {
+      shadow.querySelector('.name').innerText = p.fname + ' ' + p.lname;
+      shadow.querySelector('.pronouns').innerText = p.pronouns;
+      shadow.querySelector('.major').innerText = p.major;
+    }
   }
 }
 

@@ -64,6 +64,12 @@ h2 {
   align-items: center;
 }
 
+.flex-center {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

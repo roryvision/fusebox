@@ -5,12 +5,43 @@ p {
 .card {
   background-color: #F0EBE2;
   border-radius: 50px 0px 50px 50px;
+  outline: 2px solid #BAB3A6;
+  outline-offset: -16px;
+  position: relative;
+}
+
+.card-save {
+  opacity: 0%;
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+  width: 80px;
+  height: 80px;
+}
+
+.card-save:hover {
+  opacity: 100%;
+}
+
+.saved::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-style: solid;
+  border-width: 0px 80px 80px 0px;
+  border-color: #DC1F1F #FBFBFB;
 }
 
 .card-project {
-  width: 275px;
-  height: 300px;
-  padding: 64px 34px;
+  width: 243px;
+  height: 308px;
+  padding: 50px;
+}
+
+.card-project h2 {
+  margin: 24px 0px;
 }
 
 .category {
@@ -21,6 +52,7 @@ p {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  font-size: 14px;
 }
 
 .tag {
@@ -34,8 +66,6 @@ p {
   height: 333px;
   padding: 50px;
   z-index: 1;
-  outline: 2px solid #0B0B0C;
-  outline-offset: -16px;
 }
 
 .card-person img {
