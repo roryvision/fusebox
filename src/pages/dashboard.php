@@ -12,15 +12,29 @@ require_once('../helpers/db-connection.php');
     <link rel='stylesheet' href='../components/Card/card.css'>
     <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap' rel='stylesheet'>
     <script src='../components/Header/HeaderNav.js' type='text/javascript'></script>
+    <script src='../components/Card/CardProject.js' type='text/javascript'></script>
+    <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <!-- if you guys plan on doing more, please move this to a separate file -->
-    <script>
-       $(document).ready(function () {
+    <script type='module'>
+      import { displayProjects, displayPeople } from '../helpers/CardHelper.js';
+      
+      let projectsOrPeople = 'projects';
+
+      $(document).ready(function () {
+        displayProjects();
+        
         $('#select-menu li').click(function () {
           $('#select-menu li').removeClass('selected');
-
           $(this).addClass('selected');
+
+          $('#cards-container').empty();
+
+          if ($(this).attr('value') == 'projects') {
+            displayProjects();
+          } else if ($(this).attr('value') == 'people') {
+            displayPeople();
+          }
         });
       });
     </script>
@@ -30,8 +44,8 @@ require_once('../helpers/db-connection.php');
     <div id='container'>
       <header-nav></header-nav>
       <ul class='flex-btwn' id='select-menu'>
-        <li class='cursor-pointer'>projects</li>
-        <li class='cursor-pointer'>people</li>
+        <li class='cursor-pointer selected' value='projects'>projects</li>
+        <li class='cursor-pointer' value='people'>people</li>
       </ul>
 
       <br />
@@ -143,7 +157,7 @@ require_once('../helpers/db-connection.php');
               <label for='role-general'>General</label>
                 <ul>
                   <li><input type='checkbox' id='role-writer' name='role-writer' value='writer' />
-                  <label for='role-'writer>Writer</label></li>
+                  <label for='role-writer'writer>Writer</label></li>
                   <li><input type='checkbox' id='role-event' name='role-event' value='event' />
                   <label for='role-event'>Event Planner</label></li>
                   <li><input type='checkbox' id='role-other' name='role-other' value='other' />
@@ -154,37 +168,7 @@ require_once('../helpers/db-connection.php');
           </form>
         </div>
 
-        <div id='cards-container'>
-          <?php
-          $conn = openCon();
-
-          $sql = "SELECT project_name, logline, category_name FROM project, category WHERE category.category_id = project.category_id";
-          $results = $conn->query($sql);
-
-          if (!$results) { // see if data is empty -> check for error!
-            echo "SQL error: " . $conn->error;
-            exit();
-          }
-
-          while($currentrow = $results->fetch_assoc()) {
-            echo "<div class='card card-project'>";
-            echo "<img src='../assets/icons/save_overlay.png' alt='Save project' class='card-save'>";
-            echo "<p class='category'>" . $currentrow['category_name'] . "</p>";
-            echo "<h2>" . $currentrow['project_name'] . "</h2>";
-            echo "<p>" . $currentrow['logline'] . "</p>";
-            echo "<br />";
-            echo "<div class='tags'>
-                <div class='tag w-fit'>Business</div>
-                <div class='tag w-fit'>Visual</div>
-                <div class='tag w-fit'>Tech</div>
-                <div class='tag w-fit'>Film</div>
-                </div>
-                </div><br/>";
-          }
-
-          closeCon($conn);
-          ?>
-        </div>
+        <div id='cards-container'></div>
       </div>
     </div>
   </body>

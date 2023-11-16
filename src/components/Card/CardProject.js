@@ -1,13 +1,13 @@
-const cardTemplate = document.createElement('template');
+const cardProjectTemplate = document.createElement('template');
 
-cardTemplate.innerHTML = `
+cardProjectTemplate.innerHTML = `
   <link rel='stylesheet' href='../styles/global.css'>
   <link rel='stylesheet' href='../components/Card/card.css'>
   <div class='card card-project'>
-    <img src='../../assets/icons/save_overlay.png' alt='Save project' class='card-save'>
-    <p class='category'>Tech</p>
-    <h2>LPL: Rocket Innovation</h2>
-    <p>We are developing this, this, and this. We are looking for this.</p>
+    <img src='../assets/icons/save_overlay.png' alt='Save project' class='card-save'>
+    <p class='category'></p>
+    <h2></h2>
+    <p class='logline'></p>
     <br />
     <div class='tags'>
       <div class='tag w-fit'>Business</div>
@@ -21,8 +21,18 @@ cardTemplate.innerHTML = `
 class CardProject extends HTMLElement {
   constructor() {
     super();
-    const shadow = this.attachShadow({ mode: 'closed' });
-    shadow.appendChild(cardTemplate.content);
+    const shadow = this.attachShadow({ mode: 'open' });
+    shadow.appendChild(cardProjectTemplate.content.cloneNode(true));
+  }
+
+  setProjectData(p) {
+    const shadow = this.shadowRoot;
+
+    if (shadow) {
+      shadow.querySelector('.category').innerText = p.category_name;
+      shadow.querySelector('h2').innerText = p.project_name;
+      shadow.querySelector('.logline').innerText = p.logline;
+    }
   }
 }
 
