@@ -1,38 +1,15 @@
-const displayProjects = () => {
-  $.ajax({
-    url: '../api/projects.php',
-    method: 'GET',
-    dataType: 'json',
-    success: function(response) {
-      const projectContainer = document.getElementById('cards-container');
+const displayProject = (projectData) => {
+  const projectContainer = document.getElementById('cards-container');
+  const project = document.createElement('card-project');
+  project.setProjectData(projectData);
+  projectContainer.appendChild(project);
+};
 
-      response.forEach(projectData => {
-        const project = document.createElement('card-project');
-        project.setProjectData(projectData);
-        projectContainer.appendChild(project);
-      });
-    }
-  })
-}
+const displayPerson = (personData) => {
+  const projectContainer = document.getElementById('cards-container');
+  const person = document.createElement('card-person');
+  person.setPersonData(personData);
+  projectContainer.appendChild(person);
+};
 
-const displayPeople = () => {
-  $.ajax({
-    url: '../api/people.php',
-    method: 'GET',
-    dataType: 'json',
-    success: function(response) {
-      const projectContainer = document.getElementById('cards-container');
-
-      response.forEach(personData => {
-        const person = document.createElement('card-person');
-        person.setPersonData(personData);
-        projectContainer.appendChild(person);
-      });
-    },
-    error: function(error) {
-      console.error('Error fetching');
-    }
-  })
-}
-
-export { displayProjects, displayPeople };
+export { displayProject, displayPerson };

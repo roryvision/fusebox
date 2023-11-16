@@ -17,12 +17,34 @@ require_once('../helpers/db-connection.php');
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script type='module'>
-      import { displayProjects, displayPeople } from '../helpers/CardHelper.js';
+      import { displayProject, displayPerson } from '../helpers/CardHelper.js';
       
       let projectsOrPeople = 'projects';
 
-      $(document).ready(function () {
-        displayProjects();
+      $(document).ready(async () => {
+        let projects = await fetch('../api/projects.php')
+          .then(res => {
+            if (!res.ok) {
+              throw new Error('Error fetching projects');
+            }
+
+            return res.json();
+          }).catch(error => {
+            console.error(error);
+          });
+        
+        let people = await fetch('../api/people.php')
+          .then(res => {
+            if (!res.ok) {
+              throw new Error('Error fetching people');
+            }
+
+            return res.json();
+          }).catch(error => {
+            console.error(error);
+          });
+
+        projects.forEach((p) => displayProject(p));
         
         $('#select-menu li').click(function () {
           $('#select-menu li').removeClass('selected');
@@ -31,9 +53,9 @@ require_once('../helpers/db-connection.php');
           $('#cards-container').empty();
 
           if ($(this).attr('value') == 'projects') {
-            displayProjects();
+            projects.forEach((p) => displayProject(p));
           } else if ($(this).attr('value') == 'people') {
-            displayPeople();
+            people.forEach((p) => displayPerson(p));
           }
         });
       });
