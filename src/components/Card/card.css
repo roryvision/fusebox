@@ -62,8 +62,8 @@ p {
 }
 
 .card-person {
-  width: 465px;
-  height: 333px;
+  width: 400px;
+  height: 300px;
   padding: 50px;
   z-index: 1;
 }

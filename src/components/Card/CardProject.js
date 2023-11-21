@@ -9,12 +9,7 @@ cardProjectTemplate.innerHTML = `
     <h2></h2>
     <p class='logline'></p>
     <br />
-    <div class='tags'>
-      <div class='tag w-fit'>Business</div>
-      <div class='tag w-fit'>Visual</div>
-      <div class='tag w-fit'>Tech</div>
-      <div class='tag w-fit'>Film</div>
-    </div>
+    <div class='tags'></div>
   </div>
 `;
 
@@ -32,6 +27,16 @@ class CardProject extends HTMLElement {
       shadow.querySelector('.category').innerText = p.category_name;
       shadow.querySelector('h2').innerText = p.project_name;
       shadow.querySelector('.logline').innerText = p.logline;
+      const tagsContainer = shadow.querySelector('.tags');
+      tagsContainer.innerHTML = ""; // Clear existing content
+
+      // Iterate over the roles and create div elements
+      p.roles.forEach(role => {
+        const tagElement = document.createElement('div');
+        tagElement.className = 'tag w-fit';
+        tagElement.innerText = role;
+        tagsContainer.appendChild(tagElement);
+      });
     }
   }
 }

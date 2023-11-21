@@ -15,6 +15,6 @@ closeCon($conn);
   </head>
 
   <body>
-    <p>index.php will serve as our landing page, AKA what the audience sees if they are not logged in. For the Milestone 2 frontpage, please see our dashboard instead: <a href='./src/pages/dashboard.php'>dashboard.php</a></p>
+    <p>index.php will serve as our landing page, AKA what the audience sees if they are not logged in. For the Milestone 2 frontpage, please see our dashboard instead: <a href='src/pages/dashboard.php'>dashboard.php</a></p>
   </body>
 </html>
