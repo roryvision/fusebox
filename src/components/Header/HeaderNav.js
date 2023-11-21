@@ -5,7 +5,7 @@ headerTemplate.innerHTML = `
   <link rel='stylesheet' href='../components/Header/header.css'>
   <header id='header' class='w-100'>
     <ul class='flex-btwn'>
-      <li><a href='../pages/dashboard.html'><img src='../assets/images/masthead.png' alt='Fusebox masthead' class='cursor-pointer' style='height: 50px;' /></a></li>
+      <li><a href='../pages/dashboard.php'><img src='../assets/images/masthead.png' alt='Fusebox masthead' class='cursor-pointer' style='height: 50px;' /></a></li>
       <li id='search'>
         <img src='../assets/icons/icon_search.svg' alt='Search' id='search-icon' />
         <form id="search-form" action="results.php"><input type='text' id='search-box' name='projectsearch' placeholder='Search' /></form>
