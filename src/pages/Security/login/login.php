@@ -8,7 +8,7 @@ include ("src/helpers/db-connection.php");
 $conn = openCon();
 echo "Connected to the database successfully.";
 
-if(isset($_POST['uname']) && isset($_POST['pw'])) {
+if(isset($_POST['email']) && isset($_POST['password'])) {
     function validate($data): string
     { //$data is data entered in form
     $data = trim($data);
@@ -17,21 +17,21 @@ if(isset($_POST['uname']) && isset($_POST['pw'])) {
     }
 }
 //$_POST collects form data, way to pass form data, global
-$uname = validate($_POST['uname']);
-$pw = validate($_POST['pw']);
+$email = validate($_POST['email']);
+$password = validate($_POST['password']);
 
-//check to make sure they enter a uname & pw
-if(empty($uname)){
-    header ("Location: index.php?erro=Username is required");
+//check to make sure they enter a email & password
+if(empty($email)){
+    header ("Location: index.php?error=Email is required");
     exit();
 }
-else if(empty($pw)){
-    header ("Location: index.php?erro=Password is required");
+else if(empty($password)){
+    header ("Location: index.php?error=Password is required");
     exit();
 }
 
 //need to add "users" to DB
-$sql = "SELECT * FROM users WHERE user_name ='$uname' AND password='$pw'";
+$sql = "SELECT * FROM users WHERE user_name ='$email' AND password='$password'";
 
 //IGNORE cant use this below bc don't have $mysql?
 //$results = $mysql->query($sql);
@@ -46,7 +46,7 @@ if(!$results) {
 //checking match with DB
 if(mysqli_num_rows($results) === 1) {
     $currentrow = $results->fetch_assoc();
-    if($currentrow['user_name'] === $uname && $currentrow['pw'] === $pw) {
+    if($currentrow['user_name'] === $email && $currentrow['password'] === $password) {
         echo "Logged in successful!";
         
         //attempt at sessions
