@@ -13,7 +13,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
     </head>  
     <body>
         <!-- if we also want to gather name in db during login -->
-        <h2>Hello, <?php echo $_SESSION['user_name']; ?></h1>
+        <h2>Hello, <?php echo $_SESSION['user_name']; ?></h2>
         <a href="logout.php">Logout</a>
     </body>  
     </html>
