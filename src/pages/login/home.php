@@ -1,3 +1,4 @@
+<!--temporary "dahsboard", where user is taken once they login-->
 <?php
 session_start();
 
