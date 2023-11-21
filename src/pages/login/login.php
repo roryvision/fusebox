@@ -6,7 +6,7 @@ session_start();
 //idk if this is right
 include ("src/helpers/db-connection.php");
 $conn = openCon();
-//echo "Connected to the database successfully.";
+echo "Connected to the database successfully.";
 
 if(isset($_POST['uname']) && isset($_POST['pw'])) {
     function validate($data): string
@@ -22,11 +22,11 @@ $pw = validate($_POST['pw']);
 
 //check to make sure they enter a uname & pw
 if(empty($uname)){
-    header ("Location: index_login.php?erro=Username is required");
+    header ("Location: index.php?erro=Username is required");
     exit();
 }
 else if(empty($pw)){
-    header ("Location: index_login.php?erro=Password is required");
+    header ("Location: index.php?erro=Password is required");
     exit();
 }
 
@@ -58,12 +58,12 @@ if(mysqli_num_rows($results) === 1) {
         header("Location: home.php");
     }
     else {
-        header ("Location: index_login.php?error=Incorrect Username or Password");
+        header ("Location: index.php?error=Incorrect Username or Password");
     }
 }
 else {
-    header ("Location: index_login.php");
+    header ("Location: index.php");
 }
+closeCon($conn);
 exit();
 
-closeCon($conn);

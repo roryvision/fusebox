@@ -1,8 +1,10 @@
 <!-- ending the session -->
 <?php
 session_start();
-
-session_unset();
+unset($_SESSION["loggedin"]);
+echo "LOGGED OUT";
+print_r($_SESSION);
 session_destroy();
 
-header ("Location: index_login.php");
+header ("Location: index.php");
+?>
