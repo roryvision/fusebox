@@ -1,7 +1,47 @@
+import { displayProject, displayPerson } from '../helpers/CardHelper.js';
+let projects = [];
+let projectsOrPeople = 'projects';
 let typesArray = [];
 let rolesArray = [];
 
-//i started adding stuff here
+$(document).ready(async () => {
+    projects = await fetch('../api/projects.php')
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Error fetching projects');
+            }
+
+            return res.json();
+        }).catch(error => {
+            console.error(error);
+        });
+
+    let people = await fetch('../api/people.php')
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Error fetching people');
+            }
+
+            return res.json();
+        }).catch(error => {
+            console.error(error);
+        });
+
+    projects.forEach((p) => displayProject(p));
+
+    $('#select-menu li').click(function () {
+        $('#select-menu li').removeClass('selected');
+        $(this).addClass('selected');
+
+        $('#cards-container').empty();
+
+        if ($(this).attr('value') == 'projects') {
+            projects.forEach((p) => displayProject(p));
+        } else if ($(this).attr('value') == 'people') {
+            people.forEach((p) => displayPerson(p));
+        }
+    });
+});
 
 // Update Display
 function updateTypesArrayOutput() {
@@ -15,49 +55,10 @@ function updateRolesArrayOutput() {
     outputDiv.innerHTML = `<strong>Roles:</strong> ${outputText}`;
 }
 
-function filterProjects() {
-    // Assuming projects is an array of your project data
-    let filteredProjects = projects.filter(project => {
-        // Check if project matches selected types
-        let typesMatch = typesArray.length === 0 || typesArray.some(type => project.types.includes(type.value));
-
-        // Check if project matches selected roles
-        let rolesMatch = rolesArray.length === 0 || rolesArray.some(role => project.roles.includes(role.value));
-
-        return typesMatch && rolesMatch;
-    });
-
-    // Call a function to update the displayed projects
-    updateProjectCards(filteredProjects);
-}
-
-function updateProjectCards(filteredProjects) {
-    // Assuming projectsDiv is the container for your project cards
-    let projectsDiv = document.getElementById('projectCards');
-
-    // Clear the existing content
-    projectsDiv.innerHTML = '';
-
-    // Add the filtered projects to the container
-    filteredProjects.forEach(project => {
-        // Create and append project card elements to projectsDiv
-        // You need to implement this part based on your project card structure
-        // Example:
-        let projectCard = document.createElement('div');
-        projectCard.textContent = project.name; // Assuming your project has a 'name' property
-        projectsDiv.appendChild(projectCard);
-    });
-}
-
-//and finished adding stuff here
-
-
-
 
 function check(thisCheckbox, dataArray, updateFunction){ // when checked/unchecked, adds or removes it from list of applied filters
     let label = thisCheckbox.nextElementSibling.textContent.trim();
     let value = thisCheckbox.value;
-    console.log(label);
     if (thisCheckbox.checked == true){
         dataArray.push({ label, value });
     }
@@ -67,8 +68,6 @@ function check(thisCheckbox, dataArray, updateFunction){ // when checked/uncheck
             dataArray.splice(index, 1);
         }
     }
-    console.log(dataArray);
-
     updateFunction();
 }
 
@@ -90,13 +89,9 @@ function checkAll(thisCheckbox) {
     updateRolesArrayOutput();
 }
 
-// Add this line at the end of your 'check' and 'checkAll' functions to trigger the filtering
-// i also added this
-updateProjectCards();
-
 document.addEventListener('DOMContentLoaded', function () { // event listener for all checkbox changes
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    console.log(checkboxes);
+    let noCheckboxSelected = true;
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function () {
             if (this.id === 'role-tech' || this.id === 'role-visual' || this.id === 'role-business' || this.id === 'role-film' || this.id === 'role-performing') {
@@ -107,6 +102,51 @@ document.addEventListener('DOMContentLoaded', function () { // event listener fo
             } else if (this.id.startsWith('type-')) {
                 check(this, typesArray, updateTypesArrayOutput);
             }
+            performSearch();
         });
+
     });
+
 });
+
+function performSearch() {
+    console.log("performsearch");
+
+    if (rolesArray.length !== 0 || typesArray.length !== 0) {
+        let filteredProjects = projects.filter(function (p) {
+            // Check if at least one selected role is in p's roles
+            const roleMatch = rolesArray.length === 0 || rolesArray.some(function (selectedRole) {
+                return p.roles.includes(selectedRole.label);
+            });
+
+            // Check if at least one selected type is in p's category
+            const typeMatch = typesArray.length === 0 || typesArray.some(function (selectedType) {
+                return p.category_name.includes(selectedType.label);
+            });
+            return roleMatch && typeMatch;
+        });
+
+        $('#cards-container').empty();
+
+        console.log(filteredProjects);
+        filteredProjects.forEach(function (p) {
+            displayProject(p);
+        });
+
+        // If none match
+        if (filteredProjects.length === 0) {
+            $('#cards-container').html('<p>No matching projects found.</p>');
+        }
+
+    } else {
+        // If no filters, display all
+        displayAllProjects();
+    }
+}
+
+function displayAllProjects() {
+    $('#cards-container').empty();
+    projects.forEach(p => displayProject(p));
+    console.log("displayall");
+}
+

@@ -58,3 +58,11 @@ input[type="checkbox"] {
   column-gap: 10px;
   row-gap: 50px;
 }
+
+#appliedRoleFilters{
+  color: #DC1F1F;
+}
+
+#appliedTypeFilters{
+  color: #DC1F1F;
+}

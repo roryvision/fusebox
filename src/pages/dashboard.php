@@ -15,52 +15,7 @@ require_once('../helpers/db-connection.php');
     <script src='../components/Card/CardProject.js' type='text/javascript'></script>
     <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src='../pages/dashboard.js' type='text/javascript'></script>
-      <script type='module'>
-      import { displayProject, displayPerson } from '../helpers/CardHelper.js';
-      
-      let projectsOrPeople = 'projects';
-
-      $(document).ready(async () => {
-        let projects = await fetch('../api/projects.php')
-          .then(res => {
-            if (!res.ok) {
-              throw new Error('Error fetching projects');
-            }
-
-            return res.json();
-          }).catch(error => {
-            console.error(error);
-          });
-        
-        let people = await fetch('../api/people.php')
-          .then(res => {
-            if (!res.ok) {
-              throw new Error('Error fetching people');
-            }
-
-            return res.json();
-          }).catch(error => {
-            console.error(error);
-          });
-
-        projects.forEach((p) => displayProject(p));
-        
-        $('#select-menu li').click(function () {
-          $('#select-menu li').removeClass('selected');
-          $(this).addClass('selected');
-
-          $('#cards-container').empty();
-
-          if ($(this).attr('value') == 'projects') {
-            projects.forEach((p) => displayProject(p));
-          } else if ($(this).attr('value') == 'people') {
-            people.forEach((p) => displayPerson(p));
-          }
-        });
-      });
-    </script>
-
+      <script src='../pages/dashboard.js' type='module'></script>
 
   </head>
 
