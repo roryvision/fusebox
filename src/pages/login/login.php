@@ -6,7 +6,7 @@ session_start();
 //idk if this is right
 include ("src/helpers/db-connection.php");
 $conn = openCon();
-echo "Connected to the database successfully.";
+//echo "Connected to the database successfully.";
 
 if(isset($_POST['uname']) && isset($_POST['pw'])) {
     function validate($data): string
