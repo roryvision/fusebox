@@ -3,6 +3,7 @@ let projects = [];
 let projectsOrPeople = 'projects';
 let typesArray = [];
 let rolesArray = [];
+let numResults = 0;
 
 $(document).ready(async () => {
     projects = await fetch('../api/projects.php')
@@ -28,6 +29,8 @@ $(document).ready(async () => {
         });
 
     projects.forEach((p) => displayProject(p));
+    numResults = projects.length;
+    $('#numResults').text(numResults);
 
     $('#select-menu li').click(function () {
         $('#select-menu li').removeClass('selected');
@@ -133,15 +136,19 @@ function performSearch() {
             displayProject(p);
         });
 
+        numResults = filteredProjects.length;
+
         // If none match
-        if (filteredProjects.length === 0) {
+        if (numResults === 0) {
             $('#cards-container').html('<p>No matching projects found.</p>');
         }
 
     } else {
         // If no filters, display all
         displayAllProjects();
+        numResults = projects.length;
     }
+    $('#numResults').text(numResults);
 }
 
 function displayAllProjects() {
