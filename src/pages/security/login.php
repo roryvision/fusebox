@@ -8,13 +8,18 @@ $is_invalid = false;
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $conn = openCon();
 
-    $sql = sprintf("SELECT * FROM user
+    $sql = sprintf("SELECT * FROM profile
                     WHERE email = '%s'", //%s placeholder
         //avoid sql attack
         $conn->real_escape_string($_POST["email"]));
 
     $result = $conn->query($sql);
     //grab user data in array
+    if(!$result) {
+        echo "SQL error: ". $conn->error;
+        exit();
+    }
+
     $user = $result->fetch_assoc();
 
     //see if a record is found, if so check/validate it

@@ -1,4 +1,7 @@
 /*style sheet for login*/
+/*div {*/
+/*    border: 1pt solid black;*/
+/*}*/
 .login {
     display: flex;
     flex-direction: row;
@@ -8,7 +11,7 @@
 
 h2 {
     color: #DC1F1F;
-    font-size: 52pt;
+    font-size: 200pt;
 }
 
 h1 {
@@ -19,13 +22,25 @@ img{
     width: 75px;
 }
 
+#text {
+    color: #4E4E4E;
+    font-weight: bold;
+}
+
 .left_content {
     text-align: right;
     width: 700px;
     margin-right: 64px;
 }
 
+.right_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .right_content{
+
     background-color: #F0EBE2;
     width: 644px;
     height: 677px;
