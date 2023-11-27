@@ -2,6 +2,7 @@
 /*div {*/
 /*    border: 1pt solid black;*/
 /*}*/
+
 .login {
     display: flex;
     flex-direction: row;
@@ -33,11 +34,6 @@ img{
     margin-right: 64px;
 }
 
-.right_text {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
 .right_content{
 
@@ -55,30 +51,30 @@ img{
 }
 
 
-.login form input[type="email"], .login form input[type="password"]{
-    width: 488px;
-    height: 43px;
-    border: 1px solid #BBBBBB;
-    border-radius: 12px;
-    padding-left: 10px;
-}
+/*.login form input[type="email"], .login form input[type="password"]{*/
+/*    width: 488px;*/
+/*    height: 43px;*/
+/*    border: 1px solid #BBBBBB;*/
+/*    border-radius: 12px;*/
+/*    padding-left: 10px;*/
+/*}*/
 
-.login form input[type="submit"] {
-    width: 488px;
-    height: 43px;
-    border-radius: 29px;
-    background-color: #DC1F1F;
-    cursor: pointer;
-    color: white;
-    margin-top: 20px;
-    border-width: 0;
-    border-color: white;
-    transition: border-width 0.2s;
-}
+/*.login form input[type="submit"] {*/
+/*    width: 488px;*/
+/*    height: 43px;*/
+/*    border-radius: 29px;*/
+/*    background-color: #DC1F1F;*/
+/*    cursor: pointer;*/
+/*    color: white;*/
+/*    margin-top: 20px;*/
+/*    border-width: 0;*/
+/*    border-color: white;*/
+/*    transition: border-width 0.2s;*/
+/*}*/
 
-.register form input[type="submit"]:hover{
-    border-width: 3px;
-}
+/*.register form input[type="submit"]:hover{*/
+/*    border-width: 3px;*/
+/*}*/
 
 
 
