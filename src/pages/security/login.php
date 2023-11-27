@@ -26,6 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         session_start();
         //session data
         $_SESSION["user_id"] = $user["profile_id"];
+        $_SESSION["user_fname"] = $user["fname"];
+        $_SESSION["user_lname"] = $user["lname"];
 
         header("Location: ../dashboard.php");
         exit();

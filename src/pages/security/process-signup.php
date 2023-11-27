@@ -35,7 +35,7 @@ $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 $conn = openCon();
 
 $sql = "INSERT INTO profile (fname, lname, email, password_hash)
-        VALUES (?, ?, ?)";
+        VALUES (?, ?, ?, ?)";
 
 //new prepared statement method calling statement init method
 $stmt = $conn->stmt_init();
