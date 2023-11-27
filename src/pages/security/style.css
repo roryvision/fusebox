@@ -1,7 +1,7 @@
 /*style sheet for login*/
-div {
-    border: 1pt solid black;
-}
+/*div {*/
+/*    border: 1pt solid black;*/
+/*}*/
 .login {
     display: flex;
     flex-direction: row;
@@ -11,7 +11,7 @@ div {
 
 h2 {
     color: #DC1F1F;
-    font-size: 52pt;
+    font-size: 200pt;
 }
 
 h1 {
