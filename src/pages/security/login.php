@@ -19,27 +19,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         echo "SQL error: ". $conn->error;
         exit();
     }
-
     $user = $result->fetch_assoc();
 
-    //see if a record is found, if so check/validate it
-    if ($user) {
-    //make sure hash matches plain text pw
-        if (password_verify($_POST["password"], $user["password_hash"])) {
-            //remembers user info between browsers
-            session_start();
-            //prevents session attack
-            session_regenerate_id();
-            //session data
-            $_SESSION["user_id"] = $user["id"];
+    if (($_POST["password"]) === ($user["password_hash"])){
+        //remembers user info between browsers
+        session_start();
+        //session data
+        $_SESSION["user_id"] = $user["profile_id"];
 
-            header("Location: index.php");
-            exit;
-        }
+        header("Location: ../dashboard.php");
+        exit();
     }
-
-    $is_invalid = true;
-    closeCon($conn);
+$is_invalid = true;
+closeCon($conn);
 }
 ?>
 <!DOCTYPE html>
