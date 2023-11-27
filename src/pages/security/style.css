@@ -1,4 +1,7 @@
 /*style sheet for login*/
+div {
+    border: 1pt solid black;
+}
 .login {
     display: flex;
     flex-direction: row;

@@ -15,6 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $result = $conn->query($sql);
     //grab user data in array
+    if(!$result) {
+        echo "SQL error: ". $conn->error;
+        exit();
+    }
+
     $user = $result->fetch_assoc();
 
     //see if a record is found, if so check/validate it
