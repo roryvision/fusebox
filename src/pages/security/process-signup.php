@@ -1,4 +1,5 @@
 <?php
+require_once('../../helpers/db-connection.php');
 
 if (empty($_POST["fname"])) {
     die("First name is required");
@@ -31,17 +32,17 @@ if ($_POST["password"] !== $_POST["password_confirmation"]) {
 //security
 $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-$mysqli = require __DIR__ . "/database.php";
+$conn = openCon();
 
 $sql = "INSERT INTO user (fname, lname, email, password_hash)
         VALUES (?, ?, ?)";
 
 //new prepared statement method calling statement init method
-$stmt = $mysqli->stmt_init();
+$stmt = $conn->stmt_init();
 
 //prepare for execution, catches syntax errors in SQL
 if (!$stmt->prepare($sql)) {
-    die("SQL error: " . $mysqli->error);
+    die("SQL error: " . $conn->error);
 }
 
 //bind values to parameters of SQL object
@@ -55,13 +56,16 @@ $stmt->bind_param("ssss",
 if ($stmt->execute()) {
 
     header("Location: signup-success.html");
+    closeCon($conn);
     exit;
 //checking if someone already made an account with same email
 } else {
-
-    if ($mysqli->errno === 1062) {
+    if ($conn->errno === 1062) {
+        closeCon($conn);
         die("email already taken");
     } else {
-        die($mysqli->error . " " . $mysqli->errno);
+        closeCon($conn);
+        die($conn->error . " " . $conn->errno);
     }
 }
+?>

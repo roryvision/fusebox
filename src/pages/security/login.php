@@ -1,19 +1,19 @@
 <?php
+require_once('../../helpers/db-connection.php');
 
 //check login validity later
 $is_invalid = false;
 
 //make sure that login data matches record in db
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-
-    $mysqli = require __DIR__ . "/database.php";
+    $conn = openCon();
 
     $sql = sprintf("SELECT * FROM user
                     WHERE email = '%s'", //%s placeholder
         //avoid sql attack
-        $mysqli->real_escape_string($_POST["email"]));
+        $conn->real_escape_string($_POST["email"]));
 
-    $result = $mysqli->query($sql);
+    $result = $conn->query($sql);
     //grab user data in array
     $user = $result->fetch_assoc();
 
@@ -34,8 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 
     $is_invalid = true;
+    closeCon($conn);
 }
-
 ?>
 <!DOCTYPE html>
 <html>
