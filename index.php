@@ -1,20 +1,54 @@
 <?php
-require_once(__DIR__ . '/src/helpers/db-connection.php');
+//shows if user is logged in or not
+//either starts new session or resumes existing one
+session_start();
 
-$conn = openCon();
-echo "Connected to the database successfully.";
-closeCon($conn);
+//check for user_id value, if it is set,
+if (isset($_SESSION["user_id"])) {
+//then retrieve user record from db
+    $mysqli = require __DIR__ . "/database.php";
+//sql to select user from db
+    $sql = "SELECT * FROM user
+            WHERE id = {$_SESSION["user_id"]}";
+
+    $result = $mysqli->query($sql);
+//associative array with record values
+    $user = $result->fetch_assoc();
+}
+
 ?>
-
 <!DOCTYPE html>
-<html lang='en' dir='ltr'>
-  <head>
-    <meta charset='utf-8'>
-    <title>Fusebox</title>
-    <link rel='stylesheet' href='/src/styles/global.css'>
-  </head>
+<html>
+<head>
+    <title>Home</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+</head>
+<body>
 
-  <body>
-    <p>index.php will serve as our landing page, AKA what the audience sees if they are not logged in. For the Milestone 2 frontpage, please see our dashboard instead: <a href='src/pages/dashboard.php'>dashboard.php</a></p>
-  </body>
+<h1>Home</h1>
+<!--    checks that $user variable is set from above aka passes if statement-->
+<?php if (isset($user)): ?>
+    <!--greeting uses user's name-->
+    <p>Hello <?= htmlspecialchars($user["fname"]) ?></p>
+
+    <p><a href="/src/pages/security/logout.php">Log out</a></p>
+
+<?php else: ?>
+
+    <p><a href="/src/pages/security/login.php">Log in</a> or <a href="/src/pages/security/signup.html">sign up</a></p>
+
+<?php endif; ?>
+
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
