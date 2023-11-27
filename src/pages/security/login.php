@@ -47,7 +47,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <head>
     <title>Login</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link rel='stylesheet' href='../styles/global.css'>
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -61,7 +63,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <label for="email">email</label>
     <input type="email" name="email" id="email"
 <!--           if invalid pw, this keeps email filled in for easy ux-->
-<!--           rememebers email when login is redisplayed-->
+<!--           remembers email when login is redisplayed-->
            value="<?= htmlspecialchars($_POST["email"] ?? "") ?>">
 
     <label for="password">Password</label>
