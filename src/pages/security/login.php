@@ -43,7 +43,12 @@ closeCon($conn);
 <head>
     <title>Login</title>
     <meta charset="UTF-8">
-    <link rel='stylesheet' href='../styles/global.css'>
+<!--  Note: Relative path (move up and down directories
+    <link rel='stylesheet' href='../../styles/global.css'>
+    -->
+    <!-- Note: Absolute path (from root) -->
+    <link rel='stylesheet' href='/acad276/fusebox/src/styles/global.css'>
+
     <link href="style.css" rel="stylesheet" type="text/css" >
     <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -63,7 +68,7 @@ closeCon($conn);
     <div class="flex">
         <div class="right_content">
             <div class="title">
-                <img src="../assets/icons/icon_inbox.svg">
+                <img src="../../assets/icons/icon_inbox.svg">
                 <h1>Welcome Back!</h1>
             </div>
             <div>
