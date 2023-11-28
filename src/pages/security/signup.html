@@ -3,9 +3,9 @@
 <head>
     <title>Signup</title>
     <meta charset="UTF-8">
-<!--    <link href="style.css" rel="stylesheet" type="text/css" >-->
-<!--    <link rel='stylesheet' href='../../styles/global.css'>-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
+    <link href="style.css" rel="stylesheet" type="text/css" >
+    <link rel='stylesheet' href='../../styles/global.css'>
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">-->
 <!--    client-side validation, more user friedntly, JustValidat js validation library-->
     <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
 <!--    defer ensures they're loaded in order-->
@@ -13,47 +13,57 @@
 </head>
 <body>
 
-<div class="login">
+<div class="flex">
     <div class="left_content">
         <div class="left_text">
-            <h2>The best place to find your dream team</h2>
+            <h4>The best place to find your dream team.</h4>
             <p>Find the students you need to bring your project to life.</p>
         </div>
     </div>
-
+    <div class="flex">
     <div class="right_content">
-        <img src="../assets/icons/icon_inbox.svg">
-        <h1>Welcome to Fusebox</h1>
-        <p id="text" >Sign up with email.</p>
+        <div class="title">
+            <img src="../assets/icons/icon_inbox.svg">
+            <h1>Welcome to Fusebox!</h1>
+            <div class="secondary">
+            <p id="text" >Sign up with email.</p>
+            </div>
+        </div>
            <div>
                 <form action="process-signup.php" method="post" id="signup" novalidate>
-                    <div>
-                        <label for="fname"> First Name</label>
-                        <input type="text" id="fname" name="fname">
+                    <div class="entry">
+                        <label for="fname"> First Name</label><br>
+                        <input type="text" id="fname" name="fname" placeholder="First Name">
                     </div>
 
-                    <div>
-                        <label for="lname"> Last Name</label>
-                        <input type="text" id="lname" name="lname">
+                    <div class="entry">
+                        <label for="lname"> Last Name</label><br>
+                        <input type="text" id="lname" name="lname" placeholder="Last Name">
                     </div>
 
-                    <div>
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
+                    <div class="entry">
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" placeholder="Email">
                     </div>
 
-                    <div>
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password">
+                    <div class="entry">
+                        <label for="password">Password</label><br>
+                        <input type="password" id="password" name="password"  placeholder="Password">
                     </div>
 
-                    <div>
-                        <label for="password_confirmation">Confirm Password</label>
-                        <input type="password" id="password_confirmation" name="password_confirmation">
+                    <div class="entry">
+                        <label for="password_confirmation">Confirm Password</label><br>
+                        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
                     </div>
-
-                    <button>Sign up</button>
+                    <div class="button">
+                    <input type="submit" value="Create Account" class="button">
+                    </div>
+<!--                    <button>Sign up</button>-->
                 </form>
+               <div class="bottom_redirect">
+                <p>Already on Fusebox? <a href="src/pages/security/login.php">Log In</a></p>
+               </div>
+           </div>
         </div>
     </div>
 </div>
