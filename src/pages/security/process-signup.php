@@ -54,7 +54,6 @@ $stmt->bind_param("ssss",
 
 //execute statement
 if ($stmt->execute()) {
-
     header("Location: signup-success.html");
     closeCon($conn);
     exit;
@@ -64,8 +63,8 @@ if ($stmt->execute()) {
         closeCon($conn);
         die("email already taken");
     } else {
-        closeCon($conn);
         die($conn->error . " " . $conn->errno);
+        closeCon($conn);
     }
 }
 ?>

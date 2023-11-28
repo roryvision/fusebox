@@ -43,9 +43,8 @@ closeCon($conn);
 <head>
     <title>Login</title>
     <meta charset="UTF-8">
-    <link rel='stylesheet' href='../styles/global.css'>
-    <link href="style.css" rel="stylesheet" type="text/css" >
-    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap' rel='stylesheet'>
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
@@ -63,7 +62,7 @@ closeCon($conn);
     <div class="flex">
         <div class="right_content">
             <div class="title">
-                <img src="../assets/icons/icon_inbox.svg">
+                <img src="../../assets/icons/icon_profile.svg">
                 <h1>Welcome Back!</h1>
             </div>
             <div>
@@ -85,12 +84,12 @@ closeCon($conn);
                     <div class="secondary"><a href="">Forgot Password?</a></div>
 
                     <div class="button">
-                        <input type="submit" value="Create Account" class="button">
+                        <input type="submit" value="Log In" class="button">
                     </div>
 
                 </form>
                 <div class="bottom_redirect">
-                    <p>Not on Fusebox yet? <a href="src/pages/security/signup.html">Create an Account</a></p>
+                    <p>Not on Fusebox yet? <a href="signup.html">Create an Account</a></p>
                 </div>
             </div>
         </div>
@@ -99,37 +98,3 @@ closeCon($conn);
 
 </body>
 </html>
-
-<!---->
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>Login</title>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <link rel='stylesheet' href='../styles/global.css'>-->
-<!--    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap' rel='stylesheet'>-->
-<!--    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
-<!--</head>-->
-<!--<body>-->
-<!---->
-<!--<h1>Login</h1>-->
-<!--check validity, gives the least info-->
-<?php //if ($is_invalid): ?>
-<!--    <em>Invalid login</em>-->
-<?php //endif; ?>
-<!---->
-<!--<form method="post">-->
-<!--    <label for="email">email</label>-->
-<!--    <input type="email" name="email" id="email"-->
-<!--        if invalid pw, this keeps email filled in for easy ux-->
-<!--         remembers email when login is redisplayed-->
-<!--           value="--><?php //= htmlspecialchars($_POST["email"] ?? "") ?><!--">-->
-<!---->
-<!--    <label for="password">Password</label>-->
-<!--    <input type="password" name="password" id="password">-->
-<!---->
-<!--    <button>Log in</button>-->
-<!--</form>-->
-<!---->
-<!--</body>-->
-<!--</html>-->
