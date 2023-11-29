@@ -27,9 +27,7 @@ if (isset($_SESSION["user_id"])) {
       <meta charset="UTF-8">
       <link rel="stylesheet" href="src/styles/global.css" type="text/css">
         <link rel='stylesheet' href='src/components/Header/header.css'>
-<!--      <link rel="stylesheet" href="src/styles/dashboard.css" type="text/css">-->
         <link rel="stylesheet" href="src/styles/landing.css" type="text/css">
-    <!--  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">-->
     </head>
 <body>
     <?php if (isset($user)): ?>

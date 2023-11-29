@@ -1,16 +1,13 @@
 @font-face {
   font-family: 'Visby';
-/*  src: url('../assets/fonts/VisbySemibold.otf') format('opentype'); */
-  src: url("acad276/fusebox/src/assets/fonts/VisbySemibold.otf") format('opentype');
+  src: url('../assets/fonts/VisbySemibold.otf') format('opentype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Visby';
-  /* src: url('../assets/fonts/VisbyHeavy.otf') format('opentype'); */
-  src: url('/acad276/fusebox/src/assets/fonts/VisbyHeavy.otf') format('opentype');
-
+  src: url('../assets/fonts/VisbyHeavy.otf') format('opentype');
   font-weight: bolder;
   font-style: normal;
 }
@@ -51,11 +48,7 @@ h2 {
   border: 2px solid #DC1F1F;
   box-sizing: border-box;
   border-radius: 50px;
-
-
 }
-
-
 
 .button-red {
   font-size: 18px;
