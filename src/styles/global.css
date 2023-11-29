@@ -50,6 +50,16 @@ h2 {
   border-radius: 50px;
 }
 
+.button-red {
+  font-size: 18px;
+  background-color: #DC1F1F;
+  color: white;
+  padding: 8px 24px;
+  border: 2px solid white;
+  box-sizing: border-box;
+  border-radius: 50px;
+}
+
 .w-100 {
   width: 100%;
 }

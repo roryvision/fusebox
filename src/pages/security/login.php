@@ -53,6 +53,7 @@ closeCon($conn);
     <div class="left_content">
         <div class="left_text">
             <h4>The best place to find your dream team.</h4>
+
             <p>Find the students you need to bring your project to life.</p>
         </div>
     </div>
