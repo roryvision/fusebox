@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Signup</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link href="style.css" rel="stylesheet" type="text/css" >
+<!--    client-side validation, more user friedntly, JustValidat js validation library-->
+    <script src="https://unpkg.com/just-validate@latest/dist/just-validate.production.min.js" defer></script>
+<!--    defer ensures they're loaded in order-->
+    <script src="/js/validation.js" defer></script>
+</head>
+<body>
+
+<div class="flex">
+    <div class="left_content">
+        <div class="left_text">
+            <h4>The best place to find your dream team.</h4>
+            <p>Find the students you need to bring your project to life.</p>
+        </div>
+    </div>
+    <div class="flex">
+    <div class="right_content">
+        <div class="title">
+            <img src="../../assets/icons/icon_profile.svg">
+            <h1>Welcome to Fusebox!</h1>
+            <div class="secondary">
+            <p id="text" >Sign up with email.</p>
+            </div>
+        </div>
+           <div>
+                <form action="process-signup.php" method="post" id="signup" novalidate>
+                    <div class="entry">
+                        <label for="fname"> First Name</label><br>
+                        <input type="text" id="fname" name="fname" placeholder="First Name">
+                    </div>
+
+                    <div class="entry">
+                        <label for="lname"> Last Name</label><br>
+                        <input type="text" id="lname" name="lname" placeholder="Last Name">
+                    </div>
+
+                    <div class="entry">
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" placeholder="Email">
+                    </div>
+
+                    <div class="entry">
+                        <label for="password">Password</label><br>
+                        <input type="password" id="password" name="password"  placeholder="Password">
+                    </div>
+
+                    <div class="entry">
+                        <label for="password_confirmation">Confirm Password</label><br>
+                        <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm Password">
+                    </div>
+                    <div class="button">
+                    <input type="submit" value="Create Account" class="button">
+                    </div>
+<!--                    <button>Sign up</button>-->
+                </form>
+               <div class="bottom_redirect">
+                <p>Already on Fusebox? <a href="login.php">Log In</a></p>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
