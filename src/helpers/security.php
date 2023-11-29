@@ -23,7 +23,7 @@ else if (!empty($_REQUEST["password"])) {
 }
 else 	{ // NOT logged in and has NOT submitted form/login
     // include login form
-    include "src/pages/login/landing.php";
+    include "src/pages/login/index.php";
     exit();
     // STOP the page
 }
