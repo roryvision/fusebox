@@ -31,7 +31,7 @@ session_start();
 
       <div>
         <div id='filter-container'>
-            Welcome back, <?php echo($_SESSION["user_fname"]);?>!
+          Welcome back, <?php echo($_SESSION["user_fname"]);?>!
           <p>Results: <span id="numResults"></span></p>
 
           <h3>Applied Filters:</h3>
