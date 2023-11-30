@@ -4,7 +4,6 @@ cardProjectTemplate.innerHTML = `
   <link rel='stylesheet' href='../styles/global.css'>
   <link rel='stylesheet' href='../components/Card/card.css'>
   <div class='card card-project'>
-    <img src='../assets/icons/save_overlay.png' alt='Save project' class='card-save'>
     <p class='category'></p>
     <h2></h2>
     <p class='logline'></p>
@@ -37,6 +36,16 @@ class CardProject extends HTMLElement {
         tagElement.innerText = role;
         tagsContainer.appendChild(tagElement);
       });
+
+      if (p.isSaved) {
+        shadow.querySelector('.card-project').classList.add('saved');
+      } else {
+        const saveOverlay = document.createElement('img');
+        saveOverlay.src = '../assets/icons/save_overlay.png';
+        saveOverlay.alt = 'Save project';
+        saveOverlay.className = 'card-save';
+        shadow.querySelector('.card-project').appendChild(saveOverlay);
+      }
     }
   }
 }
