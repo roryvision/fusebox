@@ -1,5 +1,7 @@
 .container {
     margin: 34px;
+    display: flex;
+    flex-direction: column;
 }
 
 .button-red {
@@ -18,4 +20,42 @@
     padding: 8px 24px;
     box-sizing: border-box;
     border-radius: 50px;
+}
+
+.flex-row-btwn-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.sm_image img{
+    width: 100px;
+}
+
+.title {
+    text-align: left;
+    width: 600px;
+}
+
+.center {
+    text-align: center;
+    align-content: center;
+}
+
+.second {
+    color: #DC1F1F;
+    margin-bottom: 222px;
+}
+
+#opacity1 {
+    opacity: 70%;
+}
+
+#opacity2 {
+    opacity: 50%;
+}
+
+#opacity3 {
+    opacity: 30%;
 }
