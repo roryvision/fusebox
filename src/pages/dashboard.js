@@ -2,7 +2,6 @@ import { displayProject, displayPerson } from '../helpers/CardHelper.js';
 let projects = [];
 let people = [];
 let savedProjects = [];
-let projectsOrPeople = 'projects';
 let typesArray = [];
 let rolesArray = [];
 let numResults = 0;
@@ -62,7 +61,7 @@ $(document).ready(async () => {
     $('#cards-container').empty();
 
     if ($(this).attr('value') == 'projects') {
-      projects.forEach((p) => displayProject(p));
+      displayAllProjects();
     } else if ($(this).attr('value') == 'people') {
       people.forEach((p) => displayPerson(p));
     }
@@ -160,8 +159,12 @@ function performSearch() {
 
     $('#cards-container').empty();
 
-    filteredProjects.forEach(function (p) {
-      displayProject(p);
+    filteredProjects.forEach((p) => {
+      if (savedProjects.some((s) => s.project_id === p.project_id)) {
+        displayProject(p, true);
+      } else {
+        displayProject(p, false);
+      }
     });
 
     numResults = filteredProjects.length;
@@ -178,7 +181,25 @@ function performSearch() {
   $('#numResults').text(numResults);
 }
 
-function displayAllProjects() {
+async function displayAllProjects() {
+  savedProjects = await fetch('../api/projects/save.php')
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Error fetching saved');
+      }
+
+      return res.json();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
   $('#cards-container').empty();
-  projects.forEach((p) => displayProject(p));
+  projects.forEach((p) => {
+    if (savedProjects.some((s) => s.project_id === p.project_id)) {
+      displayProject(p, true);
+    } else {
+      displayProject(p, false);
+    }
+  });
 }
