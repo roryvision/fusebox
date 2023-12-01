@@ -6,7 +6,7 @@ h1 {
     margin: 34px;
     display: flex;
     flex-direction: column;
-    width: 700px;
+    padding: 150px;
 }
 
 .button-red {
@@ -39,7 +39,7 @@ h1 {
 }
 
 .medium_image img {
-    width: 300px;
+    width: 250px;
 }
 
 .left_content {
