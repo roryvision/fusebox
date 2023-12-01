@@ -45,6 +45,10 @@ if (!$stmt->prepare($sql)) {
     die("SQL error: " . $conn->error);
 }
 
+session_start();
+
+
+
 //bind values to parameters of SQL object
 $stmt->bind_param("ssss",
     $_POST["fname"],

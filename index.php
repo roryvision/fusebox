@@ -10,7 +10,7 @@ if (isset($_SESSION["user_id"])) {
 //then retrieve user record from db
   $conn = openCon();
 //sql to select user from db
-  $sql = "SELECT * FROM user
+  $sql = "SELECT * FROM profile
           WHERE id = {$_SESSION["user_id"]}";
 
   $result = $conn->query($sql);
