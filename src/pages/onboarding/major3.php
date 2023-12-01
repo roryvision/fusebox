@@ -2,7 +2,9 @@
 require_once(__DIR__ . '/../../helpers/db-connection.php');
 
 //shows if user is logged in or not
-
+if (isset($_SESSION["user_id"])) {
+//then retrieve user record from db
+    $conn = openCon();
 // Fetching majors from the 'major' table
 $sql_major = "SELECT major_id, major FROM major";
 $result_major = $conn->query($sql_major);

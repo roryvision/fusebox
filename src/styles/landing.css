@@ -30,7 +30,11 @@
 }
 
 .sm_image img{
-    width: 100px;
+    width: 300px;
+}
+
+.medium_image img {
+    width: 300px;
 }
 
 .title {

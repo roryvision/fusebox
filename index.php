@@ -82,7 +82,7 @@ if (isset($_SESSION["user_id"])) {
             <div class="third center">
                 <h1>Find your team with Fusebox</h1>
                 <p>Our skills-based tagging system makes finding candidates with the skills you’re looking for simple.</p>
-                <div class="flex-row-btwn-wrap sm_image">
+                <div class="flex-row-btwn-wrap medium_image">
                     <img src="src/assets/images/profile_card.png">
                     <img src="src/assets/images/profile_card.png">
                     <img src="src/assets/images/profile_card.png">
