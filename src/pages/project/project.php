@@ -20,7 +20,7 @@ if (!$results) {
 
 $project = $results->fetch_assoc();
 
-$role_sql = "SELECT role_name
+$role_sql = "SELECT role_name, pxr.role_id
             FROM projects_x_roles AS pxr
             LEFT JOIN role AS r ON pxr.role_id = r.role_id
             WHERE " . $project['project_id'] . " = pxr.project_id";
@@ -33,7 +33,10 @@ if (!$role_results) {
 
 $roles = array();
 while ($role_row = $role_results->fetch_assoc()) {
-  $roles[] = $role_row['role_name'];
+  $roles[] = array(
+    'role_id' => $role_row['role_id'],
+    'role_name' => $role_row['role_name']
+  );
 }
 
 closeCon($conn);
@@ -45,8 +48,10 @@ closeCon($conn);
     <meta charset='utf-8'>
     <title><?php $project['project_name'] ?></title>
     <link rel='stylesheet' href='../../styles/global.css'>
+    <link rel='stylesheet' href='../../styles/project.css'>
     <script src='../../components/Header/HeaderNav.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src='../project/project.js' type='module'></script>
   </head>
 
   <body>
@@ -64,7 +69,7 @@ closeCon($conn);
       <ul>
         <?php
           foreach ($roles as $role) {
-            echo "<li class='cursor-pointer'>" . $role . "</li>";
+            echo "<li class='button-apply' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "'>" . $role['role_name'] . "</li>";
           }
         ?>
       </ul>
