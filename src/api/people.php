@@ -19,10 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   while ($row =  $results->fetch_assoc()) {
     $people[] = $row;
   }
-
+  
   header('Content-Type: application/json');
   echo json_encode($people);
 
   closeCon($conn);
+  exit();
 }
 ?>
