@@ -1,5 +1,7 @@
 import { displayProject, displayPerson } from '../helpers/CardHelper.js';
 let projects = [];
+let people = [];
+let saved = [];
 let projectsOrPeople = 'projects';
 let typesArray = [];
 let rolesArray = [];
@@ -18,7 +20,7 @@ $(document).ready(async () => {
       console.error(error);
     });
 
-  let people = await fetch('../api/people.php')
+  people = await fetch('../api/people.php')
     .then((res) => {
       if (!res.ok) {
         throw new Error('Error fetching people');
@@ -30,7 +32,7 @@ $(document).ready(async () => {
       console.error(error);
     });
 
-  let saved = await fetch('../api/saved.php')
+  saved = await fetch('../api/saved.php')
     .then((res) => {
       if (!res.ok) {
         throw new Error('Error fetching saved');
@@ -49,6 +51,7 @@ $(document).ready(async () => {
       displayProject(p, false);
     }
   });
+
   numResults = projects.length;
   $('#numResults').text(numResults);
 
