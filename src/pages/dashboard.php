@@ -7,6 +7,7 @@ session_start();
   <head>
     <meta charset='utf-8'>
     <title>Fusebox</title>
+      <meta name="description" content="Connecting to create.">
     <link rel='stylesheet' href='../styles/global.css'>
     <link rel='stylesheet' href='../styles/dashboard.css'>
     <link rel='stylesheet' href='../components/Card/card.css'>
