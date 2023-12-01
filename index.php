@@ -59,7 +59,7 @@ if (isset($_SESSION["user_id"])) {
 
             <div id="container">
                 <div class="first flex-row-btwn-wrap">
-                    <div class="title">
+                    <div class="left_content">
                         <h1>The best place to find your dream team.</h1>
                         <p>Find the students you need to bring your project to life.</p>
                     </div>
@@ -105,6 +105,14 @@ if (isset($_SESSION["user_id"])) {
                     <img src="src/assets/images/project_card.png">
                     <img src="src/assets/images/project_card.png">
                     <img src="src/assets/images/project_card.png">
+                </div>
+            </div>
+            <div class="fourth center">
+                <h1>Save projects for later.</h1>
+                <p>Keep an eye on projects that you're interested in to decide what you want to apply to.</p>
+                <div class="flex-row-btwn-wrap sm_image" style="margin-bottom: 64px; margin-outside: 24px">
+                    <img src="src/assets/images/saved1.png">
+                    <img src="src/assets/images/saved2.png">
                 </div>
             </div>
             <div class="fifth">
