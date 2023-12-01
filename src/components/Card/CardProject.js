@@ -58,7 +58,7 @@ class CardProject extends HTMLElement {
 
   async handleSave(projectId) {
     try {
-      const response = await fetch('../api/saved.php', {
+      const response = await fetch('../api/projects/save.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,9 +86,8 @@ class CardProject extends HTMLElement {
   }
 
   async handleUnsave(projectId) {
-    console.log(projectId);
     try {
-      const response = await fetch('../api/saved.php', {
+      const response = await fetch('../api/projects/save.php', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

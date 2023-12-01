@@ -1,5 +1,5 @@
 <?php
-require_once('../helpers/db-connection.php');
+require_once('../../helpers/db-connection.php');
 
 session_start();
 $user_id = $_SESSION['user_id'];
