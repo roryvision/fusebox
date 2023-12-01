@@ -91,6 +91,7 @@ function check(thisCheckbox, dataArray, updateFunction) {
     if (index !== -1) {
       dataArray.splice(index, 1);
     }
+    $(thisCheckbox).parent().parent().parent().children('input').prop('checked', false);
   }
   updateFunction();
 }
