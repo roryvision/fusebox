@@ -61,6 +61,7 @@ if (isset($_SESSION["user_id"])) {
         <meta name="description" content="description of page goes here">
         <meta name="keywords" content="keywords go here"> <!--      keep it under 200 words  -->
         <link rel="stylesheet" href="/src/styles/global.css" type="text/css">
+        <link rel="stylesheet" href="/src/styles/onboarding.css" type="text/css">
     </head>
     <body>
         <img src="../../assets/icons/icon_profile.svg">

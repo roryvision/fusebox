@@ -1,0 +1,17 @@
+.button {
+    width: 488px;
+    height: 43px;
+    background-color: #DC1F1F;
+    border-radius: 29px;
+    cursor: pointer;
+    color: white;
+    border-width: 0;
+    border-color: white;
+    transition: border-width 0.2s;
+}
+
+.center {
+    text-align: left;
+    align-content: center;
+    margin: auto;
+}
