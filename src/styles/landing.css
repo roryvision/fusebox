@@ -1,6 +1,6 @@
-div {
-    border: 1pt solid grey;
-}
+/*div {*/
+/*    border: 1pt solid grey;*/
+/*}*/
 
 h1 {
     margin-bottom: 20px;
@@ -73,10 +73,14 @@ h2 {
     margin: 20px;
 }
 
+.first img {
+    width: 700px;
+}
+
 .second {
     color: #DC1F1F;
     margin-bottom: 250px;
-    margin-top: 222px;
+    margin-top: 100px;
 }
 
 #opacity1 {
@@ -101,9 +105,9 @@ h2 {
 }
 
 .fifth {
-    margin-bottom: 222px;
+    margin-bottom: 150px;
 }
 
 .sixth {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
