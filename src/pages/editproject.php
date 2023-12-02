@@ -100,7 +100,41 @@ session_start();
     <div id='container'>
         <header-nav></header-nav>
         <div id = "alldathings">
-            <div id = "singleCardContainer"></div>
+            <div id = "singleCardContainer">
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const projectId = urlParams.get('id');
+
+                        // Fetch project details based on projectId and update the UI
+                        fetchProjectDetails(projectId);
+                    });
+
+                    async function fetchProjectDetails(projectId) {
+                        // Make a request to fetch project details based on projectId
+                        const projectDetails = await fetch(`../api/projects/${projectId}`)
+                            .then((res) => {
+                                if (!res.ok) {
+                                    throw new Error('Error fetching project details');
+                                }
+                                return res.json();
+                            })
+                            .catch((error) => {
+                                console.error(error);
+                            });
+
+                        // Update the UI with project details
+                        updateUIWithProjectDetails(projectDetails);
+                    }
+
+                    function updateUIWithProjectDetails(projectDetails) {
+                        // Update the UI elements on the edit project page with projectDetails
+                        // For example, set the values of input fields or update other elements
+                        console.log(projectDetails);
+                    }
+
+                </script>
+            </div>
 
             <div class = "projectinformation">
                 <div class = "projectdetails">Project Title:</div>

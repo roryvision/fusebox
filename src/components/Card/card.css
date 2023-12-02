@@ -7,7 +7,16 @@ p {
   border-radius: 50px 0px 50px 50px;
   outline: 2px solid #BAB3A6;
   outline-offset: -16px;
-  position: relative;
+}
+
+.circle {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+  width: 46px;
+  height: 46px;
+  background-color: #BBBBBB;
+  border-radius: 50%;
 }
 
 .card-save {
@@ -41,6 +50,11 @@ p {
   height: 308px;
   padding: 50px;
 }
+
+.project-card{
+  position: relative;
+}
+
 
 .card-project h2 {
   margin: 24px 0px;
