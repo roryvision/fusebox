@@ -4,7 +4,6 @@ cardProjectTemplate.innerHTML = `
   <link rel='stylesheet' href='../styles/global.css'>
   <link rel='stylesheet' href='../components/Card/card.css'>
   <div class='card card-project'>
-    <img src='../assets/icons/save_overlay.png' alt='Save project' class='card-save'>
     <p class='category'></p>
     <h2></h2>
     <p class='logline'></p>
@@ -28,15 +27,91 @@ class CardProject extends HTMLElement {
       shadow.querySelector('h2').innerText = p.project_name;
       shadow.querySelector('.logline').innerText = p.logline;
       const tagsContainer = shadow.querySelector('.tags');
-      tagsContainer.innerHTML = ""; // Clear existing content
+      tagsContainer.innerHTML = ''; // Clear existing content
 
       // Iterate over the roles and create div elements
-      p.roles.forEach(role => {
+      p.roles.forEach((role) => {
         const tagElement = document.createElement('div');
         tagElement.className = 'tag w-fit';
         tagElement.innerText = role;
         tagsContainer.appendChild(tagElement);
       });
+
+      if (p.isSaved) {
+        const savedOverlay = document.createElement('div');
+        savedOverlay.alt = 'Unsave project';
+        savedOverlay.className = 'saved';
+        shadow.querySelector('.card-project').appendChild(savedOverlay);
+
+        savedOverlay.addEventListener('click', () => this.handleUnsave(p.project_id));
+      } else {
+        const saveOverlay = document.createElement('img');
+        saveOverlay.src = '../assets/icons/save_overlay.svg';
+        saveOverlay.alt = 'Save project';
+        saveOverlay.className = 'card-save';
+        shadow.querySelector('.card-project').appendChild(saveOverlay);
+
+        saveOverlay.addEventListener('click', () => this.handleSave(p.project_id));
+      }
+    }
+  }
+
+  async handleSave(projectId) {
+    try {
+      const response = await fetch('../api/projects/save.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ project_id: projectId }),
+      });
+
+      if (response.ok) {
+        const savedOverlay = document.createElement('div');
+        savedOverlay.alt = 'Unsave project';
+        savedOverlay.className = 'saved';
+        this.shadowRoot.querySelector('.card-project').appendChild(savedOverlay);
+
+        this.shadowRoot
+          .querySelector('.card-project')
+          .removeChild(this.shadowRoot.querySelector('.card-save'));
+
+        savedOverlay.addEventListener('click', () => this.handleUnsave(projectId));
+      } else {
+        console.error('Failed to save project');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  async handleUnsave(projectId) {
+    try {
+      const response = await fetch('../api/projects/save.php', {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ project_id: projectId }),
+      });
+
+      if (response.ok) {
+        const saveOverlay = document.createElement('img');
+        saveOverlay.src = '../assets/icons/save_overlay.svg';
+        saveOverlay.alt = 'Save project';
+        saveOverlay.className = 'card-save';
+        this.shadowRoot.querySelector('.card-project').appendChild(saveOverlay);
+
+        this.shadowRoot
+          .querySelector('.card-project')
+          .removeChild(this.shadowRoot.querySelector('.saved'));
+
+        saveOverlay.addEventListener('click', () => this.handleSave(projectId));
+      } else {
+        console.error('Failed to unsave project');
+      }
+    } catch (error) {
+      console.error(error);
     }
   }
 }
