@@ -15,23 +15,26 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $result = $conn->query($sql);
     //grab user data in array
-    if(!$result) {
-        echo "SQL error: ". $conn->error;
+    if(!$result){
+        $is_invalid = true;
         exit();
     }
-    $user = $result->fetch_assoc();
+    else {
+        $user = $result->fetch_assoc();
 
-    if (($_POST["password"]) === ($user["password_hash"])){
-        //remembers user info between browsers
-        session_start();
-        //session data
-        $_SESSION["user_id"] = $user["profile_id"];
-        $_SESSION["user_fname"] = $user["fname"];
-        $_SESSION["user_lname"] = $user["lname"];
+        if ($user && ($_POST["password"]) === ($user["password_hash"])){
+            //remembers user info between browsers
+            session_start();
+            //session data
+            $_SESSION["user_id"] = $user["profile_id"];
+            $_SESSION["user_fname"] = $user["fname"];
+            $_SESSION["user_lname"] = $user["lname"];
 
-        header("Location: ../dashboard.php");
-        exit();
+            header("Location: ../dashboard.php");
+            exit();
+        }
     }
+
 $is_invalid = true;
 closeCon($conn);
 }
@@ -57,14 +60,15 @@ closeCon($conn);
             <p>Find the students you need to bring your project to life.</p>
         </div>
     </div>
-    <?php if ($is_invalid): ?>
-    <em>Invalid login</em>
-    <?php endif; ?>
+
     <div class="flex">
         <div class="right_content">
             <div class="title">
                 <img src="../../assets/icons/icon_profile.svg">
                 <h1>Welcome Back!</h1>
+                <?php if ($is_invalid): ?>
+                    <em>Invalid login!</em>
+                <?php endif; ?>
             </div>
             <div>
                 <form method="post">

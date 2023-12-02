@@ -8,6 +8,16 @@
   color: #D9D9D9;
 }
 
+#search{
+  width: 700px;
+  margin: auto;
+  margin-top: 34px;
+  margin-bottom: 30px;
+  font-family: 'Visby';
+  font-weight: bold;
+  font-size: 18px;
+}
+
 .selected {
   color: #DC1F1F;
 }

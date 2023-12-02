@@ -1,15 +1,12 @@
 <?php
-require_once('../helpers/db-connection.php');
+require_once('../../helpers/db-connection.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   $conn = openCon();
 
   $sql = "SELECT p.project_id, p.project_name, p.logline, c.category_name
-    FROM project AS p
-    LEFT JOIN category AS c ON p.category_id = c.category_id
-    ";
-
-
+          FROM project AS p
+          LEFT JOIN category AS c ON p.category_id = c.category_id";
   $results = $conn->query($sql);
 
   if (!$results) {
@@ -20,26 +17,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   $projects = array();
   while ($row = $results->fetch_assoc()) {
       $role_sql = "SELECT role_name
-            FROM projects_x_roles AS pxr
-            LEFT JOIN role AS r ON pxr.role_id = r.role_id
-            WHERE " . $row['project_id'] . " = pxr.project_id";
+                  FROM projects_x_roles AS pxr
+                  LEFT JOIN role AS r ON pxr.role_id = r.role_id
+                  WHERE " . $row['project_id'] . " = pxr.project_id";
       $role_results = $conn->query($role_sql);
       if (!$role_results) {
-          echo "SQL error: " . $conn->error;
-          exit();
+        echo "SQL error: " . $conn->error;
+        exit();
       }
       $roles = array();
       while ($role_row = $role_results->fetch_assoc()) {
-          $roles[] = $role_row['role_name'];
+        $roles[] = $role_row['role_name'];
       }
       $row['roles'] = $roles;
     $projects[] = $row;
   }
 
-
   header('Content-Type: application/json');
   echo json_encode($projects);
 
   closeCon($conn);
+  exit();
 }
 ?>
