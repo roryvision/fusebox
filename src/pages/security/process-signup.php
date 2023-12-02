@@ -2,31 +2,31 @@
 require_once('../../helpers/db-connection.php');
 
 if (empty($_POST["fname"])) {
-    die("First name is required");
+    die("First name is required. Go back to <a href='signup.html'>signup</a> to try again.");
 }
 if (empty($_POST["lname"])) {
-    die("Last name is required");
+    die("Last name is required. Go back to <a href='signup.html'>signup</a> to try again.");
 }
 
 //form checks
-//if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
-//    die("Valid email is required");
+if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+    die("Valid email is required. Go back to <a href='signup.html'>signup</a> to try again.");
+}
+
+if (strlen($_POST["password"]) < 5) {
+    die("Password must be at least 5 characters. Go back to <a href='signup.html'>signup</a> to try again.");
+}
+
+//if (!preg_match("/[a-z]/i", $_POST["password"])) {
+//    die("Password must contain at least one letter. Go back to <a href='signup.html'>signup</a> to try again.");
 //}
 
-if (strlen($_POST["password"]) < 8) {
-    die("Password must be at least 8 characters");
-}
-
-if (!preg_match("/[a-z]/i", $_POST["password"])) {
-    die("Password must contain at least one letter");
-}
-
-if (!preg_match("/[0-9]/", $_POST["password"])) {
-    die("Password must contain at least one number");
-}
+//if (!preg_match("/[0-9]/", $_POST["password"])) {
+//    die("Password must contain at least one number");
+//}
 
 if ($_POST["password"] !== $_POST["password_confirmation"]) {
-    die("Passwords must match");
+    die("Passwords must match. Go back to <a href='signup.html'>signup</a> to try again.");
 }
 
 //security
