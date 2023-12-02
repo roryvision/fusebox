@@ -15,7 +15,7 @@ session_start();
         <script src='../components/Card/CardProject.js' type='text/javascript'></script>
         <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src='project_results.js' type='module'></script>
+        <script src='project-results.js' type='module'></script>
     </head>
     <body>
     <div id="container">
