@@ -2,12 +2,20 @@
 require_once(__DIR__ . '/../../helpers/db-connection.php');
 
 //shows if user is logged in or not
+//either starts new session or resumes existing one
+session_start();
+
+//shows if user is logged in or not
 if (isset($_SESSION["user_id"])) {
 //then retrieve user record from db
     $conn = openCon();
-// Fetching majors from the 'major' table
-$sql_major = "SELECT major_id, major FROM major";
-$result_major = $conn->query($sql_major);
+//user data
+    $sql = "SELECT * FROM profile
+          WHERE id = {$_SESSION["user_id"]}";
+    $result = $conn->query($sql);
+//associative array with record values
+    $user = $result->fetch_assoc();
+
 
 // form submission check??
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -46,9 +54,20 @@ $conn->close();
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <label for="major">Select Major:</label>
             <select name="major" id="major">
+                <option value="ALL">Select a major</option>
                 <?php
-                while ($row = $result_major->fetch_assoc()) {
-                    echo "<option value='{$row['major_id']}'>{$row['major_name']}</option>";
+
+                $sql = "SELECT * FROM major";
+
+                $results = $conn->query($sql);
+
+                if(!$results) {
+                    echo "SQL error: ". $conn->error;
+                    exit();
+                }
+
+                while($currentrow = $results->fetch_assoc()) {
+                    echo "<option>" . $currentrow['major'] . "</option>";
                 }
                 ?>
             </select>
@@ -57,12 +76,20 @@ $conn->close();
 
             <label for="major2">Select Major 2:</label>
             <select name="major2" id="major2">
-                <option value="">None</option>
+                <option value="null">None</option>
                 <?php
-                // Resetting the result pointer to the beginning of the majors
-                $result_major->data_seek(0);
-                while ($row = $result_major->fetch_assoc()) {
-                    echo "<option value='{$row['major_id']}'>{$row['major_name']}</option>";
+
+                $sql = "SELECT * FROM major";
+
+                $results = $conn->query($sql);
+
+                if(!$results) {
+                    echo "SQL error: ". $conn->error;
+                    exit();
+                }
+
+                while($currentrow = $results->fetch_assoc()) {
+                    echo "<option>" . $currentrow['major'] . "</option>";
                 }
                 ?>
             </select>
