@@ -7,6 +7,7 @@ session_start();
   <head>
     <meta charset='utf-8'>
     <title>Fusebox</title>
+      <meta name="description" content="Connecting to create.">
     <link rel='stylesheet' href='../styles/global.css'>
     <link rel='stylesheet' href='../styles/dashboard.css'>
     <link rel='stylesheet' href='../components/Card/card.css'>
@@ -15,8 +16,7 @@ session_start();
     <script src='../components/Card/CardProject.js' type='text/javascript'></script>
     <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script src='../pages/dashboard.js' type='module'></script>
-
+    <script src='../pages/dashboard.js' type='module'></script>
   </head>
 
   <body>
