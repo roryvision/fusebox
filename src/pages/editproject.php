@@ -72,7 +72,8 @@ session_start();
             border-radius: 14px;
             border: 1px solid #BBBBBB;
             width: 100px;
-            height: 30px;
+            height: 35px;
+            color: #BBBBBB;
         //margin-top: 60px;
         }
 
@@ -88,6 +89,7 @@ session_start();
             display: flex;
             flex-direction: row;
         }
+
 
     </style>
 
@@ -109,9 +111,9 @@ session_start();
                 <input type = text class = "description" placeholder="description..."></input>
                 <div class = "projectdetails">Category:</div>
                 <input type = text class = "category"></input>
-                <div class = "projectdetails">Roles:</div>
+                <div class = "projectdetails">Roles Needed:</div>
                 <select class = "roles">
-                    <option value = "ALL">Select a class...</option>
+                    <option value = "ALL">Roles</option>
                     <?php
 
                     // Establish a connection to your MySQL database
