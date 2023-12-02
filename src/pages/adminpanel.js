@@ -43,13 +43,7 @@ $(document).ready(async () => {
             console.error(error);
         });
 
-    projects.forEach((p) => {
-        if (savedProjects.some((s) => s.project_id === p.project_id)) {
-            displayEditProject(p, true);
-        } else {
-            displayEditProject(p, false);
-        }
-    });
+    displayAllProjects();
 
 
     numResults = projects.length;
@@ -136,3 +130,12 @@ function performSearch() {
     $('#numResults').text(numResults);
 }
 
+const displayAllProjects = () => {
+    projects.forEach((p) => {
+        if (savedProjects.some((s) => s.project_id === p.project_id)) {
+            displayEditProject(p, true);
+        } else {
+            displayEditProject(p, false);
+        }
+    });
+}

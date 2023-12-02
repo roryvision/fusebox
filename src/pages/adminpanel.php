@@ -16,7 +16,7 @@ session_start();
     <script src='../components/Card/CardProject.js' type='text/javascript'></script>
     <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../helpers/CardHelper.js" type='text/javascript'></script>
+    <script src="../helpers/CardHelper.js" type='module'></script>
     <script src='../pages/adminpanel.js' type='module'></script>
 
 </head>

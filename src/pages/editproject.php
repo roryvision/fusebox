@@ -83,6 +83,10 @@ session_start();
             height: 494px;
         }
 
+        #project-details-container{
+
+        }
+
         #alldathings{
             margin: auto;
             width: fit-content;
@@ -96,11 +100,11 @@ session_start();
 </head>
 
 <body>
-<div class = "outer">
+<div class="outer">
     <div id='container'>
         <header-nav></header-nav>
-        <div id = "alldathings">
-            <div id = "singleCardContainer">
+        <div id="alldathings">
+            <div id="project-details-container" class="card-project">
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
                         const urlParams = new URLSearchParams(window.location.search);
@@ -112,7 +116,7 @@ session_start();
 
                     async function fetchProjectDetails(projectId) {
                         // Make a request to fetch project details based on projectId
-                        const projectDetails = await fetch(`../api/projects/${projectId}`)
+                        const projectDetails = await fetch(`../api/projects/index.php/${projectId}`)
                             .then((res) => {
                                 if (!res.ok) {
                                     throw new Error('Error fetching project details');
@@ -127,12 +131,39 @@ session_start();
                         updateUIWithProjectDetails(projectDetails);
                     }
 
-                    function updateUIWithProjectDetails(projectDetails) {
-                        // Update the UI elements on the edit project page with projectDetails
-                        // For example, set the values of input fields or update other elements
-                        console.log(projectDetails);
-                    }
+                    const displaySingleProject = (projectData, isSaved) => {
+                        const projectContainer = document.getElementById('cards-container');
+                        const project = document.createElement('card-project');
+                        const data = { ...projectData, isSaved };
+                        project.setProjectData(data);
+                        projectContainer.appendChild(project);
 
+                        });
+
+                    function updateUIWithProjectDetails(projectDetails) {
+                        try {
+                            // Update the UI elements on the edit project page with projectDetails
+                            const projectContainer = document.getElementById('project-details-container');
+
+                            // Clear existing content
+                            projectContainer.innerHTML = '';
+
+                            // Create new elements and append them to projectContainer
+                            const titleElement = document.createElement('div');
+                            titleElement.textContent = projectDetails.title;
+                            projectContainer.appendChild(titleElement);
+
+                            const descriptionElement = document.createElement('div');
+                            descriptionElement.textContent = projectDetails.description;
+                            projectContainer.appendChild(descriptionElement);
+
+                            // Update other elements as needed
+
+                        } catch (error) {
+                            console.error(error);
+                            // Handle errors, e.g., display an error message to the user
+                        }
+                    }
                 </script>
             </div>
 

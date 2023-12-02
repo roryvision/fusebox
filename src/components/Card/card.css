@@ -15,8 +15,9 @@ p {
   right: 32px;
   width: 46px;
   height: 46px;
-  background-color: #BBBBBB;
+  background-color: #C1BAAD;
   border-radius: 50%;
+  cursor:pointer;
 }
 
 .card-save {

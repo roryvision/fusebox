@@ -35,7 +35,6 @@ const displayEditProject = (projectData, isSaved) => {
   projectContainer.appendChild(cardElement);
 };
 
-
 const displayPerson = (personData) => {
   const projectContainer = document.getElementById('cards-container');
   const person = document.createElement('card-person');
