@@ -13,7 +13,7 @@ headerTemplate.innerHTML = `
       <div class='flex-btwn'>
         <li><a href='../pages/createProject.html'><button class='button-basic cursor-pointer'>Create a Project</button></a></li>
         <li><img src='../assets/icons/icon_inbox.svg' alt='Inbox' class='button-nav cursor-pointer' /></li>
-        <li><a href='../pages/profile.html'><img src='../assets/icons/icon_profile.svg' alt='Profile' class='button-nav cursor-pointer' /></a></li>
+        <li><a href='../pages/profile.php'><img src='../assets/icons/icon_profile.svg' alt='Profile' class='button-nav cursor-pointer' /></a></li>
       </div>
     </ul>
   </header>

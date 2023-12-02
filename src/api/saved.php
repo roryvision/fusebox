@@ -1,0 +1,43 @@
+<?php
+require_once('../helpers/db-connection.php');
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    $conn = openCon();
+
+    $sql = "SELECT p.project_id, p.project_name, p.logline, p.description, cat.category_name 
+          FROM saved_projects AS s
+          INNER JOIN project AS p ON p.project_id = s.project_id 
+          LEFT JOIN category AS cat ON p.category_id = cat.category_id";
+
+    $results = $conn->query($sql);
+
+    if (!$results) {
+        echo "SQL error: " . $conn->error;
+        exit();
+    }
+
+    $projects = array();
+    while ($row = $results->fetch_assoc()) {
+        $role_sql = "SELECT role_name
+                 FROM projects_x_roles AS pxr
+                 LEFT JOIN role AS r ON pxr.role_id = r.role_id
+                 WHERE " . $row['project_id'] . " = pxr.project_id";
+        $role_results = $conn->query($role_sql);
+        if (!$role_results) {
+            echo "SQL error: " . $conn->error;
+            exit();
+        }
+        $roles = array();
+        while ($role_row = $role_results->fetch_assoc()) {
+            $roles[] = $role_row['role_name'];
+        }
+        $row['roles'] = $roles;
+        $projects[] = $row;
+    }
+
+    header('Content-Type: application/json');
+    echo json_encode($projects);
+
+    closeCon($conn);
+}
+?>
