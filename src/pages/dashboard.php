@@ -5,6 +5,15 @@ session_start();
 <!DOCTYPE html>
 <html lang='en' dir='ltr'>
   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRJE9WJPQ"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-EMRJE9WJPQ');
+      </script>
     <meta charset='utf-8'>
     <title>Fusebox</title>
       <meta name="description" content="Connecting to create.">
