@@ -33,9 +33,9 @@ select {
     position: relative;
 }
 
-.hide {
-    display: none;
-}
+/*.hide {*/
+/*    display: none;*/
+/*}*/
 
 .show {
     display: block;
