@@ -1,5 +1,10 @@
 .step-card {
     display: none;
+    /*margin: auto;*/
+    /*width: 600px;*/
+    /*height: 700px;*/
+    /*background-color: white;*/
+    /*box-shadow: 2px 2px 4px #000000;*/
 }
 
 .show {
