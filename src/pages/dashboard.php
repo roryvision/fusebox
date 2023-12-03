@@ -17,6 +17,14 @@ session_start();
     <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src='../pages/dashboard.js' type='module'></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRJE9WJPQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EMRJE9WJPQ');
+    </script>
   </head>
 
   <body>
