@@ -4,7 +4,7 @@ require_once('../../helpers/db-connection.php');
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   $conn = openCon();
 
-  $sql = "SELECT p.fname, p.lname, p.bio, pr.pronouns, m.major AS major, m2.major AS major2, r.role_name, p.website1, p.website2
+  $sql = "SELECT p.fname, p.lname, p.bio, pr.pronouns, m.major AS major, m2.major AS major2, r.role_name, p.website1, p.website2, p.instagram, p.linkedin
           FROM profile AS p
           LEFT JOIN pronoun AS pr ON p.pronoun_id = pr.pronoun_id
           LEFT JOIN major AS m ON p.major_id = m.major_id

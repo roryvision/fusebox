@@ -21,15 +21,15 @@ cardPersonTemplate.innerHTML = `
         <p class='pronouns' style='color: #878787; font-style: italic; font-weight: 275; font-size: 13px;'></p>
         <p class='major' style='font-weight: 700; margin-top: 4px; margin-bottom: 6px; line-height: 18px;'></p>
         <p class='major2' style='font-weight: 700; margin-top: 4px; margin-bottom: 6px; line-height: 18px;'>Computer Science</p>
-        <p class='website1'></p>
-        <p class='website2'></p>
-        
+        <div style='margin-top: 10px'>
+         <p class='website1' style="font-size:9pt; width: 225px; line-height: 15px; overflow-wrap: break-word;"></p>
+         <p class='website2'></p>
+        </div>    
       </div>
       <div style= 'margin-left: 150px; margin-top: 4px; text-align: left; display: flex; flex-direction: row; gap: 8px;'>
-        <div>
-            <a href="https://www.instagram.com/"><img src='../assets/icons/instagram.png' alt='instagram' id="icon"/></a>
+        <div class="instagram">
         </div>
-        <div>
+        <div class="linkedin">
             <a href="https://www.linkedin.com/"><img src='../assets/icons/linkedin.png' alt='linkedin ' id="icon"/><a href="https://www.linkedin.com/">
         </div>
       </div>
@@ -55,13 +55,12 @@ class CardPerson extends HTMLElement {
       shadow.querySelector('.major2').innerText = p.major2 || '';
       shadow.querySelector('.role').innerText = p.role_name || '';
 
-      // Set the link only if the value is not null
       shadow.querySelector('.website1').innerHTML = p.website1 ? '<a href="' + p.website1 + '" target="_blank">' + p.website1 + '</a>' : '';
-
       shadow.querySelector('.website2').innerHTML = p.website2 ? '<a href="' + p.website2 + '" target="_blank">' + p.website2 + '</a>' : '';
+      shadow.querySelector('.instagram').innerHTML = p.instagram ? '<a href="https://www.instagram.com/' + p.instagram + '" target="_blank"><img src=\'../assets/icons/instagram.png\' alt=\'instagram\' id="icon"/></a>' : '';
+      shadow.querySelector('.linkedin').innerHTML = p.linkedin ? '<a href="' + p.linkedin + '" target="_blank"><img src=\'../assets/icons/linkedin.png\' alt=\'linkedin \' id="icon"/></a>' : '';
     }
   }
-
 }
 
 customElements.define('card-person', CardPerson);
