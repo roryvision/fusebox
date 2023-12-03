@@ -50,6 +50,8 @@ if (isset($_SESSION["user_id"])) {
                 </ul>
             </header>
 
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <div id="container">
                 <div class="first flex-row-btwn-wrap">
                     <div class="left_content">
@@ -76,12 +78,51 @@ if (isset($_SESSION["user_id"])) {
                 </div>
             </div>
             <div class="second center">
+=======
+=======
+>>>>>>> Stashed changes
+            <div class="first">
+                <div>
+                    <h1>The best place to find your dream team.</h1>
+                    <p>Find the students you need to bring your project to life.</p>
+                </div>
+                <div>
+                    <div class='card card-person flex-btwn'>
+                        <div style='width: 172px;'>
+                            <div class='img-container'>
+                                <img src='src/assets/images/chuubear.jpeg' alt='Profile photo'>
+                            </div>
+                            <p class='role' style='color: #878787; text-align: center;'>Project Manager</p>
+                        </div>
+                        <div style='margin-left: 16px;'>
+                            <h1 class='name'>Yeji Seo</h1>
+                            <hr />
+                            <p class='pronouns' style='color: #878787; margin-bottom: 4px;'>she/her</p>
+                            <p class='major'>Design, Technology, and the Business of Innovation</p>
+                        </div>
+                    </div>
+                    `;
+                </div>
+            </div>
+            <div class="second">
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
                 <h2>Starting a project and need a collaborator?</h2>
                 <h2 id="opacity1">Building an app and need a UI designer?</h2>
                 <h2 id="opacity2">Designing a rocket and need an engineer?</h2>
                 <h2 id="opacity3">Writing a script and need an actor?</h2>
             </div>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <div class="third center">
+=======
+            <div class="third">
+>>>>>>> Stashed changes
+=======
+            <div class="third">
+>>>>>>> Stashed changes
                 <h1>Find your team with Fusebox</h1>
                 <p>Our skills-based tagging system makes finding candidates with the skills you’re looking for simple.</p>
                 <div class="flex-row-btwn">
@@ -93,7 +134,15 @@ if (isset($_SESSION["user_id"])) {
 <!--                    <img src="src/assets/images/profile_card.png">-->
 <!--                </div>-->
             </div>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <div class="fourth center">
+=======
+            <div class="fourth">
+>>>>>>> Stashed changes
+=======
+            <div class="fourth">
+>>>>>>> Stashed changes
                 <h1>Discover projects that need you.</h1>
                 <p>Boost your resume or portfolio with projects developed by like-minded students. <br>Sort through easily to find roles that you’re looking for.</p>
                 <div class="flex-row-btwn-wrap" >
@@ -106,6 +155,8 @@ if (isset($_SESSION["user_id"])) {
 <!--                    <img src="src/assets/images/project_card.png" alt="project card">-->
                 </div>
             </div>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
             <div class="fifth center">
                 <h1>Save projects for later.</h1>
                 <p>Keep an eye on projects that you're interested in to decide what you want to apply to.</p>
@@ -115,6 +166,12 @@ if (isset($_SESSION["user_id"])) {
                 </div>
             </div>
             <div class="sixth">
+=======
+            <div class="fifth">
+>>>>>>> Stashed changes
+=======
+            <div class="fifth">
+>>>>>>> Stashed changes
                 <h1>Fusebox.</h1>
                 <h1>Connecting to create.</h1>
                 <a href="src/pages/security/signup.html"><button class='button-red cursor-pointer'>Sign up</button></a>
