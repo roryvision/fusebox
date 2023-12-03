@@ -1,49 +1,74 @@
-import {displayProject } from "../helpers/CardHelper.js";
-let created = [];
-let saved = [];
-let applied = [];
-let numResults = 0;
+import { displayProject } from '../helpers/CardHelper.js';
+let createdProjects = [];
+let savedProjects = [];
+let appliedProjects = [];
 
 $(document).ready(async () => {
-    console.log("hi");
-    try {
-        const createdResponse = await fetch('../api/created.php');
-        const savedResponse = await fetch('../api/saved.php');
-        const appliedResponse = await fetch('../api/applied.php');
+  createdProjects = await fetch('../api/projects/create.php')
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Error fetching created');
+      }
 
-        if (!createdResponse.ok || !savedResponse.ok || !appliedResponse.ok) {
-            throw new Error('Error fetching projects');
-        }
+      return res.json();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  
+  savedProjects = await fetch('../api/projects/save.php')
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Error fetching saved');
+      }
 
-        created = await createdResponse.json();
-        saved = await savedResponse.json();
-        applied = await appliedResponse.json();
+      return res.json();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 
-        numResults = created.length; // Or saved.length or applied.length, depending on the context
-        $('#numResults').text(numResults);
+  appliedProjects = await fetch('../api/projects/apply.php')
+    .then((res) => {
+      if (!res.ok) {
+        throw new Error('Error fetching applied');
+      }
 
-        // Display logic for 'created', 'saved', 'applied'
-        displayProjects(created);
+      return res.json();
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+  
+  createdProjects.forEach((p) => displayProject(p, 'default', null));
 
-        $('#select-menu li').click(function () {
-            console.log("hi");
-            $('#select-menu li').removeClass('selected');
-            $(this).addClass('selected');
-            if ($(this).attr('value') == 'created') {
-                displayProjects(created);
-            } else if ($(this).attr('value') == 'saved') {
-                displayProjects(saved);
-            } else if ($(this).attr('value') == 'applied') {
-                displayProjects(applied);
+  $('#select-menu li').click(async function () {
+    $('#select-menu li').removeClass('selected');
+    $(this).addClass('selected');
+
+    $('#cards-container').empty();
+
+    switch ($(this).attr('value')) {
+      case 'created':
+        createdProjects.forEach((p) => displayProject(p, 'default', null));
+        break;
+      case 'saved':
+        savedProjects = await fetch('../api/projects/save.php')
+          .then((res) => {
+            if (!res.ok) {
+              throw new Error('Error fetching saved');
             }
-        });
-    } catch (error) {
-        console.error(error);
-    }
-});
 
-// Helper function to display projects
-function displayProjects(projects) {
-    $('#cards-container').empty(); // Clear existing cards
-    projects.forEach(p => displayProject(p));
-}
+            return res.json();
+          })
+          .catch((error) => {
+            console.error(error);
+          });
+        savedProjects.forEach((p) => displayProject(p, 'save', true));
+        break;
+      case 'applied':
+        appliedProjects.forEach((p) => displayProject(p, 'edit', null));
+        break;
+    }
+  });
+});

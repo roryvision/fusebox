@@ -45,9 +45,9 @@ $(document).ready(async () => {
 
   projects.forEach((p) => {
     if (savedProjects.some((s) => s.project_id === p.project_id)) {
-      displayProject(p, true);
+      displayProject(p, 'save', true);
     } else {
-      displayProject(p, false);
+      displayProject(p, 'save', false);
     }
   });
 
@@ -162,9 +162,9 @@ function performSearch() {
 
     filteredProjects.forEach((p) => {
       if (savedProjects.some((s) => s.project_id === p.project_id)) {
-        displayProject(p, true);
+        displayProject(p, 'save', true);
       } else {
-        displayProject(p, false);
+        displayProject(p, 'save', false);
       }
     });
 
@@ -198,9 +198,9 @@ async function displayAllProjects() {
   $('#cards-container').empty();
   projects.forEach((p) => {
     if (savedProjects.some((s) => s.project_id === p.project_id)) {
-      displayProject(p, true);
+      displayProject(p, 'save', true);
     } else {
-      displayProject(p, false);
+      displayProject(p, 'save', false);
     }
   });
 }

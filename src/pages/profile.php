@@ -10,11 +10,11 @@ session_start();
         <link rel='stylesheet' href='../styles/profile.css'>
         <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap' rel='stylesheet'>
         <script src='../components/Header/HeaderNav.js' type='text/javascript'></script>
-        <script src='../pages/profile.js' type='module'></script>
         <script src='../helpers/CardHelper.js' type='module'></script>
         <script src='../components/Card/CardProject.js' type='text/javascript'></script>
         <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src='../pages/profile.js' type='module'></script>
     </head>
     <body>
 

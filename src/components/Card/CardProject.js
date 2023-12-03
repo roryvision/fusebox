@@ -37,21 +37,31 @@ class CardProject extends HTMLElement {
         tagsContainer.appendChild(tagElement);
       });
 
-      if (p.isSaved) {
-        const savedOverlay = document.createElement('div');
-        savedOverlay.alt = 'Unsave project';
-        savedOverlay.className = 'saved';
-        shadow.querySelector('.card-project').appendChild(savedOverlay);
+      switch (p.cardType) {
+        case 'save':
+          if (p.isSaved) {
+            const savedOverlay = document.createElement('div');
+            savedOverlay.alt = 'Unsave project';
+            savedOverlay.className = 'saved';
+            shadow.querySelector('.card-project').appendChild(savedOverlay);
 
-        savedOverlay.addEventListener('click', () => this.handleUnsave(p.project_id));
-      } else {
-        const saveOverlay = document.createElement('img');
-        saveOverlay.src = '../assets/icons/save_overlay.svg';
-        saveOverlay.alt = 'Save project';
-        saveOverlay.className = 'card-save';
-        shadow.querySelector('.card-project').appendChild(saveOverlay);
+            savedOverlay.addEventListener('click', () => this.handleUnsave(p.project_id));
+          } else {
+            const saveOverlay = document.createElement('img');
+            saveOverlay.src = '../assets/icons/save_overlay.svg';
+            saveOverlay.alt = 'Save project';
+            saveOverlay.className = 'card-save';
+            shadow.querySelector('.card-project').appendChild(saveOverlay);
 
-        saveOverlay.addEventListener('click', () => this.handleSave(p.project_id));
+            saveOverlay.addEventListener('click', () => this.handleSave(p.project_id));
+          }
+          break;
+        
+        case 'edit':
+          break;
+
+        default:
+          break;
       }
 
       shadow.querySelector('h2').addEventListener('click', () => {
