@@ -9,7 +9,7 @@ cardPersonTemplate.innerHTML = `
         <img src='../assets/images/chuubear.jpeg' alt='Profile photo'>
       </div>
       
-      <div class='role' style='color: black; text-align: center; background-color: #93D695; width: 125px; font-size: 10pt; line-height: 15px; border-radius: 20px; padding: 5px 4px; margin: auto;'>
+      <div class='role' style='color: black; text-align: center; background-color: #93D695; width: 125px; font-size: 10pt; line-height: 15px; border-radius: 20px; padding: 7px 4px; margin: auto;'>
         Role
        </div>
        
@@ -20,7 +20,7 @@ cardPersonTemplate.innerHTML = `
         <hr />
         <p class='pronouns' style='color: #878787; font-style: italic; font-weight: 275; font-size: 13px;'></p>
         <p class='major' style='font-weight: 700; margin-top: 4px; margin-bottom: 6px; line-height: 18px;'></p>
-        <p class='major2' style='font-weight: 700; margin-top: 4px; margin-bottom: 6px; line-height: 18px;'>Computer Science</p>
+        <p class='major2' style='font-weight: 700; margin-top: 4px; margin-bottom: 6px; line-height: 18px;'></p>
         <div style='margin-top: 10px'>
          <p class='website1' style="font-size:9pt; width: 225px; line-height: 15px; overflow-wrap: break-word;"></p>
          <p class='website2'></p>
