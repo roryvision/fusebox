@@ -9,8 +9,8 @@ cardPersonTemplate.innerHTML = `
         <img src='../assets/images/chuubear.jpeg' alt='Profile photo'>
       </div>
       
-      <div class='role' style='color: black; text-align: center; background-color: #93D695; width: 125px; border-radius: 20px; padding: 3px 2px; margin: auto;'>
-        Role???
+      <div class='role' style='color: black; text-align: center; background-color: #93D695; width: 125px; font-size: 10pt; line-height: 15px; border-radius: 20px; padding: 5px 4px; margin: auto;'>
+        Role
        </div>
        
     </div>
@@ -21,8 +21,8 @@ cardPersonTemplate.innerHTML = `
         <p class='pronouns' style='color: #878787; font-style: italic; font-weight: 275; font-size: 13px;'></p>
         <p class='major' style='font-weight: 700; margin-top: 4px; margin-bottom: 6px; line-height: 18px;'></p>
         <p class='major2' style='font-weight: 700; margin-top: 4px; margin-bottom: 6px; line-height: 18px;'>Computer Science</p>
-        <p class='portfolio'><a href="https://www.usc.edu/">yejiseo.com</a></p>
-        <p class='personalwebsite'><a href="https://www.usc.edu/">yejiseo.com</a></p>
+        <p class='website1'></p>
+        <p class='website2'></p>
         
       </div>
       <div style= 'margin-left: 150px; margin-top: 4px; text-align: left; display: flex; flex-direction: row; gap: 8px;'>
@@ -49,12 +49,19 @@ class CardPerson extends HTMLElement {
     const shadow = this.shadowRoot;
 
     if (shadow) {
-      shadow.querySelector('.name').innerText = p.fname + ' ' + p.lname;
-      shadow.querySelector('.pronouns').innerText = p.pronouns;
-      shadow.querySelector('.major').innerText = p.major;
-      shadow.querySelector('.major2').innerText = p.major2;
+      shadow.querySelector('.name').innerText = (p.fname && p.lname) ? p.fname + ' ' + p.lname : '';
+      shadow.querySelector('.pronouns').innerText = p.pronouns || '';
+      shadow.querySelector('.major').innerText = p.major || '';
+      shadow.querySelector('.major2').innerText = p.major2 || '';
+      shadow.querySelector('.role').innerText = p.role_name || '';
+
+      // Set the link only if the value is not null
+      shadow.querySelector('.website1').innerHTML = p.website1 ? '<a href="' + p.website1 + '" target="_blank">' + p.website1 + '</a>' : '';
+
+      shadow.querySelector('.website2').innerHTML = p.website2 ? '<a href="' + p.website2 + '" target="_blank">' + p.website2 + '</a>' : '';
     }
   }
+
 }
 
 customElements.define('card-person', CardPerson);
