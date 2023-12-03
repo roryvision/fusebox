@@ -26,8 +26,16 @@ if (isset($_SESSION["user_id"])) {
       <title>Home</title>
       <meta charset="UTF-8">
       <link rel="stylesheet" href="src/styles/global.css" type="text/css">
-        <link rel='stylesheet' href='src/components/Header/header.css'>
-        <link rel="stylesheet" href="src/styles/landing.css" type="text/css">
+      <link rel='stylesheet' href='src/components/Header/header.css'>
+      <link rel="stylesheet" href="src/styles/landing.css" type="text/css">
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRJE9WJPQ"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-EMRJE9WJPQ');
+      </script>
     </head>
 <body>
     <?php if (isset($user)): ?>

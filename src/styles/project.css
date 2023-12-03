@@ -1,0 +1,6 @@
+.button-apply {
+  border: 1px solid #000000;
+  margin: 12px 0px;
+  cursor: pointer;
+  width: fit-content;
+}
