@@ -84,12 +84,15 @@ function check(thisCheckbox, dataArray, updateFunction) {
   // when checked/unchecked, adds or removes it from list of applied filters
   let label = thisCheckbox.nextElementSibling.textContent.trim();
   let value = thisCheckbox.value;
+  let existingIndex = dataArray.findIndex((item) => item.value === value);
   if (thisCheckbox.checked == true) {
-    dataArray.push({ label, value });
+    if (existingIndex === -1) {
+      dataArray.push({ label, value });
+    }
   } else {
     let index = dataArray.findIndex((item) => item.value === value);
-    if (index !== -1) {
-      dataArray.splice(index, 1);
+    if (existingIndex !== -1) {
+      dataArray.splice(existingIndex, 1);
     }
     $(thisCheckbox).parent().parent().parent().children('input').prop('checked', false);
   }
