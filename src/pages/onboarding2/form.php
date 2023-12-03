@@ -31,11 +31,15 @@ $user = $result->fetch_assoc();
 <html>
     <head>
         <title>Onboarding</title>
-        <link rel="stylesheet" href="../../styles/global.css">
-        <link rel="stylesheet" href="../../styles/onboarding.css">
+<!--        <link rel="stylesheet" href="../../styles/global.css">-->
+<!--        <link rel="stylesheet" href="../../styles/onboarding.css">-->
 
         <script>
-            
+            //event listener on all ids starting with "click"
+            //onclick:
+            //set a variable = id name step EX: let stepId = this.id.splitafter"_"
+            //remove.show class from["onboard-" . stepId] EX: lookforthis =onboard-stepId;
+            //add show class to ["onboard-" . stepId] EX: $(lookforthis).addClass(show);
         </script>
 
     </head>
