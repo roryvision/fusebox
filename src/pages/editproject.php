@@ -220,9 +220,28 @@ require_once('../helpers/db-connection.php');
                 ?>">
 
                 <div class = "projectdetails">Category:</div>
-                <input type = text class = "category2" value="<?php echo
-                $currentrow['category_name']
-                ?>">
+                <select class="category2" class ="dropbtn" name="selectedCategory">
+                    <button class="dropbtn">Select Roles</button>
+                    <div class = "dropdown-content">
+                        <?php
+                        // Fetch all categories from the database
+                        $categoriesQuery = "SELECT * FROM category";
+                        $categoriesResult = $conn->query($categoriesQuery);
+
+                        if (!$categoriesResult) {
+                            echo "SQL error: " . $conn->error;
+                            exit();
+                        }
+
+                        while ($categoryRow = $categoriesResult->fetch_assoc()) {
+                            $categoryName = $categoryRow["category_name"];
+                            $isSelected = ($categoryName == $currentrow['category_name']) ? 'selected' : '';
+
+                            echo "<option value='$categoryName' $isSelected>$categoryName</option>";
+                        }
+                        ?>
+                    </div>
+                </select>
 
                 <div class = "projectdetails">Roles Needed:</div>
                 <div class="dropdown">
