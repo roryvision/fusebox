@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../helpers/db-connection.php');
 ?>
 
 <html>
@@ -31,6 +32,8 @@ session_start();
             display: flex;
             flex-direction: column;
             float: right;
+            //border: 1px solid blue;
+            margin-left: 90px;
 
         }
 
@@ -60,7 +63,7 @@ session_start();
         //margin-top: 60px;
         }
 
-        .category{
+        .category2{
             border-radius: 14px;
             border: 1px solid #BBBBBB;
             width: 520px;
@@ -84,6 +87,10 @@ session_start();
         }
 
         #project-details-container{
+            //border: 1px solid orange;
+            margin-right: 90px;
+            margin-top: 5%;
+            margin-bottom: 10%;
 
         }
 
@@ -92,7 +99,42 @@ session_start();
             width: fit-content;
             display: flex;
             flex-direction: row;
+            //border: 1px solid red;
         }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            border: 1px solid #BBBBBB;
+            border-radius: 14px;
+            background-color: white;
+            color: #BBBBBB;
+            padding: 10px;
+            font-size: 12pt;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 180px;
+            padding: 15px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border-radius: 14px;
+            z-index: 1;
+        }
+
+        .dropdown-content label {
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
 
 
     </style>
@@ -105,104 +147,107 @@ session_start();
         <header-nav></header-nav>
         <div id="alldathings">
             <div id="project-details-container" class="card-project">
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        const urlParams = new URLSearchParams(window.location.search);
-                        const projectId = urlParams.get('id');
+                <?php
+                $conn = openCon();
+                $sql = "SELECT p.project_id, p.project_name, p.logline, c.category_name, p.description
+                          FROM project AS p
+                          LEFT JOIN category AS c ON p.category_id = c.category_id
+                          WHERE project_id = " . $_REQUEST["id"];
+                $results = $conn->query($sql);
+                $currentrow = $results->fetch_assoc();
 
-                        // Fetch project details based on projectId and update the UI
-                        fetchProjectDetails(projectId);
-                    });
+                if(!$results) {
+                    echo "SQL error: ". $conn->error;
+                    exit();
+                }
+                ?>
 
-                    async function fetchProjectDetails(projectId) {
-                        // Make a request to fetch project details based on projectId
-                        const projectDetails = await fetch(`../api/projects/index.php/${projectId}`)
-                            .then((res) => {
-                                if (!res.ok) {
-                                    throw new Error('Error fetching project details');
-                                }
-                                return res.json();
-                            })
-                            .catch((error) => {
-                                console.error(error);
-                            });
+                <div class='card card-project'>
 
-                        // Update the UI with project details
-                        updateUIWithProjectDetails(projectDetails);
-                    }
+                    <?php
+                    echo '<p class="category"> ' . $currentrow['category_name'] . '</p>';
+                    ?>
+                    <?php
+                    echo '<h2> ' . $currentrow['project_name'] . '</h2>';
+                    ?>
+                        <?php
+                            echo '<p> ' . $currentrow['logline'] . '</p>';
+                        ?>
+                    <br />
+                    <?php
+                        $role_sql = "SELECT role_name
+                  FROM projects_x_roles AS pxr
+                  LEFT JOIN role AS r ON pxr.role_id = r.role_id
+                  WHERE " . $currentrow['project_id'] . " = pxr.project_id";
 
-                    const displaySingleProject = (projectData, isSaved) => {
-                        const projectContainer = document.getElementById('cards-container');
-                        const project = document.createElement('card-project');
-                        const data = { ...projectData, isSaved };
-                        project.setProjectData(data);
-                        projectContainer.appendChild(project);
+                        $role_results = $conn->query($role_sql);
 
-                        });
+                        $roles = array(); // Reset roles for each project
 
-                    function updateUIWithProjectDetails(projectDetails) {
-                        try {
-                            // Update the UI elements on the edit project page with projectDetails
-                            const projectContainer = document.getElementById('project-details-container');
-
-                            // Clear existing content
-                            projectContainer.innerHTML = '';
-
-                            // Create new elements and append them to projectContainer
-                            const titleElement = document.createElement('div');
-                            titleElement.textContent = projectDetails.title;
-                            projectContainer.appendChild(titleElement);
-
-                            const descriptionElement = document.createElement('div');
-                            descriptionElement.textContent = projectDetails.description;
-                            projectContainer.appendChild(descriptionElement);
-
-                            // Update other elements as needed
-
-                        } catch (error) {
-                            console.error(error);
-                            // Handle errors, e.g., display an error message to the user
+                        while ($role_row = $role_results->fetch_assoc()) {
+                            $roles[] = $role_row['role_name'];
                         }
-                    }
-                </script>
+
+                        echo '<div class ="tags"> ';
+                        // Display the roles
+                        foreach ($roles as $role) {
+                            echo '<p class=" tag w-fit"> ' . $role . '</p>';
+                        };
+
+                        echo '</div> ';
+
+
+                    ?>
+
+                </div>
+
             </div>
 
             <div class = "projectinformation">
                 <div class = "projectdetails">Project Title:</div>
-                <input type = text class = "projectname"></input>
+                <input type = text class = "projectname" value="<?php echo
+                $currentrow['project_name']
+                ?>">
+
                 <div class = "projectdetails">Logline:</div>
-                <input type = text class = "logline"></input>
+                <input type = text class = "logline" value="<?php echo
+                $currentrow['logline']
+                ?>">
+
                 <div class = "projectdetails">Description:</div>
-                <input type = text class = "description" placeholder="description..."></input>
+                <input type = text class = "description" value="<?php echo
+                $currentrow['description']
+                ?>">
+
                 <div class = "projectdetails">Category:</div>
-                <input type = text class = "category"></input>
+                <input type = text class = "category2" value="<?php echo
+                $currentrow['category_name']
+                ?>">
+
                 <div class = "projectdetails">Roles Needed:</div>
-                <select class = "roles">
-                    <option value = "ALL">Roles</option>
-                    <?php
+                <div class="dropdown">
+                    <button class="dropbtn">Select Roles</button>
+                    <div class="dropdown-content">
+                <?php
+                // Fetch all roles from the database
+                $rolesQuery = "SELECT * FROM role";
+                $rolesResult = $conn->query($rolesQuery);
 
-                    // Establish a connection to your MySQL database
-                    $mysql = new mysqli("fseo.webdev.iyaserver.com", "fseo", "AcadDev_Seo_4772155360", "fseo_fusebox");
+                if (!$rolesResult) {
+                    echo "SQL error: " . $conn->error;
+                    exit();
+                }
 
-                    // Check connection
-                    if ($mysql->connect_error) {
-                        die("Connection failed: " . $mysql->connect_error);
-                    }
+                while ($roleRow = $rolesResult->fetch_assoc()) {
+                    $roleName = $roleRow["role_name"];
+                    $isChecked = in_array($roleName, $roles) ? 'checked' : '';
 
-                    $sql = "SELECT * FROM role";
+                    echo "<input type='checkbox' name='selectedRoles[]' value='$roleName' $isChecked> $roleName<br>";
+                }
+                ?>
+                    </div>
+                </div>
 
-                    $results = $mysql->query($sql);
-
-                    if(!$results) {
-                        echo "SQL error: ". $mysql->error;
-                        exit();
-                    }
-                    while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow["role_name"]. "</option>";
-                    }
-                    ?>
-
-                </select>
             </div>
 
 
