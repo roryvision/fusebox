@@ -31,8 +31,8 @@ $user = $result->fetch_assoc();
 <html>
     <head>
         <title>Onboarding</title>
-<!--        <link rel="stylesheet" href="../../styles/global.css">-->
-<!--        <link rel="stylesheet" href="../../styles/onboarding.css">-->
+        <link rel="stylesheet" href="../../styles/global.css">
+        <link rel="stylesheet" href="../../styles/onboarding.css">
 
         <script>
             //event listener on all ids starting with "click"
@@ -40,13 +40,30 @@ $user = $result->fetch_assoc();
             //set a variable = id name step EX: let stepId = this.id.splitafter"_"
             //remove.show class from["onboard-" . stepId] EX: lookforthis =onboard-stepId;
             //add show class to ["onboard-" . stepId] EX: $(lookforthis).addClass(show);
+            $(document).ready(function () {
+                // Hide all step cards except the first one
+                $('[id^="onboard-"]').not(':first').addClass('hide');
+
+                // Event listener for all elements with ids starting with "click"
+                $('[id^="click"]').on('click', function () {
+                    // Extract the step number from the clicked element's id
+                    let stepId = this.id.split('-')[1];
+
+                    // Hide the current step
+                    $('#onboard-' + stepId).removeClass('show').addClass('hide');
+
+                    // Show the next step
+                    let nextStepId = parseInt(stepId) + 1;
+                    $('#onboard-' + nextStepId).removeClass('hide').addClass('show');
+                });
+            });
         </script>
 
     </head>
     <body>
         <form>
             <div id="onboard-1" class="step-card show">
-                <img src="../../assets/icons/icon_profile.svg">
+                <img src="../../assets/icons/icon_profile.svg" alt="profile icon">
                 <h1>Welcome to Fusebox, <?= htmlspecialchars($user["fname"]) ?></h1>
 
                 <p>Help us set up your business card to show your peers by answering the next few questions.</p>
@@ -55,16 +72,16 @@ $user = $result->fetch_assoc();
                 </div>
             </div>
 
-            <div id="onboard-2" class="step-card">
-                <h1>The best place to find your dream team</h1>
-                <div class="button">
-                    <input type="submit" value="Next" class="button" id="click-2">
-                </div>
-            </div>
+<!--            <div id="onboard-2" class="step-card hide">-->
+<!--                <h1>The best place to find your dream team</h1>-->
+<!--                <div class="button">-->
+<!--                    <input type="submit" value="Next" class="button" id="click-2">-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div id="onboard-3" class="step-card">
+            <div id="onboard-2" class="step-card hide">
                 <h1>What's your major?</h1>
-                <label for="major">Major 1</label>
+                <label for="major">Major 1</label><br>
                 <select name="major" id="major">
                     <option value="ALL">Select a major</option>
                     <?php
@@ -86,7 +103,7 @@ $user = $result->fetch_assoc();
 
                 <br>
 
-                <label for="major2">Major 2</label>
+                <label for="major2">Major 2</label><br>
                 <select name="major2" id="major2">
                     <option value="null">None</option>
                     <?php
@@ -107,22 +124,22 @@ $user = $result->fetch_assoc();
                 </select>
                 <br>
                 <div class="button">
+                    <input type="submit" value="Next" class="button" id="click-2">
+                </div>
+            </div>
+
+            <div id="onboard-3" class="step-card hide">
+                <h1>What year do you expect to graduate?</h1>
+                <label for="gradyear"></label>
+                <input type="text" name="gradyear" placeholder="20XX">
+                <div class="button">
                     <input type="submit" value="Next" class="button" id="click-3">
                 </div>
             </div>
 
-            <div id="onboard-4" class="step-card">
-                <h1>When year do you graduate?</h1>
-                <label for="gradyear"></label>
-                <input type="text" name="gradyear" placeholder="20XX">
-                <div class="button">
-                    <input type="submit" value="Next" class="button" id="click-4">
-                </div>
-            </div>
-
-            <div id="onboard-5" class="step-card">
+            <div id="onboard-4" class="step-card hide">
                 <h1>What do you do?</h1>
-                <p>You can change this anytime.</p>
+                <p style="text-align: center;">You can change this anytime.</p>
                 <ul>
                     <label for='role-tech'>Tech</label>
                         <ul>
@@ -210,7 +227,7 @@ $user = $result->fetch_assoc();
                 </div>
             </div>
 
-            <div id="onboard-6" class="step-card">
+            <div id="onboard-5" class="step-card hide">
                 <h1>What are you good at?</h1>
                 <p>You can change this at any time</p>
                 <input type="text" placeholder="20XX">
