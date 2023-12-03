@@ -5,7 +5,7 @@ cardProjectTemplate.innerHTML = `
   <link rel='stylesheet' href='../components/Card/card.css'>
   <div class='card card-project'>
     <p class='category'></p>
-    <h2></h2>
+    <h2 class='cursor-pointer'></h2>
     <p class='logline'></p>
     <br />
     <div class='tags'></div>
@@ -53,6 +53,10 @@ class CardProject extends HTMLElement {
 
         saveOverlay.addEventListener('click', () => this.handleSave(p.project_id));
       }
+
+      shadow.querySelector('h2').addEventListener('click', () => {
+        window.location.href = `project/${encodeURIComponent(p.project_id)}`;
+      });
     }
   }
 
@@ -70,7 +74,9 @@ class CardProject extends HTMLElement {
         const savedOverlay = document.createElement('div');
         savedOverlay.alt = 'Unsave project';
         savedOverlay.className = 'saved';
-        this.shadowRoot.querySelector('.card-project').appendChild(savedOverlay);
+        this.shadowRoot
+          .querySelector('.card-project')
+          .appendChild(savedOverlay);
 
         this.shadowRoot
           .querySelector('.card-project')
