@@ -25,24 +25,26 @@ if(!$result) {
 $user = $result->fetch_assoc();
 
 
-
-
-
-
 ?>
 
 <!DOCTYPE html>
 <html>
     <head>
         <title>Onboarding</title>
-        <script></script>
+        <link rel="stylesheet" href="../../styles/global.css">
+        <link rel="stylesheet" href="../../styles/onboarding.css">
+
+        <script>
+            
+        </script>
+
     </head>
     <body>
         <form>
             <div id="onboard-1" class="step-card show">
                 <img src="../../assets/icons/icon_profile.svg">
                 <h1>Welcome to Fusebox, <?= htmlspecialchars($user["fname"]) ?></h1>
-                <?php closeCon($conn);?>
+
                 <p>Help us set up your business card to show your peers by answering the next few questions.</p>
                 <div class="button">
                     <input type="submit" value="Next" class="button" id="click-1">
@@ -106,7 +108,7 @@ $user = $result->fetch_assoc();
             </div>
 
             <div id="onboard-4" class="step-card">
-                <h1>When are you graduation?</h1>
+                <h1>When year do you graduate?</h1>
                 <label for="gradyear"></label>
                 <input type="text" name="gradyear" placeholder="20XX">
                 <div class="button">
@@ -118,8 +120,7 @@ $user = $result->fetch_assoc();
                 <h1>What do you do?</h1>
                 <p>You can change this anytime.</p>
                 <ul>
-                    <li><input type='checkbox' id='role-tech' name='role-tech' value='tech'/>
-                        <label for='role-tech'>Tech</label>
+                    <label for='role-tech'>Tech</label>
                         <ul>
                             <li><input type='checkbox' id='role-frontend' name='role-frontend' value='frontend'/>
                                 <label for='role-frontend'>Frontend</label></li>
@@ -134,9 +135,8 @@ $user = $result->fetch_assoc();
                             <li><input type='checkbox' id='role-cybersecurity' name='role-cybersecurity' value='cybersecurity'/>
                                 <label for='role-cybersecurity'>Cybersecurity</label></li>
                         </ul>
-                    </li>
-                    <li><input type='checkbox' id='role-visual' name='role-visual' value='visual'/>
-                        <label for='role-visual'>Visual</label>
+
+                    <label for='role-visual'>Visual</label>
                         <ul>
                             <li><input type='checkbox' id='role-graphic' name='role-graphic' value='graphic'/>
                                 <label for='role-graphic'>Graphic Designer</label></li>
@@ -149,9 +149,8 @@ $user = $result->fetch_assoc();
                             <li><input type='checkbox' id='role-fashion' name='role-fashion' value='fashion'/>
                                 <label for='role-fashion'>Fashion</label></li>
                         </ul>
-                    </li>
-                    <li><input type='checkbox' id='role-business' name='role-business' value='business'/>
-                        <label for='role-business'>Business</label>
+
+                    <label for='role-business'>Business</label>
                         <ul>
                             <li><input type='checkbox' id='role-marketing' name='role-marketing' value='marketing'/>
                                 <label for='role-marketing'>Marketing</label></li>
@@ -166,9 +165,8 @@ $user = $result->fetch_assoc();
                             <li><input type='checkbox' id='role-pr' name='role-pr' value='pr'/>
                                 <label for='role-pr'>Public Relations</label></li>
                         </ul>
-                    </li>
-                    <li><input type='checkbox' id='role-film' name='role-film' value='film'/>
-                        <label for='role-film'>Film</label>
+
+                    <label for='role-film'>Film</label>
                         <ul>
                             <li><input type='checkbox' id='role-cinematographer' name='role-cinematographer' value='cinematographer'/>
                                 <label for='role-cinematographer'>Cinematographer</label></li>
@@ -179,9 +177,9 @@ $user = $result->fetch_assoc();
                             <li><input type='checkbox' id='role-pa' name='role-pa' value='pa'/>
                                 <label for='role-pa'>Production Assistant</label></li>
                         </ul>
-                    </li>
-                    <li><input type='checkbox' id='role-performing' name='role-performing' value='performing'/>
-                        <label for='role-performing'>Performing</label>
+
+
+                    <label for='role-performing'>Performing</label>
                         <ul>
                             <li><input type='checkbox' id='role-actor' name='role-actor' value='actor'/>
                                 <label for='role-actor'>Actor</label></li>
@@ -190,9 +188,8 @@ $user = $result->fetch_assoc();
                             <li><input type='checkbox' id='role-musician' name='role-musician' value='musician'/>
                                 <label for='role-musician'>Musician</label></li>
                         </ul>
-                    </li>
-                    <li><input type='checkbox' id='role-general' name='role-general' value='general'/>
-                        <label for='role-general'>General</label>
+
+                    <label for='role-general'>General</label>
                         <ul>
                             <li><input type='checkbox' id='role-writer' name='role-writer' value='writer'/>
                                 <label for='role-writer'>Writer</label></li>
@@ -201,7 +198,7 @@ $user = $result->fetch_assoc();
                             <li><input type='checkbox' id='role-other' name='role-other' value='other' />
                                 <label for='role-other'>Other</label></li>
                         </ul>
-                    </li>
+
                 </ul>
                 <br>
                 <div class="button">
@@ -212,7 +209,7 @@ $user = $result->fetch_assoc();
             <div id="onboard-6" class="step-card">
                 <h1>What are you good at?</h1>
                 <p>You can change this at any time</p>
-
+                <input type="text" placeholder="20XX">
                 <div class="button">
                     <input type="submit" value="Next" class="button" id="click-5">
                 </div>
@@ -221,4 +218,5 @@ $user = $result->fetch_assoc();
         </form>
     </body>
 </html>
+<?php closeCon($conn);?>
 
