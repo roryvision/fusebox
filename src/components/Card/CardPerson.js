@@ -36,22 +36,6 @@ cardPersonTemplate.innerHTML = `
       
     </div>
   </div>
-
-
-<!--  <div class='card card-person flex-btwn'>-->
-<!--    <div style='width: 172px;'>-->
-<!--      <div class='img-container'>-->
-<!--        <img src='../assets/images/chuubear.jpeg' alt='Profile photo'>-->
-<!--      </div>-->
-<!--      <p class='role' style='color: #878787; text-align: center;'>Role??</p>-->
-<!--    </div>-->
-<!--    <div style='margin-left: 16px;'>-->
-<!--      <h1 class='name'></h1>-->
-<!--      <hr />-->
-<!--      <p class='pronouns' style='color: #878787; margin-bottom: 4px;'></p>-->
-<!--      <p class='major'></p>-->
-<!--    </div>-->
-<!--  </div>-->
 `;
 
 class CardPerson extends HTMLElement {
@@ -68,6 +52,7 @@ class CardPerson extends HTMLElement {
       shadow.querySelector('.name').innerText = p.fname + ' ' + p.lname;
       shadow.querySelector('.pronouns').innerText = p.pronouns;
       shadow.querySelector('.major').innerText = p.major;
+      shadow.querySelector('.major2').innerText = p.major2;
     }
   }
 }
