@@ -40,23 +40,24 @@ $user = $result->fetch_assoc();
             //set a variable = id name step EX: let stepId = this.id.splitafter"_"
             //remove.show class from["onboard-" . stepId] EX: lookforthis =onboard-stepId;
             //add show class to ["onboard-" . stepId] EX: $(lookforthis).addClass(show);
-            $(document).ready(function () {
-                // Hide all step cards except the first one
-                $('[id^="onboard-"]').not(':first').addClass('hide');
 
-                // Event listener for all elements with ids starting with "click"
-                $('[id^="click"]').on('click', function () {
-                    // Extract the step number from the clicked element's id
-                    let stepId = this.id.split('-')[1];
-
-                    // Hide the current step
-                    $('#onboard-' + stepId).removeClass('show').addClass('hide');
-
-                    // Show the next step
-                    let nextStepId = parseInt(stepId) + 1;
-                    $('#onboard-' + nextStepId).removeClass('hide').addClass('show');
-                });
-            });
+            // $(document).ready(function () {
+            //     // Hide all step cards except the first one
+            //     $('[id^="onboard-"]').not(':first').addClass('hide');
+            //
+            //     // Event listener for all elements with ids starting with "click"
+            //     $('[id^="click"]').on('click', function () {
+            //         // Extract the step number from the clicked element's id
+            //         let stepId = this.id.split('-')[1];
+            //
+            //         // Hide the current step
+            //         $('#onboard-' + stepId).removeClass('show').addClass('hide');
+            //
+            //         // Show the next step
+            //         let nextStepId = parseInt(stepId) + 1;
+            //         $('#onboard-' + nextStepId).removeClass('hide').addClass('show');
+            //     });
+            // });
         </script>
 
     </head>
