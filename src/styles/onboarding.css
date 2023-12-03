@@ -1,15 +1,57 @@
+h1 {
+    text-align: center;
+    margin: 25px;
+}
+
+input[type=text] {
+    width: 488px;
+    height: 38px;
+    border: 1px solid #BBBBBB;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    padding: 10px;
+}
+
+select {
+    width: 488px;
+    height: 38px;
+    border: 1px solid #BBBBBB;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    padding: 10px;
+}
+
 .step-card {
+    margin: auto;
+    width: 500px;
+    height: 600px;
+    background-color: white;
+    box-shadow: 2px 2px 4px grey;
+    padding: 80px 54px;
+    border-top-left-radius: 33px;
+    border-bottom: 33px;
+    position: relative;
+}
+
+.hide {
     display: none;
-    /*margin: auto;*/
-    /*width: 600px;*/
-    /*height: 700px;*/
-    /*background-color: white;*/
-    /*box-shadow: 2px 2px 4px #000000;*/
 }
 
 .show {
     display: block;
 }
+
+#onboard-1 {
+    text-align: center;
+}
+
+#onboard-1 img {
+    width: 100px;
+}
+
+/*#onboard-3 {*/
+/*    m*/
+/*}*/
 
 .button {
     width: 488px;
@@ -21,6 +63,8 @@
     border-width: 0;
     border-color: white;
     transition: border-width 0.2s;
+    /*position: absolute;*/
+    /*bottom: 80px;*/
 }
 
 .center {
