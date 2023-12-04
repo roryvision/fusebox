@@ -58,7 +58,7 @@ $stmt->bind_param("ssss",
 
 //execute statement
 if ($stmt->execute()) {
-    header("Location: signup-success.html");
+    header("Location: form.php");
     closeCon($conn);
     exit;
 //checking if someone already made an account with same email
