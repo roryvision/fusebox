@@ -9,9 +9,6 @@ $conn = openCon();
 //    die();
 //}
 
-
-print_r($_REQUEST);
-
 $profilesql = "UPDATE profile SET " .
 
     "major_id = '" . $_REQUEST["major"] . "', " . //***if you're updating myScheudle, which doesn't have "name" how do you change the name since you can't directly access it
@@ -28,11 +25,9 @@ $profilesql = "UPDATE profile SET " .
 
     " WHERE profile_id = " . $_SESSION["user_id"]; //id that's being passed from page to page
 
-echo $profilesql . "<br><hr>";
+$results = $conn->query($profilesql);
 
-$results1 = $conn->query($profilesql);
-
-if (!$results1) {
+if (!$results) {
 
     echo "Could NOT save changes.";
 
