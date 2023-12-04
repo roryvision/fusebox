@@ -85,8 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
             performSearch();
         });
     });
-});
-
+    });
 function performSearch() {
     if (rolesArray.length !== 0 || typesArray.length !== 0) {
         let filteredProjects = projects.filter(function (p) {

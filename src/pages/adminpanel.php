@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once('../helpers/db-connection.php');
 ?>
 
 <!DOCTYPE html>
@@ -265,11 +266,13 @@ session_start();
             display: none;
         }
 
+
     </style>
 
 </head>
 
 <body>
+<form>
 <div id='container'>
     <header-nav></header-nav>
     <ul class='flex-btwn' id='select-menu'>
@@ -294,19 +297,15 @@ session_start();
                 <button class = "deletebutton">Delete Project</button>
             </div>
         </div>
-    </button>
-
     <script>
         function closeModal() {
             var modal = document.getElementById('myModal');
             modal.style.display = 'none';
         }
 
-        let projectId = '$_REQUEST_';
-
         document.getElementById('editButton').addEventListener('click', function () {
             // Change the window location to your edit page URL
-            window.location.href = '../fusebox/src/pages/editproject.php?id=' + projectId;
+            window.location.href = `../fusebox/src/pages/editproject.php?id=${projectId}`;
         });
 
         document.getElementById('deleteButton').addEventListener('click', function () {
@@ -315,5 +314,6 @@ session_start();
         });
     </script>
 </div>
+</form>
 </body>
 </html>
