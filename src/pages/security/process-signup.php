@@ -58,7 +58,7 @@ $stmt->bind_param("ssss",
 
 //execute statement
 if ($stmt->execute()) {
-    header("Location: form.php");
+    header("Location: ../onboarding/form.php");
     closeCon($conn);
     exit;
 //checking if someone already made an account with same email
@@ -68,7 +68,6 @@ if ($stmt->execute()) {
         die("email already taken");
     } else {
         die($conn->error . " " . $conn->errno);
-        closeCon($conn);
     }
 }
 ?>
