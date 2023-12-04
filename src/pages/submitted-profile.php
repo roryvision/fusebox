@@ -23,13 +23,14 @@ session_start();
 require_once('../helpers/db-connection.php');
 $conn = openCon();
 
-
+$profileId = $_SESSION['user_id'];
 
 if (empty($_FILES["profile"]["name"])) {
     // Either the form is loading for the first time
     // OR it was submitted with no file
     // Stop the page and give the user a message
-    exit("No file was uploaded.");
+    echo "No file was uploaded.";
+
 } else {
     // There is an uploaded file from
     // a form object named "profile"
@@ -56,41 +57,276 @@ if (empty($_FILES["profile"]["name"])) {
 
         $stmt->bind_param("si", $targetFilePath, $profileId);
 
-//        if ($stmt->execute()) {
-//            echo "File content inserted into the database for profile ID: " . $profileId;
-//        } else {
-//            echo "Error inserting file content: " . $conn->error;
-//        }
+        if ($stmt->execute()) {
+            echo "File content inserted into the database for profile ID: " . $profileId;
+        } else {
+            echo "Error inserting file content: " . $conn->error;
+        }
     } else {
         echo "Error uploading the file.";
     }
 }
 
-$sql = "SELECT p.profile_id, p.profile_pic, m1.major AS major1, m2.major AS major2, p.fname, p.lname, p.email, pr.pronouns, p.bio, p.website1, p.website2, p.gradyear, p.linkedin, p.instagram, r1.role_name AS r1name, r2.role_name AS r2name, r3.role_name AS r3name, r1.role_type AS r1type, r2.role_type AS r2type, r3.role_type AS r3type
-        FROM profile p
-        INNER JOIN major m1 ON p.major_id = m1.major_id
-        INNER JOIN major m2 ON p.major2_id = m2.major_id
-        LEFT JOIN role r1 ON p.role1_id = r1.role_id
-        LEFT JOIN role r2 ON p.role2_id = r2.role_id
-        LEFT JOIN role r3 ON p.role3_id = r3.role_id
-        LEFT JOIN pronoun pr ON p.pronoun_id = pr.pronoun_id
-        WHERE p.profile_id =" . $_SESSION["user_id"];
-$result = $conn->query($sql);
+$fname = $_REQUEST['fname'];
+$fnameQuery = "UPDATE profile SET fname = ? WHERE profile_id = ?";
+$stmtfname = $conn->prepare($fnameQuery);
 
-if (!$result) {
-    echo "SQL error: " . $conn->error;
-    exit();
+if (!$stmtfname) {
+    die('Error preparing statement: ' . $conn->error);
 }
 
-if ($result->num_rows > 0) {
-    $user = $result->fetch_assoc(); // Fetch data
+$stmtfname->bind_param("si", $fname, $profileId);
 
-    $pfp = $user['profile_pic'];
-
-
+if ($stmtfname->execute()) {
+    // Update successful
+    echo "First name updated successfully!";
 } else {
-    echo "No results found.";
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
 }
+
+$lname = $_REQUEST['lname'];
+$lnameQuery = "UPDATE profile SET lname = ? WHERE profile_id = ?";
+$stmtlname = $conn->prepare($lnameQuery);
+
+if (!$stmtlname) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtlname->bind_param("si", $lname, $profileId);
+
+if ($stmtlname->execute()) {
+    // Update successful
+    echo "Last name updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+$pronoun = $_REQUEST['pronouns'];
+$prQuery = "UPDATE profile SET pronoun_id = ? WHERE profile_id = ?";
+$stmtlpr = $conn->prepare($prQuery);
+
+if (!$stmtlpr) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtlpr->bind_param("si", $pronoun, $profileId);
+
+if ($stmtlpr->execute()) {
+    // Update successful
+    echo "Pronouns updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+
+$major1 = $_REQUEST['major'];
+$m1Query = "UPDATE profile SET major_id = ? WHERE profile_id = ?";
+$stmtm1 = $conn->prepare($m1Query);
+
+if (!$stmtm1) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtm1->bind_param("si", $major1, $profileId);
+
+if ($stmtm1->execute()) {
+    // Update successful
+    echo "Major 1 updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+$major2 = $_REQUEST['major2'];
+$m2Query = "UPDATE profile SET major2_id = ? WHERE profile_id = ?";
+$stmtm2 = $conn->prepare($m2Query);
+
+if (!$stmtm2) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtm2->bind_param("si", $major2, $profileId);
+
+if ($stmtm2->execute()) {
+    // Update successful
+    echo "Major 2 updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+$grad = $_REQUEST['grad'];
+$gradQuery = "UPDATE profile SET gradyear = ? WHERE profile_id = ?";
+$stmtgrad = $conn->prepare($gradQuery);
+
+if (!$stmtgrad) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtgrad->bind_param("si", $grad, $profileId);
+
+if ($stmtgrad->execute()) {
+    // Update successful
+    echo "Grad updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+$role1 = $_REQUEST['role1'];
+$r1Query = "UPDATE profile SET role1_id = ? WHERE profile_id = ?";
+$stmtr1 = $conn->prepare($r1Query);
+
+if (!$stmtr1) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtr1->bind_param("si", $role1, $profileId);
+
+if ($stmtr1->execute()) {
+    // Update successful
+    echo "Role 1 updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+
+$role2 = $_REQUEST['role2'];
+$r2Query = "UPDATE profile SET role2_id = ? WHERE profile_id = ?";
+$stmtr2 = $conn->prepare($r2Query);
+
+if (!$stmtr2) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtr2->bind_param("si", $role2, $profileId);
+
+if ($stmtr2->execute()) {
+    // Update successful
+    echo "Role 2 updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+
+$role3 = $_REQUEST['role3'];
+$r3Query = "UPDATE profile SET role3_id = ? WHERE profile_id = ?";
+$stmtr3 = $conn->prepare($r3Query);
+
+if (!$stmtr3) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtr3->bind_param("si", $role3, $profileId);
+
+if ($stmtr3->execute()) {
+    // Update successful
+    echo "Role 2 updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+$about = $_REQUEST['about'];
+$abtQuery = "UPDATE profile SET bio = ? WHERE profile_id = ?";
+$stmtabt = $conn->prepare($abtQuery);
+
+if (!$stmtabt) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtabt->bind_param("si", $about, $profileId);
+
+if ($stmtabt->execute()) {
+    // Update successful
+    echo "Role 2 updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+
+$website1 = $_REQUEST['website1'];
+$w1Query = "UPDATE profile SET website1 = ? WHERE profile_id = ?";
+$stmtw1 = $conn->prepare($w1Query);
+
+if (!$stmtw1) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtw1->bind_param("si", $website1, $profileId);
+
+if ($stmtw1->execute()) {
+    // Update successful
+    echo "Role 2 updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+
+$website2 = $_REQUEST['website2'];
+$w2Query = "UPDATE profile SET website2 = ? WHERE profile_id = ?";
+$stmtw2 = $conn->prepare($w2Query);
+
+if (!$stmtw2) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtw2->bind_param("si", $website2, $profileId);
+
+if ($stmtw2->execute()) {
+    // Update successful
+    echo "Role 2 updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+
+$insta = $_REQUEST['instagram'];
+$instaQuery = "UPDATE profile SET instagram = ? WHERE profile_id = ?";
+$stmtinsta = $conn->prepare($instaQuery);
+
+if (!$stmtinsta) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtinsta->bind_param("si", $insta, $profileId);
+
+if ($stmtinsta->execute()) {
+    // Update successful
+    echo "Role 2 updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+
+$linkedin = $_REQUEST['linkedin'];
+$linkedinQuery = "UPDATE profile SET linkedin = ? WHERE profile_id = ?";
+$stmtlinked = $conn->prepare($linkedinQuery);
+
+if (!$stmtlinked) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$stmtlinked->bind_param("si", $linkedin, $profileId);
+
+if ($stmtlinked->execute()) {
+    // Update successful
+    echo "Linkedin updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+
 ?>
     <div id="buttons">
     <a href="dashboard.php"><div class="button-basic">Back to Home</div></a>

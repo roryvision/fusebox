@@ -31,10 +31,7 @@ $sql = "SELECT p.profile_id, p.profile_pic, m1.major AS major1, m2.major AS majo
 
 $result = $conn->query($sql);
 
-$majorsql = "SELECT * FROM major";
-$majorresults = $conn -> query($majorsql);
-$rolesql = "SELECT * FROM role";
-$roleresults = $conn -> query($rolesql);
+
 
 if (!$result) {
     echo "SQL error: " . $conn->error;
@@ -70,7 +67,6 @@ if ($result->num_rows > 0) {
 } else {
     echo "No results found.";
 }
-closeCon($conn);
 
 ?>
 
@@ -97,26 +93,46 @@ closeCon($conn);
             <img src="../assets/icons/star.png">
             </label>
             <?php
-            echo "<input type= 'text' id='fname' name='fname' class='filled' placeholder ='" . $fname  ."' required>";
+            echo "<input type= 'text' id='fname' name='fname' class='filled' value ='" . $fname  ."' required>";
             ?>
         </div>
         <div class="field">
             <label for="lname">Last name:
                 <img src="../assets/icons/star.png"></label>
             <?php
-            echo "<input type= 'text' id='lname' name='lname' class='filled' placeholder ='" . $lname  ."' required >";
+            echo "<input type= 'text' id='lname' name='lname' class='filled' value ='" . $lname  ."' required >";
             ?>
         </div>
         </div>
 
         <div class="two-fields">
             <div class="field">
-                <label for="fname">Pronouns
+                <label for="pronouns">Pronouns
 
                 </label>
-                <?php
-                echo "<input type= 'text' id='fname' name='fname' class='filled' placeholder ='" . $fname  ."'>";
+                <select name="pronouns" id="pronouns" required >
+                    <?php
+                    if($pronouns == null){
+                        echo "<option value='ALL' selected>Select a pronoun</option>
+                    <option disabled >–––</option>";
+                    }else{
+                        echo "<option value='ALL' >Select a pronoun</option>
+                    <option disabled >–––</option>";
+                    }
+
+                    $pronounsql = "SELECT * FROM pronoun";
+                    $pronounresults = $conn -> query($pronounsql);
+                while($currentrow = $pronounresults->fetch_assoc()){
+                    if($pronouns == $currentrow["pronouns"]){
+                        echo "<option selected value =" . $currentrow["pronoun_id"]. " >" . $currentrow["pronouns"] . "</option>";
+                    }else{
+                        echo "<option value =" . $currentrow["pronoun_id"]. " >" . $currentrow["pronouns"] . "</option>";
+                    }
+
+
+                }
                 ?>
+                </select>
             </div>
             <div class="field">
 
@@ -132,12 +148,13 @@ closeCon($conn);
                     <option value="ALL" >Select a major</option>
                     <option disabled >–––</option>
                 <?php
-
+                $majorsql = "SELECT * FROM major";
+                $majorresults = $conn -> query($majorsql);
                     while($currentrow = $majorresults->fetch_assoc()){
                         if($major1 == $currentrow["major"]){
-                            echo "<option selected>" . $currentrow["major"] . "</option>";
+                            echo "<option selected value =" . $currentrow["major_id"]. " >" . $currentrow["major"] . "</option>";
                         }else{
-                            echo "<option>" . $currentrow["major"] . "</option>";
+                            echo "<option value =" . $currentrow["major_id"]. " >" . $currentrow["major"] . "</option>";
                         }
 
 
@@ -159,12 +176,13 @@ closeCon($conn);
                         echo "<option value='ALL' >Select a major</option>
                     <option disabled >–––</option>";
                     }
-
+                    $majorsql = "SELECT * FROM major";
+                    $majorresults = $conn -> query($majorsql);
                     while($currentrow = $majorresults->fetch_assoc()){
                         if($major2 == $currentrow["major"]){
-                            echo "<option selected>" . $currentrow["major"] . "</option>";
+                            echo "<option selected value =" . $currentrow["major_id"]. " >" . $currentrow["major"] . "</option>";
                         }else{
-                            echo "<option>" . $currentrow["major"] . "</option>";
+                            echo "<option value =" . $currentrow["major_id"]. " >" . $currentrow["major"] . "</option>";
                         }
 
                     }
@@ -174,11 +192,11 @@ closeCon($conn);
         </div>
         <div class="two-fields">
             <div class="field">
-                <label for="fname">Graduation Year
+                <label for="grad">Graduation Year
                     <img src="../assets/icons/star.png">
                 </label>
                 <?php
-                echo "<input type= 'text' id='fname' name='fname' class='filled' placeholder ='" . $grad
+                echo "<input type= 'text' id='grad' name='grad' class='filled' value ='" . $grad
                     ."'>";
                 ?>
             </div>
@@ -196,12 +214,13 @@ closeCon($conn);
                     <option value="ALL" >Select a major</option>
                     <option disabled >–––</option>
                     <?php
-
+                    $rolesql = "SELECT * FROM role";
+                    $roleresults = $conn -> query($rolesql);
                     while($currentrow = $roleresults->fetch_assoc()){
                         if($role1 == $currentrow["role_name"]){
-                            echo "<option selected>" . $currentrow["role_name"] . "</option>";
+                            echo "<option selected value =" . $currentrow["role_id"]. " >" . $currentrow["role_name"] . "</option>";
                         }else{
-                            echo "<option>" . $currentrow["role_name"] . "</option>";
+                            echo "<option value =" . $currentrow["role_id"]. " >" . $currentrow["role_name"] . "</option>";
                         }
 
 
@@ -224,12 +243,13 @@ closeCon($conn);
                         echo "<option value='ALL' >Select a role</option>
                     <option disabled >–––</option>";
                     }
-
+                    $rolesql = "SELECT * FROM role";
+                    $roleresults = $conn -> query($rolesql);
                     while($currentrow = $roleresults->fetch_assoc()){
                         if($role2 == $currentrow["role_name"]){
-                            echo "<option selected>" . $currentrow["role_name"] . "</option>";
+                            echo "<option selected value =" . $currentrow["role_id"]. " >" . $currentrow["role_name"] . "</option>";
                         }else{
-                            echo "<option>" . $currentrow["role_name"] . "</option>";
+                            echo "<option value =" . $currentrow["role_id"]. " >" . $currentrow["role_name"] . "</option>";
                         }
 
 
@@ -252,12 +272,13 @@ closeCon($conn);
                         echo "<option value='ALL' >Select a role</option>
                     <option disabled >–––</option>";
                     }
-
+                    $rolesql = "SELECT * FROM role";
+                    $roleresults = $conn -> query($rolesql);
                     while($currentrow = $roleresults->fetch_assoc()){
                         if($role3 == $currentrow["role_name"]){
-                            echo "<option selected>" . $currentrow["role_name"] . "</option>";
+                            echo "<option selected value =" . $currentrow["role_id"]. " >" . $currentrow["role_name"] . "</option>";
                         }else{
-                            echo "<option>" . $currentrow["role_name"] . "</option>";
+                            echo "<option value =" . $currentrow["role_id"]. " >" . $currentrow["role_name"] . "</option>";
                         }
 
 
@@ -273,7 +294,7 @@ closeCon($conn);
 
             </label>
             <?php
-                echo "<input type='text' id='about' name='about' class='filled'placeholder = " . $bio . ">";
+                echo "<textarea id='about' name='about' class='filled'> " . $bio . "</textarea>";
             ?>
 
 
@@ -286,7 +307,7 @@ closeCon($conn);
 
                 <?php
                 if($website1){
-                    echo "<input type='text' id='website1' name='website1' class='filled' placeholder = " . $website1 . ">";
+                    echo "<input type='text' id='website1' name='website1' class='filled' value = " . $website1 . ">";
                 }else{
                     echo "<input type='text' id='website1' name='website1'  placeholder = 'Website 1'>";
                 }
@@ -300,7 +321,7 @@ closeCon($conn);
 
                 <?php
                 if($website2){
-                    echo "<input type='text' id='website2' name='website2' class='filled' placeholder = " . $website2 . ">";
+                    echo "<input type='text' id='website2' name='website2' class='filled' value = " . $website2 . ">";
                 }else{
                     echo "<input type='text' id='website2' name='website2'  placeholder = 'Website 2'>";
                 }
@@ -316,9 +337,9 @@ closeCon($conn);
 
                 <?php
                 if($instagram){
-                    echo "<input type='text' id='instagram' name='instagram' class='filled' placeholder = " . $instagram . ">";
+                    echo "<input type='text' id='instagram' name='instagram' class='filled' value = " . $instagram . ">";
                 }else{
-                    echo "<input type='text' id='instagram' name='instagram'  placeholder = 'Instagram'>";
+                    echo "<input type='text' id='instagram' name='instagram'  value = 'Instagram'>";
                 }
 
                 ?>
@@ -330,9 +351,9 @@ closeCon($conn);
 
                 <?php
                 if($linkedin){
-                    echo "<input type='text' id='linkedin' name='linkedin' class='filled' placeholder = " . $linkedin . ">";
+                    echo "<input type='text' id='linkedin' name='linkedin' class='filled' value = " . $linkedin . ">";
                 }else{
-                    echo "<input type='text' id='linkedin' name='linkedin'  placeholder = 'Website 2'>";
+                    echo "<input type='text' id='linkedin' name='linkedin'  value = 'Website 2'>";
                 }
 
                 ?>
@@ -345,6 +366,7 @@ closeCon($conn);
     </form>
 
     <?php
+    closeCon($conn);
 
     ?>
 </div>

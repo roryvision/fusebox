@@ -30,6 +30,7 @@ form{
     font-weight: 400;
     line-height: normal;
 }
+
 .b2{
     font-family: Poppins;
     font-size: 14px;
@@ -37,6 +38,7 @@ form{
     font-weight: 400;
     line-height: normal;
 }
+
 #title{
     display:flex;
     flex-direction: column;
@@ -73,7 +75,7 @@ label{
     align-self: stretch;
 }
 
-input[type="text"] {
+input[type="text"]{
     display: flex;
     padding: 8px 16px;
     justify-content: center;
@@ -96,9 +98,10 @@ select{
     border: 1px solid  #BBB;
     background: #FBFBFB;
 }
-.filled::placeholder{
+.filled::value{
     color:#0B0B0C;
 }
+
 .field{
     display: flex;
     flex-direction: column;
@@ -112,6 +115,17 @@ select{
     align-items: center;
     gap: 24px;
     align-self: stretch;
+}
+textarea{
+    display: flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 12px;
+    border: 1px solid  #BBB;
+    background: #FBFBFB;
 }
 #bio{
     width:100%;

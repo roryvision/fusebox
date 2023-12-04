@@ -96,6 +96,12 @@ header-nav{
     color:#878787;
 }
 
+.sides{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width:100%;
+}
 #cards-container {
     display: flex;
     flex-flow: row wrap;

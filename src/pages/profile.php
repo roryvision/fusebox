@@ -81,7 +81,12 @@ session_start();
                         <div id="content-left">
                             <div class='img-container'>
                                 <?php
-                                   echo "<img src='../assets/images/chuubear.jpeg'>";
+                                if($pfp !=null){
+                                    echo "<img src=" . $pfp . ">";
+                                }else{
+                                    echo "<img src='../assets/images/chuubear.jpeg'>";
+
+                                }
                                 ?>
                             </div>
                             <div id="major-1" class="majors"><?php
@@ -125,18 +130,17 @@ session_start();
                                     <?php
                                     if($pronouns!=null){
                                         echo "<div class='sides'>";
-                                        echo $pronouns;
-                                        echo $email;
-                                        echo "</div>";
-                                    }else{
-                                        echo "<div id='email'><a href='mailto:'" . $email . ">";
-                                        echo $email;
+                                        echo "<div>" . $pronouns . "</div>";
+                                        echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
                                         echo "</a></div>";
+                                    }else{
+                                        echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
+                                        echo "</a></div> ";
                                     }
 
 
                                     ?>
-
+                            </div>
                             </div>
                             <div id="roles">
                                 <?php
@@ -221,10 +225,12 @@ session_start();
 
                             </div>
                             <div id="profile-section" class="w-100">
-                                <h2>Skills</h2>
-                                <?php
-
-                                ?>
+<!--                                <h2>Skills</h2>-->
+<!--                                --><?php
+//                                    $skillsql = "SELECT * FROM profiles_x_skills WHERE profile_id = " . $_SESSION['user_id'];
+//                                    $skillresults = $mysql -> query($classsql);
+//
+//                                ?>
                                 <hr>
                             </div>
                         </div>
