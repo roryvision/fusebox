@@ -38,19 +38,42 @@ session_start();
             background-color: #fefefe;
             margin: 5% auto;
             padding: 20px;
-            top: ;
+            padding: 20px;
+            padding-: 20px;
+            padding: 20px;
             border: 1px solid #888;
-            width: 20%;
-            border-radius: 15px;
+            width: 10%;
+            border-radius: 25px;
         }
 
         .editbutton{
-
-
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            color: #DC1F1F;
+            font-size: 10pt;
         }
 
         .deletebutton{
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            background-color: #DC1F1F;
+            color: white;
+            font-size: 10pt;
+            white-space: nowrap;
+        }
 
+        .popupbuttons{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .button-apply {
@@ -268,15 +291,23 @@ session_start();
         <div class="modal-content">
             <span onclick="closeModal()" style="float: right; cursor: pointer;">&times;</span>
             <!-- Add your modal content here -->
-            <p>This is the modal content. Customize it as needed.</p>
+            <div class = "popupbuttons">
+                <button id = "editButton" class = "editbutton">Edit Project</button>
+                <button class = "deletebutton">Delete Project</button>
+            </div>
         </div>
-    </div>
+    </button>
 
     <script>
         function closeModal() {
             var modal = document.getElementById('myModal');
             modal.style.display = 'none';
         }
+
+        document.getElementById('editButton').addEventListener('click', function () {
+            // Change the window location to your edit page URL
+            window.location.href = '../fusebox/src/pages/editproject.php';
+        });
     </script>
 </div>
 </body>
