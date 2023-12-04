@@ -15,7 +15,7 @@ headerTemplate.innerHTML = `
       </li>
       <div class='flex-btwn'>
         <li><a href='/acad276/fusebox/src/pages/createProject.html'><button class='button-basic cursor-pointer' id='button-create'>Create a Project</button></a></li>
-        <li><a href='/acad276/fusebox/src/pages/profile.html'><img src='/acad276/fusebox/src/assets/icons/icon_profile.svg' alt='Profile' class='button-nav cursor-pointer' /></a></li>
+        <li><a href='/acad276/fusebox/src/pages/profile.php'><img src='/acad276/fusebox/src/assets/icons/icon_profile.svg' alt='Profile' class='button-nav cursor-pointer' /></a></li>
       </div>
     </ul>
   </header>
