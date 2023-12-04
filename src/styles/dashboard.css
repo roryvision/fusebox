@@ -10,9 +10,7 @@
 
 #search{
   width: 700px;
-  margin: auto;
-  margin-top: 34px;
-  margin-bottom: 30px;
+  margin: 34px auto 30px;
   font-family: 'Visby';
   font-weight: bold;
   font-size: 18px;

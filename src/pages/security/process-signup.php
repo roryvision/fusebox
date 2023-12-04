@@ -47,8 +47,6 @@ if (!$stmt->prepare($sql)) {
 
 session_start();
 
-
-
 //bind values to parameters of SQL object
 $stmt->bind_param("ssss",
     $_POST["fname"],
