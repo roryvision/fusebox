@@ -9,9 +9,11 @@ cardPersonTemplate.innerHTML = `
         <img src='../assets/images/chuubear.jpeg' alt='Profile photo'>
       </div>
       
-      <div class='role' style='color: black; text-align: center; background-color: #93D695; width: 125px; font-size: 10pt; line-height: 15px; border-radius: 20px; padding: 7px 4px; margin: auto;'>
+      <div class='role' style='color: black; text-align: center; background-color: #93D695; width: 125px; font-size: 10pt; line-height: 15px; border-radius: 20px; padding: 7px 4px; margin: auto; margin-top: 0px;'>
         Role
        </div>
+     
+      <div class='skills'></div>
        
     </div>
     <div style='margin-left: 16px; height: 250px; '>
@@ -54,6 +56,16 @@ class CardPerson extends HTMLElement {
       shadow.querySelector('.major').innerText = p.major || '';
       shadow.querySelector('.major2').innerText = p.major2 || '';
       shadow.querySelector('.role').innerText = p.role_name || '';
+
+      const tagsContainer = shadow.querySelector('.skills');
+      tagsContainer.innerHTML = ''; // Clear existing content
+      p.skills.forEach((skill) => {
+        const tagElement = document.createElement('div');
+        tagElement.className = 'skill w-fit';
+        tagElement.innerText = skill;
+        tagsContainer.appendChild(tagElement);
+      });
+
 
       shadow.querySelector('.website1').innerHTML = p.website1 ? '<a href="' + p.website1 + '" target="_blank">' + p.website1 + '</a>' : '';
       shadow.querySelector('.website2').innerHTML = p.website2 ? '<a href="' + p.website2 + '" target="_blank">' + p.website2 + '</a>' : '';

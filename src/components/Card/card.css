@@ -73,6 +73,25 @@ a {
   padding: 6px 16px;
 }
 
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  font-size: 14px;
+  justify-content: flex-start;
+  margin: auto;
+  margin-top: 10px;
+  margin-left: 12px;
+}
+
+.skill {
+  background-color: white;
+  border-radius: 50px;
+  padding: 4px 8px;
+  border: grey 1px solid;
+  font-size: 8pt;
+}
+
 .card-person {
   width: 400px;
   height: 250px;
@@ -89,7 +108,9 @@ a {
 
 .img-container {
   position: relative;
-  margin: 12px;
+  margin: 11px;
+  margin-bottom: 5px;
+  margin-top: 2px;
   padding-left: 5px;
 }
 
