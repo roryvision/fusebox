@@ -71,8 +71,17 @@ class CardProject extends HTMLElement {
           break;
       }
 
+      let cardProject = shadow.querySelector('.card-project');
+
       shadow.querySelector('h2').addEventListener('click', () => {
         window.location.href = `project/${encodeURIComponent(p.project_id)}`;
+      });
+      shadow.querySelector('h2').addEventListener('mouseover', () => {
+        cardProject.style.backgroundColor = '#E0D9CC';
+      });
+
+      shadow.querySelector('h2').addEventListener('mouseout', () => {
+        cardProject.style.backgroundColor = '#F0EBE2';
       });
     }
   }
