@@ -33,9 +33,9 @@ select {
     position: relative;
 }
 
-/*.hide {*/
-/*    display: none;*/
-/*}*/
+.hide {
+    display: none;
+}
 
 .show {
     display: block;
@@ -49,9 +49,6 @@ select {
     width: 100px;
 }
 
-/*#onboard-3 {*/
-/*    m*/
-/*}*/
 
 .button {
     width: 488px;
@@ -67,8 +64,20 @@ select {
     /*bottom: 80px;*/
 }
 
-.center {
-    text-align: left;
-    align-content: center;
-    margin: auto;
+.button2 {
+    width: 488px;
+    height: 43px;
+    background-color: white;
+    border-radius: 29px;
+    cursor: pointer;
+    color: #DC1F1F;
+    border: 1px solid #DC1F1F;
+    /*position: absolute;*/
+    /*bottom: 80px;*/
 }
+
+/*.center {*/
+/*    text-align: left;*/
+/*    align-content: center;*/
+/*    margin: auto;*/
+/*}*/
