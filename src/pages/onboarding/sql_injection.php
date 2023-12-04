@@ -1,8 +1,7 @@
 <?php
-require_once(__DIR__ . '/../../helpers/db-connection.php');
-
 session_start();
 
+require_once(__DIR__ . '/../../helpers/db-connection.php');
 $conn = openCon();
 
 //check for user_id value, if it is set,

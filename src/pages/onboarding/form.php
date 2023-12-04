@@ -1,7 +1,8 @@
 <?php
-require_once(__DIR__ . '/../../helpers/db-connection.php');
-
 session_start();
+echo $_SESSION['user_id'];
+
+require_once(__DIR__ . '/../../helpers/db-connection.php');
 $conn = openCon();
 
 //check for user_id value, if it is set,
@@ -60,7 +61,7 @@ $conn = openCon();
 
     </head>
     <body>
-        <form method="post" action="sql_injection.php" enctype="multipart/form-data">>
+        <form method="post" action="sql_injection.php" enctype="multipart/form-data">
             <div id="onboard-1" class="step-card show">
                 <img src="../../assets/icons/icon_profile.svg" alt="profile icon">
                 <h1>Hello!</h1>
