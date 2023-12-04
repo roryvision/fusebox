@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once('../../helpers/db-connection.php');
 
 if (empty($_POST["fname"])) {
@@ -54,7 +56,12 @@ $stmt->bind_param("ssss",
 
 //execute statement
 if ($stmt->execute()) {
-    header("Location: signup-success.html");
+    $insertedKey = $conn->insert_id;
+    $_SESSION["user_id"] = $insertedKey;
+    $_SESSION["user_fname"] = $_POST["fname"];
+    $_SESSION["user_lname"] = $_POST["lname"];
+
+    header("Location: ../onboarding/form.php");
     closeCon($conn);
     exit;
 //checking if someone already made an account with same email
@@ -64,7 +71,6 @@ if ($stmt->execute()) {
         die("email already taken");
     } else {
         die($conn->error . " " . $conn->errno);
-        closeCon($conn);
     }
 }
 ?>

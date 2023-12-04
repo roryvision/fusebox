@@ -11,7 +11,7 @@ h4 {
 }
 
 h1 {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 img {
@@ -24,7 +24,7 @@ img {
     font-weight: lighter;
     color: #4E4E4E;
     font-size: 12pt;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .flex {
@@ -47,7 +47,7 @@ img {
 .right_content{
     background-color: #F0EBE2;
     width: 500px;
-    height: 677px;
+    height: 700px;
     padding: 80px 128px;
     border-bottom-left-radius: 33px;
     border-bottom-right-radius: 33px;

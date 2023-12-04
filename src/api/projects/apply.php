@@ -7,9 +7,9 @@ $user_id = $_SESSION['user_id'];
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   $conn = openCon();
 
-  $sql = "SELECT s.profile_id, s.project_id, p.project_name, p.logline, c.category_name
-          FROM saved_projects as s
-          LEFT JOIN project AS p ON s.project_id = p.project_id
+  $sql = "SELECT a.profile_id, a.project_id, p.project_name, p.logline, c.category_name
+          FROM applied_projects as a
+          LEFT JOIN project AS p ON a.project_id = p.project_id
           LEFT JOIN category AS c ON p.category_id = c.category_id
           WHERE profile_id = " . $user_id;
   $results = $conn->query($sql);
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     exit();
   }
 
-  $saved = array();
+  $applied = array();
   while ($row = $results->fetch_assoc()) {
     $role_sql = "SELECT role_name
                 FROM projects_x_roles AS pxr
@@ -35,11 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
       $roles[] = $role_row['role_name'];
     }
     $row['roles'] = $roles;
-    $saved[] = $row;
+    $applied[] = $row;
   }
   
   header('Content-Type: application/json');
-  echo json_encode($saved);
+  echo json_encode($applied);
 
   closeCon($conn);
   exit();
@@ -50,37 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if (isset($post_data['project_id'])) {
     $project_id = $post_data['project_id'];
+    $role_id = $post_data['role_id'];
     $conn = openCon();
 
-    $sql = "INSERT INTO saved_projects
-            (profile_id, project_id)
+    $sql = "INSERT INTO applied_projects
+            (profile_id, project_id, role_id)
             VALUES
-            (" . $user_id . ", " . $project_id . ")";
-    $results = $conn->query($sql);
-
-    if (!$results) {
-      echo "SQL error: " . $conn->error;
-      exit();
-    }
-
-    closeCon($conn);
-    exit();
-  } else {
-    header('HTTP/1.1 400 Bad Request');
-    exit();
-  }
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-  $post_data = json_decode(file_get_contents("php://input"), true);
-
-  if (isset($post_data['project_id'])) {
-    $project_id = $post_data['project_id'];
-    $conn = openCon();
-
-    $sql = "DELETE FROM saved_projects
-            WHERE profile_id = " . $user_id . 
-            " AND project_id = " . $project_id;
+            (" . $user_id . ", " . $project_id . ", " . $role_id . ")";
     $results = $conn->query($sql);
 
     if (!$results) {

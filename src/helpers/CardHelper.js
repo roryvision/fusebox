@@ -1,7 +1,7 @@
-const displayProject = (projectData, isSaved) => {
+const displayProject = (projectData, cardType, isSaved) => {
   const projectContainer = document.getElementById('cards-container');
   const project = document.createElement('card-project');
-  const data = { ...projectData, isSaved };
+  const data = { ...projectData, cardType, isSaved };
   project.setProjectData(data);
   projectContainer.appendChild(project);
 };
