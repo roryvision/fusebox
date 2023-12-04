@@ -1,6 +1,7 @@
 import { displayPerson } from '../../../helpers/CardHelper.js';
 let people = [];
 let rolesArray = [];
+let numResults = 0;
 
 $(document).ready(async () => {
   people = await fetch('../../../api/people')
@@ -14,6 +15,8 @@ $(document).ready(async () => {
     .catch((error) => {
       console.error(error);
     });
+
+  numResults = people.length;
   
   people.forEach((p) => displayPerson(p));
 });
@@ -26,7 +29,7 @@ function updateRolesArrayOutput() {
 
 function check(thisCheckbox, dataArray, updateFunction) {
   // when checked/unchecked, adds or removes it from list of applied filters
-  let label = thisCheckbox.nextElementSibling.textContent.trim();
+  let label = thisCheckbox.name;
   let value = thisCheckbox.value;
   if (thisCheckbox.checked == true) {
     dataArray.push({ label, value });
@@ -45,6 +48,36 @@ document.addEventListener('DOMContentLoaded', function () {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', function () {
       check(this, rolesArray, updateRolesArrayOutput);
+      performSearch();
     });
   });
 });
+
+function performSearch() {
+  if (rolesArray.length !== 0) {
+    let filteredPeople = people.filter(function (p) {
+      // Check if at least one selected role is in p's roles
+      const roleMatch =
+        rolesArray.length === 0 ||
+        rolesArray.some(function (selectedRole) {
+          return p.role_name === selectedRole.label;
+        });
+
+      return roleMatch;
+    });
+
+    $('#cards-container').empty();
+
+    filteredPeople.forEach((p) => displayPerson(p));
+
+    numResults = filteredPeople.length;
+
+    // If none match
+    if (numResults === 0) {
+      $('#cards-container').html('<p>No matching applicants found.</p>');
+    }
+  } else {
+    // If no filters, display all
+    people.forEach((p) => displayPerson(p));
+  }
+}

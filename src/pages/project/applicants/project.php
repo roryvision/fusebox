@@ -47,7 +47,7 @@ closeCon($conn);
 <html lang='en' dir='ltr'>
   <head>
     <meta charset='utf-8'>
-    <title><?php $project['project_name'] ?></title>
+    <title><?php echo $project['project_name']; ?></title>
     <link rel='stylesheet' href='../../../styles/global.css'>
     <link rel='stylesheet' href='../../../styles/project.css'>
     <link rel='stylesheet' href='../../../styles/dashboard.css'>
@@ -73,7 +73,7 @@ closeCon($conn);
       <br />
 
       <div id='filter-container'>
-        <p>&lt; Back to Project View</p>
+        <?php echo "<p><a href='../" . $slug . "'>&lt; Back to Project View</a></p>" ?>
 
         <h3>Applied Filters:</h3>
         <div id="appliedRoleFilters"><strong>Roles:</strong> </div>
@@ -84,8 +84,7 @@ closeCon($conn);
           <ul>
             <?php
             foreach ($roles as $role) {
-              echo "<li><input type='checkbox' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "' name='" . $role['role_id'] . " />" . $role['role_name'] . "</li>";
-              echo "<label for='" . $role['role_name'] . "'>" . $role['role_name'] . "</label></li>";
+              echo "<li><input type='checkbox' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "' name='" . $role['role_name'] . "' />" . $role['role_name'] . "</li>";
             }
             ?>
           </ul>
