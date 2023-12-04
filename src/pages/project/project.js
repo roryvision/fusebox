@@ -2,10 +2,21 @@ $(document).ready(async () => {
   $('.button-apply').on('click', async function() {
     let projectId = $(this).attr('project');
     let roleId = $(this).attr('role');
+    openModal();
 
-    handleApply(projectId, roleId);
+    // handleApply(projectId, roleId);
   });
 });
+
+function openModal() {
+  document.getElementById('overlay').style.display = 'block';
+  document.getElementById('modal').style.display = 'block';
+
+}
+
+function closeModal() {
+  document.getElementById('overlay').style.display = 'none';
+}
 
 const handleApply = async (projectId, roleId) => {
   try {
