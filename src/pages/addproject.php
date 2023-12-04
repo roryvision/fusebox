@@ -14,7 +14,7 @@ require_once('../helpers/db-connection.php');
     <script src='../components/Header/HeaderNav.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <title>Edit Project</title>
+    <title>Add Project</title>
     <style>
 
         body{
