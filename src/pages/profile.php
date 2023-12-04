@@ -90,67 +90,67 @@ closeCon($conn);
                         }
                         ?>
                     </div>
-                    <div id="major-1" class="majors"><?php
-                        echo $major1;
-                        ?></div>
                     <?php
-                    if($major2!=null){
-                        echo "<div id='major-2' class='majors'>";
+                    echo "<div id='major-1' class='majors'>";
+                    echo $major1;
+                    ?></div>
+                <?php
+                if ($major2 != null) {
+                    echo "<div id='major-2' class='majors'>";
+                    echo $major2;
+                    echo "</div>";
+                }
 
-                        echo $major2;
-                        echo "</div>";
-                    }
+                ?>
 
-                        ?>
-
-                    <div class="b2">
-                        <?php
-                        echo "Graduating " . $grad;
-                        ?>
-                    </div>
+                <div class="b2">
                     <?php
-                    echo "<a class= 'link' href = " . $website1 . ">" . $website1 . "</a>";
-                    if ($website2 != null) {
-                        echo "<a class= 'link' href = " . $website2 . ">" . $website2 . "</a>";
-                    }
+                    echo "Graduating " . $grad;
                     ?>
-                    <div id="social-links">
-                        <?php
-                        if ($instagram != null) {
-                            echo "<a href = 'https://instagram.com/" . $instagram . "'><img src='../assets/icons/instagram.png'></a>";
-                        }
-                        if ($linkedin != null) {
-                            echo "<a href = " . $linkedin . "><img src='../assets/icons/linkedin.png'></a>";
-                        }
-
-                        ?>
-                    </div>
                 </div>
-                <div id="content-right" class="w-100">
-                    <div id="profile-section" class="w-100">
-                        <?php
-                        echo "<h1>" . $fname . " " . $lname . "</h1>";
-                        ?>
-                        <hr>
+                <?php
+                echo "<a class= 'link' href = " . $website1 . ">" . $website1 . "</a>";
+                if ($website2 != null) {
+                    echo "<a class= 'link' href = " . $website2 . ">" . $website2 . "</a>";
+                }
+                ?>
+                <div id="social-links">
+                    <?php
+                    if ($instagram != null) {
+                        echo "<a href = 'https://instagram.com/" . $instagram . "'><img src='../assets/icons/instagram.png'></a>";
+                    }
+                    if ($linkedin != null) {
+                        echo "<a href = " . $linkedin . "><img src='../assets/icons/linkedin.png'></a>";
+                    }
 
-                        <?php
-                        if ($pronouns != null) {
-                            echo "<div class='sides'>";
-                            echo "<div>" . $pronouns . "</div>";
-                            echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
-                            echo "</a></div>";
-                        } else {
-                            echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
-                            echo "</a></div> ";
-                        }
-
-
-                        ?>
-                    </div>
+                    ?>
                 </div>
+            </div>
+            <div id="content-right" class="w-100">
+                <div id="profile-section" class="w-100">
+                    <?php
+                    echo "<h1>" . $fname . " " . $lname . "</h1>";
+                    ?>
+                    <hr>
+
+                    <?php
+                    if ($pronouns != null) {
+                        echo "<div class='sides'>";
+                        echo "<div>" . $pronouns . "</div>";
+                        echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
+                        echo "</a></div></div>";
+                    } else {
+                        echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
+                        echo "</a></div> ";
+                    }
+
+
+                    ?>
+                </div>
+
                 <div id="roles">
                     <?php
-                    if($roletype1!=null && $role1!=null){
+                    if ($roletype1 != null && $role1 != null) {
                         $roleclass = '';
 
                         switch ($roletype1) {
@@ -237,36 +237,37 @@ closeCon($conn);
                     <h2>Skills</h2>
                     <hr>
                     <div id="skill-container">
-                    <?php
-                    $conn = openCon();
+                        <?php
+                        $conn = openCon();
 
 
-                            $skill_sql = "SELECT skills
+                        $skill_sql = "SELECT skills
                               FROM profiles_x_skills AS pxs
                               LEFT JOIN skill AS s ON pxs.skill_id = s.skill_id
                               WHERE " . $_SESSION['user_id'] . " = pxs.profile_id";
-                            $skill_results = $conn->query($skill_sql);
-                            if (!$skill_results) {
-                                echo "SQL error: " . $conn->error;
-                                exit();
-                            }
-                            $skills = array();
-                            while ($skill_row = $skill_results->fetch_assoc()) {
-                                $skills[] = $skill_row['skills'];
-                                echo "<div class='skill'>" . $skill_row['skills'] . "</div>";
-                            }
-                            $row['skills'] = $skills;
+                        $skill_results = $conn->query($skill_sql);
+                        if (!$skill_results) {
+                            echo "SQL error: " . $conn->error;
+                            exit();
+                        }
+                        $skills = array();
+                        while ($skill_row = $skill_results->fetch_assoc()) {
+                            $skills[] = $skill_row['skills'];
+                            echo "<div class='skill'>" . $skill_row['skills'] . "</div>";
+                        }
+                        $row['skills'] = $skills;
 
-                    closeCon($conn);
+                        closeCon($conn);
 
 
-                    ?>
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <a href="editprofile.php">
     <div class="button-basic">Edit Profile</div>
 </a>
@@ -277,7 +278,6 @@ closeCon($conn);
 </ul>
 <div id='cards-container'></div>
 
-</div>
 </body>
 
 
