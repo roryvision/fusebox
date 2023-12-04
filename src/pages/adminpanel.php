@@ -306,7 +306,7 @@ session_start();
 
         document.getElementById('editButton').addEventListener('click', function () {
             // Change the window location to your edit page URL
-            window.location.href = '../fusebox/src/pages/editproject.php';
+            window.location.href = '../fusebox/src/pages/editproject.php?id=' + projectId;
         });
 
         document.getElementById('deleteButton').addEventListener('click', function () {

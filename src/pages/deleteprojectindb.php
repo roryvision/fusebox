@@ -27,13 +27,13 @@ $projectId = $conn->insert_id;
 $selectedRoles2 = isset($_REQUEST["selectedRoles"]) ? $_REQUEST["selectedRoles"] : [];
 
 foreach ($selectedRoles2 as $roleId) {
-    $sqlRoles2 = "UPDATE projects_x_roles 
+    $sqlRoles3 = "DELETE FROM projects_x_roles 
                 SET role_id = $roleId
                 WHERE project_id='$projectId'
 ";
 
-    if ($conn->query($sqlRoles2) !== TRUE) {
-        echo "Error: " . $sqlRoles2 . "<br>" . $conn->error;
+    if ($conn->query($sqlRoles3) !== TRUE) {
+        echo "Error: " . $sqlRoles3 . "<br>" . $conn->error;
         exit();
     }
 }

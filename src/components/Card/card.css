@@ -12,7 +12,7 @@ p {
 .circle {
   position: absolute;
   top: 32px;
-  right: 32px;
+  right: 42px;
   width: 46px;
   height: 46px;
   background-color: #C1BAAD;
@@ -83,6 +83,10 @@ p {
   height: 300px;
   padding: 50px;
   z-index: 1;
+}
+
+.person-card{
+  position: relative;
 }
 
 .card-person img {

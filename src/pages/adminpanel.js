@@ -1,4 +1,4 @@
-import {displayPerson, displayEditProject } from '../helpers/CardHelper.js';
+import {displayEditPerson, displayEditProject } from '../helpers/CardHelper.js';
 let projects = [];
 let people = [];
 let savedProjects = [];
@@ -58,7 +58,7 @@ $(document).ready(async () => {
         if ($(this).attr('value') == 'projects') {
             displayAllProjects();
         } else if ($(this).attr('value') == 'people') {
-            people.forEach((p) => displayPerson(p));
+            people.forEach((p) => displayEditPerson(p));
         }
     });
 });
