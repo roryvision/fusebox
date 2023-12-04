@@ -104,3 +104,90 @@ header-nav{
     width: 1049px;
     margin:auto;
 }
+
+a{
+    color: #1F479B;
+    font-size: 14px;
+}
+
+#social-links{
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+}
+
+#social-links a img{
+    width: 30px;
+}
+
+#email{
+    float:right;
+}
+
+.tech-role{
+    background-color: #F8625A;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #FBFBFB;
+}
+.visual-role{
+    background-color: #93D695;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #0B0B0C;
+}
+.business-role{
+    background-color: #FFBF4A;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #0B0B0C;
+}
+.business-role{
+    background-color: #FFBF4A;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #0B0B0C;
+}
+
+.film-role{
+    background-color: #1F479B;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #FBFBFB;
+}
+.film-role{
+    background-color: #8D43A7;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #FBFBFB;
+}
+
+#content-right{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+#roles{
+    display:flex;
+    flex-direction: row;
+    gap: 8px;
+}
