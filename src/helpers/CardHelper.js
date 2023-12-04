@@ -19,17 +19,34 @@ const displayEditProject = (projectData, isSaved) => {
   const circle = document.createElement('div');
   circle.className = 'circle';
 
-  // Add a click event listener to the circle element
+// Add a click event listener to the circle element
   circle.addEventListener('click', () => {
-    // Extract the project ID from projectData (replace 'project_id' with the actual property)
+    // Replace 'project_id' with the actual property from projectData
     const projectId = projectData.project_id;
 
-    // Construct the URL for the edit project page
-    const editProjectURL = `editproject.php?id=${projectId}`;
+    // Assuming 'myModal' is the ID of your modal
+    const modal = document.getElementById('myModal');
 
-    // Navigate to the edit project page
-    window.location.href = editProjectURL;
+    // Set the display style to block
+    modal.style.display = 'block';
+
+    // Assuming 'closeModalBtn' is the ID of the close button (x) inside your modal
+    const closeModalBtn = document.getElementById('closeModalBtn');
+
+// Add a click event listener to the close button
+    closeModalBtn.addEventListener('click', () => {
+      // Assuming 'myModal' is the ID of your modal
+      const modal = document.getElementById('myModal');
+
+      // Set the display style to none to hide the modal
+      modal.style.display = 'none';
+    });
+
   });
+
+// Append the circle element to your document or another container
+// Replace 'container' with the ID or class of the container where you want to append the circle
+  document.getElementById('container').appendChild(circle);
 
   cardElement.appendChild(circle);
   projectContainer.appendChild(cardElement);

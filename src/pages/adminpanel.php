@@ -20,6 +20,39 @@ session_start();
     <script src='../pages/adminpanel.js' type='module'></script>
 
     <style>
+        #myModal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 200px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            top: ;
+            border: 1px solid #888;
+            width: 20%;
+            border-radius: 15px;
+        }
+
+        .editbutton{
+
+
+        }
+
+        .deletebutton{
+
+        }
+
         .button-apply {
             margin: 12px 0px;
             padding: 6px 10px;
@@ -226,13 +259,8 @@ session_start();
     <br />
 
         <div id='cards-container'>
-            <div class = "buttons">
-                <button class = discard>Discard</button>
-                <button class = save>Save Changes</button>
-            </div>
         </div>
 
-    <button onclick="openModal()">Edit</button>
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -245,24 +273,9 @@ session_start();
     </div>
 
     <script>
-        // Function to open the modal
-        function openModal() {
-            var modal = document.getElementById('myModal');
-            modal.style.display = 'block';
-        }
-
-        // Function to close the modal
         function closeModal() {
             var modal = document.getElementById('myModal');
             modal.style.display = 'none';
-        }
-
-        // Close the modal if the user clicks outside of it
-        window.onclick = function(event) {
-            var modal = document.getElementById('myModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
         }
     </script>
 </div>
