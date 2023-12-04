@@ -61,9 +61,10 @@ class CardPerson extends HTMLElement {
       if (p.role_type) {
         const roleColors = {
           'tech': { backgroundColor: '#1F479B', color: 'white' },
-          'business': { backgroundColor: '#F8625A', color: 'white' },
+          'business': { backgroundColor: '#8D43A7', color: 'white' },
+          'visual': { backgroundColor: '#F8625A', color: 'white' },
           'film': { backgroundColor: '#FFBF4A', color: 'black' },
-          'performing': { backgroundColor: '#8D43A7', color: 'white' },
+          'performing': { backgroundColor: '#93D695', color: 'black' },
           'general': { backgroundColor: '#D9D9D9', color: 'black' },
         };
 
