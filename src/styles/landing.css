@@ -1,5 +1,27 @@
+/*div {*/
+/*    border: 1pt solid grey;*/
+/*}*/
+
+h1 {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 36pt;
+    margin: 7px;
+}
+
 .container {
     margin: 34px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.first {
+    display: flex;
+    flex-direction: row;
 }
 
 .button-red {
@@ -18,4 +40,79 @@
     padding: 8px 24px;
     box-sizing: border-box;
     border-radius: 50px;
+}
+
+.flex-row-btwn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.flex-row-btwn-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.sm_image img{
+    width: 300px;
+}
+
+.medium_image img {
+    width: 250px;
+}
+
+.left_content {
+    text-align: left;
+    width: 600px;
+    margin-top: 100px;
+}
+
+.center {
+    text-align: center;
+    align-content: center;
+}
+
+.first {
+    margin: 20px;
+}
+
+.first img {
+    width: 700px;
+}
+
+.second {
+    color: #DC1F1F;
+    margin-bottom: 250px;
+    margin-top: 100px;
+}
+
+#opacity1 {
+    opacity: 70%;
+}
+
+#opacity2 {
+    opacity: 50%;
+}
+
+#opacity3 {
+    opacity: 30%;
+}
+
+.third {
+    margin-bottom: 222px;
+}
+
+.fourth {
+    margin-bottom: 222px;
+    padding: 50px;
+}
+
+.fifth {
+    margin-bottom: 150px;
+}
+
+.sixth {
+    margin-bottom: 50px;
 }

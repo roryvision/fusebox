@@ -55,24 +55,100 @@ closeCon($conn);
   </head>
 
   <body>
+    <div id="overlay"></div>
     <div id='container'>
       <header-nav></header-nav>
       <br />
-      <?php
-        echo "Project Name: " . $project['project_name'] . "<br>";
-        echo "Description: " . $project['description'] . "<br>";
-        echo "Category: " . $project['category_name'] . "<br>";
-        echo "Creator: " . $project['fname'] . " " . $project['lname'] . " (" . $project['email'] . ")";
-      ?>
-      <br /> <br />
+        <div class="project-name">
+            <?php echo $project['project_name']; ?>
+        </div>
+        <div class="project-category">
+            <?php echo $project['category_name']; ?>
+        </div>
 
-      <ul>
-        <?php
-          foreach ($roles as $role) {
-            echo "<li class='button-apply' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "'>" . $role['role_name'] . "</li>";
-          }
-        ?>
-      </ul>
+        <div class="project-details">
+            <div style="display: flex; flex-direction: column; padding-top: 10px;">
+                <div class="creator">
+                    <?php
+                    echo "Created By: " . $project['fname'] . " " . $project['lname'] . " (" . $project['email'] . ")";
+                    ?>
+                </div>
+                <div class="apply-buttons">
+                    <div class="center"><u>Apply:</u></div>
+                    <?php
+                    foreach ($roles as $role) {
+                        echo "<li class='button-apply' value='" . $role['role_name'] . "' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "'>" . $role['role_name'] . "</li>";
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="project-description">
+                <div class="description-text">
+                    <?php echo $project['description']; ?>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="modal-1">
+            <div style="display:flex; flex-direction: row; justify-content: space-between; margin-bottom: 12px;">
+                <div class="modal-title"><?php echo $project['project_name']; ?></div>
+                <div><img src='/acad276/fusebox/src/assets/icons/icon_close.png' id="modal-icon"></div>
+            </div>
+            <div id="modal-text">
+            </div>
+            <div id="congrats">
+                CONGRATS YOU APPLIED! Give yourself a pat on the back :D
+            </div>
+
+            <div id="prompt">
+                Would you like to add a note?
+            </div>
+
+            <div id="form">
+                <form action="email.php" method="post" id="emailForm">
+                    <input type="hidden" name="creator-email" value="<?php echo $project['email']; ?>">
+                    <div id="email-text">
+                        <input type="text" id="email-message" name="email-message" placeholder="Ex: I really enjoy this aspect of the project...">
+                    </div>
+                    <div id="form-buttons">
+                        <button id="cancel">Cancel</button>
+                        <input type="submit" value="Send" id="send">
+                    </div>
+                </form>
+            </div>
+
+            <div id="note-buttons">
+                <button id="add-note">Add a note</button>
+                <button id="no-note">Send without a note</button>
+            </div>
+
+        </div>
     </div>
+  <script>
+      var projectName = "<?php echo $project['project_name']; ?>";
+          $(document).ready(function () {
+          // Intercept the form submission
+          $("#emailForm").submit(function (event) {
+              // Prevent the default form submission
+              event.preventDefault();
+
+              // Perform an AJAX request
+              $.ajax({
+                  type: "POST",
+                  url: "email.php",
+                  data: $("#emailForm").serialize(), // Serialize the form data
+                  success: function (response) {
+                      // Handle the response from the server
+                      console.log(response);
+                      // Update the page or perform any additional actions as needed
+                  },
+                  error: function (error) {
+                      console.log("Error:", error);
+                  }
+              });
+          });
+      });
+  </script>
   </body>
 </html>

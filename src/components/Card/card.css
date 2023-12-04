@@ -2,6 +2,16 @@ p {
   font-size: 14px;
 }
 
+hr {
+  margin: 0px;
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+
+a {
+  color: #1F479B;
+}
+
 .card {
   background-color: #F0EBE2;
   border-radius: 50px 0px 50px 50px;
@@ -63,9 +73,28 @@ p {
   padding: 6px 16px;
 }
 
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  font-size: 14px;
+  justify-content: flex-start;
+  margin: auto;
+  margin-top: 10px;
+  margin-left: 12px;
+}
+
+.skill {
+  background-color: white;
+  border-radius: 50px;
+  padding: 4px 8px;
+  border: grey 1px solid;
+  font-size: 8pt;
+}
+
 .card-person {
   width: 400px;
-  height: 300px;
+  height: 250px;
   padding: 50px;
   z-index: 1;
 }
@@ -79,7 +108,10 @@ p {
 
 .img-container {
   position: relative;
-  margin: 20px;
+  margin: 11px;
+  margin-bottom: 5px;
+  margin-top: 2px;
+  padding-left: 5px;
 }
 
 .img-container::before {
@@ -92,4 +124,15 @@ p {
   z-index: 0;
   background-color: #FBFBFB;
   box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+  margin-left: 5px;
+}
+
+.name{
+  font-size: 34px;
+}
+
+#icon{
+  width: 40px;
+  height: 40px;
+  transform: rotate(0deg);
 }
