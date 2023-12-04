@@ -19,6 +19,200 @@ session_start();
     <script src="../helpers/CardHelper.js" type='module'></script>
     <script src='../pages/adminpanel.js' type='module'></script>
 
+    <style>
+        .button-apply {
+            margin: 12px 0px;
+            padding: 6px 10px;
+            cursor: pointer;
+            width: 275px;
+            font-family: 'Poppins';
+            font-weight: 400;
+            font-size: 16px;
+            background-color: #F8625A;
+            color: white;
+            border-radius: 20px;
+            list-style: none;
+            text-align: center;
+        }
+
+        .apply-buttons{
+            margin:auto;
+        }
+
+        .button-apply:hover {
+            filter: brightness(85%);
+        }
+
+        .center{
+            text-align: center;
+            font-size: 18pt;
+        }
+
+        #red-role{
+            color: #DC1F1F;
+        }
+
+        .project-name{
+            font-size: 34pt;
+            font-family: 'Visby';
+            margin: auto;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .project-category{
+            color: #BBBBBB;
+            margin: auto;
+            text-align: center;
+        }
+
+        .project-details{
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: center;
+            margin-top: 35px;
+            gap: 80px;
+        }
+
+        .project-description{
+            width: 800px;
+            border-radius: 50px 0px 50px 50px;
+            outline: 1px solid #BAB3A6;
+            display: block;
+        }
+
+        .description-text{
+            padding: 34px;
+            padding-left: 37px;
+            font-size: 13pt;
+        }
+
+        .apply-buttons{
+            display: block;
+        }
+
+        .creator{
+            color: #BBBBBB;
+            font-size: 12pt;
+            margin-bottom: 25px;
+        }
+
+        /*for apply modal*/
+        #modal-1{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 50px 85px;
+            padding-right: 70px;
+            border-radius: 32px 0px 32px 32px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+            display: none;
+        }
+
+        #prompt{
+            margin: 0px;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        #form{
+            margin: 20px 0px;
+            padding: 10px;
+            display: none;
+            border-radius: 20px;
+            outline: 1px solid #BAB3A6;
+        }
+
+        #email-message{
+            font-size: 12pt;
+            font-family: 'Poppins';
+            width: 100%;
+            height: 100%;
+            border: none;
+            outline: none;
+        }
+
+        #note-buttons{
+            display:flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 12px;
+        }
+
+        #form-buttons{
+            display:none;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 16px;
+        }
+
+        #modal-text{
+            margin: 0px;
+            display: block;
+        }
+
+        #congrats{
+            display:none;
+            margin: 0px;
+            margin-bottom: 10px;
+        }
+
+        .modal-title{
+            font-family: 'Visby';
+            font-size: 25pt;
+
+        }
+
+        #add-note{
+            color: #DC1F1F;
+            border: #DC1F1F 2px solid;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        #no-note{
+            color: white;
+            background-color: #DC1F1F;
+            border: #DC1F1F 2px solid;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        #cancel{
+            color: black;
+        }
+
+        #send{
+            color: white;
+            background-color: #DC1F1F;
+            border: #DC1F1F 2px solid;
+            border-radius: 20px;
+            padding: 5px 15px;
+        }
+
+        #modal-icon{
+            width: 35px;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            display: none;
+        }
+
+    </style>
+
 </head>
 
 <body>
@@ -32,6 +226,40 @@ session_start();
     <br />
 
         <div id='cards-container'></div>
+
+    <button onclick="openModal()">Edit</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span onclick="closeModal()" style="float: right; cursor: pointer;">&times;</span>
+            <!-- Add your modal content here -->
+            <p>This is the modal content. Customize it as needed.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to open the modal
+        function openModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'block';
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+
+        // Close the modal if the user clicks outside of it
+        window.onclick = function(event) {
+            var modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </div>
 </body>
 </html>
