@@ -91,7 +91,9 @@ require_once('../helpers/db-connection.php');
             margin-right: 90px;
             margin-top: 5%;
             margin-bottom: 10%;
-
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         #alldathings{
@@ -135,6 +137,37 @@ require_once('../helpers/db-connection.php');
             display: block;
         }
 
+        .discard{
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            color: #DC1F1F;
+            font-size: 10pt;
+        }
+
+        .save{
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            background-color: #DC1F1F;
+            color: white;
+            font-size: 10pt;
+            white-space: nowrap;
+        }
+
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
 
 
     </style>
@@ -142,6 +175,8 @@ require_once('../helpers/db-connection.php');
 </head>
 
 <body>
+<form action = "addprojecttodb.php"
+      method = "get">
 <div class="outer">
     <div id='container'>
         <header-nav></header-nav>
@@ -154,7 +189,7 @@ require_once('../helpers/db-connection.php');
                     echo '<p class="category"> ' . 'Category' . '</p>';
                     ?>
                     <?php
-                    echo '<h2> ' . 'Your Title Goes Here!' . '</h2>';
+                    echo '<h2> ' . 'Your Title <br> Goes Here!' . '</h2>';
                     ?>
                     <?php
                     echo '<p> ' . 'Your logline goes in here! This is a short, attention-grabbing description of your project.'. '</p>';
@@ -175,20 +210,27 @@ require_once('../helpers/db-connection.php');
 
                 </div>
 
+                <div class = "buttons">
+                    <button class = discard>Discard</button>
+                    <button class = save>Save Changes</button>
+                </div>
+
+
+
             </div>
 
             <div class = "projectinformation">
                 <div class = "projectdetails">Project Title:</div>
-                <input type = text class = "projectname">
+                <input type = text class = "projectname" name="projectname">
 
                 <div class = "projectdetails">Logline:</div>
-                <input type = text class = "logline">
+                <input type = text class = "logline" name="logline">
 
                 <div class = "projectdetails">Description:</div>
-                <input type = text class = "description">
+                <input type = text class = "description" name="description">
 
                 <div class = "projectdetails">Category:</div>
-                <select class="category2" class ="dropbtn" name="selectedCategory">
+                <select class="category2" class ="dropbtn" name="selectedCategory" ">
                     <button class="dropbtn">Select Roles</button>
                     <div class = "dropdown-content">
                         <?php
@@ -202,8 +244,9 @@ require_once('../helpers/db-connection.php');
                         }
                         while ($categoryRow = $categoriesResult->fetch_assoc()) {
                             $categoryName = $categoryRow["category_name"];
+                            $categoryId = $categoryRow["category_id"];
                             $isSelected = ($categoryName == $currentrow['category_name']) ? 'selected' : '';
-                            echo "<option value='$categoryName' $isSelected>$categoryName</option>";
+                            echo "<option value='$categoryId' $isSelected>$categoryName</option>";
                         }
                         ?>
                     </div>
@@ -211,7 +254,7 @@ require_once('../helpers/db-connection.php');
 
                 <div class = "projectdetails">Roles Needed:</div>
                 <div class="dropdown">
-                    <button class="dropbtn">Select Roles</button>
+                    <button class="dropbtn" name="role">Select Roles</button>
                     <div class="dropdown-content">
                         <?php
                         // Fetch all roles from the database
@@ -235,6 +278,7 @@ require_once('../helpers/db-connection.php');
         </div>
     </div>
 </div>
+</form>
 
 </body>
 
