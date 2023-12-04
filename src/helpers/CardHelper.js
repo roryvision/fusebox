@@ -70,7 +70,7 @@ const displayEditPerson = (personData, isSaved) => {
   cardElement.className = 'person-card';
 
   const circle = document.createElement('div');
-  circle.className = 'circle';
+  circle.className = 'circle2';
 
   // Add a click event listener to the circle element
   circle.addEventListener('click', () => {

@@ -29,8 +29,6 @@ session_start();
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgb(0,0,0);
-            background-color: rgba(0,0,0,0.4);
             padding-top: 200px;
         }
 
@@ -41,9 +39,9 @@ session_start();
             padding: 20px;
             padding-: 20px;
             padding: 20px;
-            border: 1px solid #888;
-            width: 10%;
+            width: 9%;
             border-radius: 25px;
+            box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.25);
         }
 
         .editbutton{
@@ -303,6 +301,8 @@ session_start();
             var modal = document.getElementById('myModal');
             modal.style.display = 'none';
         }
+
+        let projectId = '$_REQUEST_';
 
         document.getElementById('editButton').addEventListener('click', function () {
             // Change the window location to your edit page URL
