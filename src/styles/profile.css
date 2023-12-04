@@ -197,3 +197,28 @@ a{
     flex-direction: row;
     gap: 8px;
 }
+
+.skill{
+    display: flex;
+    padding: 4px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 20px;
+    border: 1px solid #4E4E4E;
+    background: #FBFBFB;
+
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #4E4E4E;
+}
+#skill-container{
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 4px;
+    flex-wrap: wrap;
+}
