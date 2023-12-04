@@ -14,14 +14,13 @@ if (isset($_REQUEST["selectedRoles"]) && is_array($_REQUEST["selectedRoles"])) {
 
 
 $sql = "UPDATE project 
-        SET project_name="$_REQUEST['projectname']",
-            logline="$_REQUEST['logline']", 
-            description= "$_REQUEST['description']",
-            creator_id= user_id, 
-            category_id= "$_REQUEST['']"
-          WHERE 
-          ;
-        VALUES ('" . $_REQUEST["projectname"] . "', '" . $_REQUEST["logline"] . "', '" . $_REQUEST["description"] . "', '" . ($_SESSION["user_id"]) . "', '" .$_REQUEST["selectedCategory"] . "')";
+        SET 
+            project_name='{$_REQUEST['projectname']}',
+            logline='{$_REQUEST['logline']}',
+            description='{$_REQUEST['description']}',
+            category_id='{$_REQUEST['selectedCategory']}'
+        WHERE 
+            project_id='$projectId'";
 
 if ($conn->query($sql) !== TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;

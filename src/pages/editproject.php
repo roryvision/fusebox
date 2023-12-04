@@ -203,19 +203,21 @@ require_once('../helpers/db-connection.php');
 
             </div>
 
+            <form>
+
             <div class = "projectinformation">
                 <div class = "projectdetails">Project Title:</div>
-                <input type = text class = "projectname" value="<?php echo
+                <input type = text class = "projectname" name="projectname" value="<?php echo
                 $currentrow['project_name']
                 ?>">
 
                 <div class = "projectdetails">Logline:</div>
-                <input type = text class = "logline" value="<?php echo
+                <input type = text class = "logline" name="logline" value="<?php echo
                 $currentrow['logline']
                 ?>">
 
                 <div class = "projectdetails">Description:</div>
-                <input type = text class = "description" value="<?php echo
+                <input type = text class = "description" name="description" value="<?php echo
                 $currentrow['description']
                 ?>">
 
@@ -268,6 +270,8 @@ require_once('../helpers/db-connection.php');
                 </div>
 
             </div>
+
+            </form>
 
 
         </div>
