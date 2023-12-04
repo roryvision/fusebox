@@ -10,6 +10,7 @@ $conn = openCon();
 //    die();
 //}
 
+print_r($_REQUEST);
 
 $sql = "UPDATE profile SET " .
 
@@ -19,11 +20,11 @@ $sql = "UPDATE profile SET " .
 
     "gradyear= '" . $_REQUEST["gradyear"] . "', " . //no lookup table
 
-    "role1_id= '" . $_REQUEST[""] . "', " .
+    "role1_id= '" . $_REQUEST["primary"] . "', " .
 
-    "role2_id= '" . $_REQUEST[""] . "', " .
+    "role2_id= '" . $_REQUEST["secondary"] . "', " .
 
-    "role3_id= " . $_REQUEST[""] .
+    "role3_id= " . $_REQUEST["tertiary"] .
 
     " WHERE profile_id = " . $_SESSION["user_id"]; //id that's being passed from page to page
 
