@@ -7,19 +7,11 @@ session_start();
 
 //check for user_id value, if it is set,
 if (isset($_SESSION["user_id"])) {
-//then retrieve user record from db
-  $conn = openCon();
-//sql to select user from db
-  $sql = "SELECT * FROM user
-          WHERE id = {$_SESSION["user_id"]}";
-
-  $result = $conn->query($sql);
-//associative array with record values
-  $user = $result->fetch_assoc();
-
-  closeCon($conn);
+                header("Location: /acad276/fusebox/src/pages/dashboard.php");
+    exit(); // Ensure that no further code is executed after redirection
 }
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
