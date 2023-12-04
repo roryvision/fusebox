@@ -308,6 +308,11 @@ session_start();
             // Change the window location to your edit page URL
             window.location.href = '../fusebox/src/pages/editproject.php';
         });
+
+        document.getElementById('deleteButton').addEventListener('click', function () {
+            // Change the window location to your edit page URL
+            window.location.href = '../fusebox/src/pages/deleteprojectindb.php';
+        });
     </script>
 </div>
 </body>

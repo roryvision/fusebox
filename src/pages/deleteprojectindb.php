@@ -12,15 +12,9 @@ if (isset($_REQUEST["selectedRoles"]) && is_array($_REQUEST["selectedRoles"])) {
     $selectedRoles = ''; // Set a default value or handle it accordingly based on your logic
 }
 
-
-$sql = "UPDATE project 
-        SET 
-            project_name='{$_REQUEST['projectname']}',
-            logline='{$_REQUEST['logline']}',
-            description='{$_REQUEST['description']}',
-            category_id='{$_REQUEST['selectedCategory']}'
-        WHERE 
-            project_id='$projectId'";
+$sql = " DELETE FROM project
+        WHERE project_id='$projectId'
+";
 
 if ($conn->query($sql) !== TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
@@ -51,5 +45,4 @@ if(!$results){
     echo "DATABASE ERROR: " . $conn->error;
     exit();
 }
-
 ?>
