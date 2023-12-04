@@ -32,7 +32,6 @@ $sql = "SELECT p.profile_id, p.profile_pic, m1.major AS major1, m2.major AS majo
         LEFT JOIN pronoun pr ON p.pronoun_id = pr.pronoun_id
         WHERE p.profile_id =" . $_SESSION["user_id"];
 
-echo $_SESSION["user_id"];
 
 $result = $conn->query($sql);
 

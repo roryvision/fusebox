@@ -47,9 +47,7 @@ if (empty($_FILES["profile"]["name"])) {
         $stmt->bind_param("si", $targetFilePath, $profileId);
 
         if ($stmt->execute()) {
-            $connected = false;
 
-            echo "File content inserted into the database for profile ID: " . $profileId;
         } else {
             $connected = false;
 
