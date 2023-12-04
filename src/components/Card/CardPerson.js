@@ -26,7 +26,7 @@ cardPersonTemplate.innerHTML = `
          <p class='website2'></p>
         </div>    
       </div>
-      <div style= 'margin-left: 150px; margin-top: 4px; text-align: left; display: flex; flex-direction: row; gap: 8px;'>
+      <div style= 'margin-top: 4px; text-align: left; display: flex; flex-direction: row; justify-content:flex-end; gap: 6px;'>
         <div class="instagram">
         </div>
         <div class="linkedin">
