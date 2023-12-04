@@ -57,6 +57,25 @@ class CardPerson extends HTMLElement {
       shadow.querySelector('.major2').innerText = p.major2 || '';
       shadow.querySelector('.role').innerText = p.role_name || '';
 
+      const roleElement = shadow.querySelector('.role');
+      if (p.role_type) {
+        const roleColors = {
+          'tech': { backgroundColor: '#1F479B', color: 'white' },
+          'business': { backgroundColor: '#F8625A', color: 'white' },
+          'film': { backgroundColor: '#FFBF4A', color: 'black' },
+          'performing': { backgroundColor: '#8D43A7', color: 'white' },
+          'general': { backgroundColor: '#D9D9D9', color: 'black' },
+        };
+
+        const selectedColor = roleColors[p.role_type.toLowerCase()];
+
+        if (selectedColor) {
+          const roleElement = shadow.querySelector('.role');
+          roleElement.style.backgroundColor = selectedColor.backgroundColor;
+          roleElement.style.color = selectedColor.color;
+        }
+      }
+
       const tagsContainer = shadow.querySelector('.skills');
       tagsContainer.innerHTML = ''; // Clear existing content
       p.skills.forEach((skill) => {
@@ -65,7 +84,6 @@ class CardPerson extends HTMLElement {
         tagElement.innerText = skill;
         tagsContainer.appendChild(tagElement);
       });
-
 
       shadow.querySelector('.website1').innerHTML = p.website1 ? '<a href="' + p.website1 + '" target="_blank">' + p.website1 + '</a>' : '';
       shadow.querySelector('.website2').innerHTML = p.website2 ? '<a href="' + p.website2 + '" target="_blank">' + p.website2 + '</a>' : '';
