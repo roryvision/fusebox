@@ -225,7 +225,12 @@ session_start();
 
     <br />
 
-        <div id='cards-container'></div>
+        <div id='cards-container'>
+            <div class = "buttons">
+                <button class = discard>Discard</button>
+                <button class = save>Save Changes</button>
+            </div>
+        </div>
 
     <button onclick="openModal()">Edit</button>
 
