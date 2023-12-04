@@ -12,8 +12,9 @@ if (isset($_REQUEST["selectedRoles"]) && is_array($_REQUEST["selectedRoles"])) {
     $selectedRoles = ''; // Set a default value or handle it accordingly based on your logic
 }
 
-$sql = "INSERT INTO project (project_name, logline, description, category_id, creator_id) 
-        VALUES ('" . $_REQUEST["projectname"] . "', '" . $_REQUEST["logline"] . "', '" . $_REQUEST["description"] . "', '" . $_REQUEST["description"] . "', '" .$_REQUEST["selectedCategory"] . "')";
+
+$sql = "INSERT INTO project (project_name, logline, description, creator_id, category_id) 
+        VALUES ('" . $_REQUEST["projectname"] . "', '" . $_REQUEST["logline"] . "', '" . $_REQUEST["description"] . "', '" . $currentrow['project_id'] . "', '" .$_REQUEST["selectedCategory"] . "')";
 
 if ($conn->query($sql) !== TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
