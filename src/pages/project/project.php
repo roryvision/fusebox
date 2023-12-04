@@ -77,7 +77,7 @@ closeCon($conn);
                     <div class="center"><u>Apply:</u></div>
                     <?php
                     foreach ($roles as $role) {
-                        echo "<li class='button-apply' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "'>" . $role['role_name'] . "</li>";
+                        echo "<li class='button-apply' value='" . $role['role_name'] . "' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "'>" . $role['role_name'] . "</li>";
                     }
                     ?>
                 </div>
@@ -90,11 +90,40 @@ closeCon($conn);
 
         </div>
 
-        <div id="modal">
-            You are applying to the Front-End Role for LPL: Rocket Innovation. Would you like to add a note?
-            <button id="add-note">Add a note</button>
-            <button id="no-note">Send without a note</button>
+        <div id="modal-1">
+            <div style="display:flex; flex-direction: row; justify-content: space-between; margin-bottom: 12px;">
+                <div class="modal-title"><?php echo $project['project_name']; ?></div>
+                <div><img src='/acad276/fusebox/src/assets/icons/icon_close.png' id="modal-icon"></div>
+            </div>
+            <div id="modal-text">
+            </div>
+            <div id="congrats">
+                CONGRATS YOU APPLIED! Give yourself a pat on the back :D
+            </div>
+
+            <div id="prompt">
+                Would you like to add a note?
+            </div>
+
+            <div id="form">
+                <form action="email.php">
+                    <input type="text" id="email-message" name="email-message" placeholder="Ex: I really enjoy this aspect of the project..."></input>
+                </form>
+            </div>
+
+            <div id="note-buttons">
+                <button id="add-note">Add a note</button>
+                <button id="no-note">Send without a note</button>
+            </div>
+
+            <div id="form-buttons">
+                <button id="cancel">Cancel</button>
+                <button id="send">Send</button>
+            </div>
         </div>
     </div>
+  <script>
+      var projectName = "<?php echo $project['project_name']; ?>";
+  </script>
   </body>
 </html>
