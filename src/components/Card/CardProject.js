@@ -1,8 +1,8 @@
 const cardProjectTemplate = document.createElement('template');
 
 cardProjectTemplate.innerHTML = `
-  <link rel='stylesheet' href='../styles/global.css'>
-  <link rel='stylesheet' href='../components/Card/card.css'>
+  <link rel='stylesheet' href='/acad276/fusebox/src/styles/global.css'>
+  <link rel='stylesheet' href='/acad276/fusebox/src/components/Card/card.css'>
   <div class='card card-project'>
     <p class='category'></p>
     <h2 class='cursor-pointer'></h2>

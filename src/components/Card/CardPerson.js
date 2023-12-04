@@ -1,12 +1,12 @@
 const cardPersonTemplate = document.createElement('template');
 
 cardPersonTemplate.innerHTML = `
-  <link rel='stylesheet' href='../styles/global.css'>
-  <link rel='stylesheet' href='../components/Card/card.css'>  
+  <link rel='stylesheet' href='/acad276/fusebox/src/styles/global.css'>
+  <link rel='stylesheet' href='/acad276/fusebox/src/components/Card/card.css'>  
     <div class='card card-person flex-btwn'>
     <div style='width: 172px; flex-direction: column; align-items: center; height: 250px;'>
       <div class='img-container'>
-        <img src='../assets/images/chuubear.jpeg' alt='Profile photo'>
+        <img src='/acad276/fusebox/src/assets/images/chuubear.jpeg' alt='Profile photo'>
       </div>
       
       <div class='role' style='color: black; text-align: center; background-color: #93D695; width: 125px; font-size: 10pt; line-height: 15px; border-radius: 20px; padding: 7px 4px; margin: auto;'>
@@ -30,7 +30,7 @@ cardPersonTemplate.innerHTML = `
         <div class="instagram">
         </div>
         <div class="linkedin">
-            <a href="https://www.linkedin.com/"><img src='../assets/icons/linkedin.png' alt='linkedin ' id="icon"/><a href="https://www.linkedin.com/">
+            <a href="https://www.linkedin.com/"><img src='/acad276/fusebox/src/assets/icons/linkedin.png' alt='linkedin ' id="icon"/><a href="https://www.linkedin.com/">
         </div>
       </div>
       
@@ -57,8 +57,8 @@ class CardPerson extends HTMLElement {
 
       shadow.querySelector('.website1').innerHTML = p.website1 ? '<a href="' + p.website1 + '" target="_blank">' + p.website1 + '</a>' : '';
       shadow.querySelector('.website2').innerHTML = p.website2 ? '<a href="' + p.website2 + '" target="_blank">' + p.website2 + '</a>' : '';
-      shadow.querySelector('.instagram').innerHTML = p.instagram ? '<a href="https://www.instagram.com/' + p.instagram + '" target="_blank"><img src=\'../assets/icons/instagram.png\' alt=\'instagram\' id="icon"/></a>' : '';
-      shadow.querySelector('.linkedin').innerHTML = p.linkedin ? '<a href="' + p.linkedin + '" target="_blank"><img src=\'../assets/icons/linkedin.png\' alt=\'linkedin \' id="icon"/></a>' : '';
+      shadow.querySelector('.instagram').innerHTML = p.instagram ? '<a href="https://www.instagram.com/' + p.instagram + '" target="_blank"><img src=\'/acad276/fusebox/src/assets/icons/instagram.png\' alt=\'instagram\' id="icon"/></a>' : '';
+      shadow.querySelector('.linkedin').innerHTML = p.linkedin ? '<a href="' + p.linkedin + '" target="_blank"><img src=\'/acad276/fusebox/src/assets/icons/linkedin.png\' alt=\'linkedin \' id="icon"/></a>' : '';
     }
   }
 }
