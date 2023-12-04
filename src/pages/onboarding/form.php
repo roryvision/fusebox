@@ -273,9 +273,8 @@ $user = $result->fetch_assoc();
             </div>
 
             <div id="onboard-6" class="step-card hide">
-                <h1>What are you good at?</h1>
-                <p>You can change this at any time</p>
-                <input type="text" placeholder="20XX">
+                <h1>Upload a profile picture!</h1>
+                <input type="file" name="profile_pic">
                 <div class="button">
                     <input type="button" value="Next" class="button" id="click-6" data-onboard-target="onboard-7">
                 </div>
