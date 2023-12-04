@@ -33,7 +33,14 @@ class CardProject extends HTMLElement {
       p.roles.forEach((role) => {
         const tagElement = document.createElement('div');
         tagElement.className = 'tag w-fit';
-        tagElement.innerText = role;
+        tagElement.innerText = role['role_name'];
+        let roleType = role['role_type'];
+        const selectedColor = roleColors[roleType.toLowerCase()];
+
+        if (selectedColor) {
+          tagElement.style.backgroundColor = selectedColor.backgroundColor;
+          tagElement.style.color = selectedColor.color;
+        }
         tagsContainer.appendChild(tagElement);
       });
 

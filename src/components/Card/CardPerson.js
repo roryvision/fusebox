@@ -40,6 +40,15 @@ cardPersonTemplate.innerHTML = `
   </div>
 `;
 
+const roleColors = {
+  'tech': { backgroundColor: '#1F479B', color: 'white' },
+  'business': { backgroundColor: '#8D43A7', color: 'white' },
+  'visual': { backgroundColor: '#F8625A', color: 'white' },
+  'film': { backgroundColor: '#FFBF4A', color: 'black' },
+  'performing': { backgroundColor: '#93D695', color: 'black' },
+  'general': { backgroundColor: '#D9D9D9', color: 'black' },
+};
+
 class CardPerson extends HTMLElement {
   constructor() {
     super();
@@ -59,15 +68,6 @@ class CardPerson extends HTMLElement {
 
       const roleElement = shadow.querySelector('.role');
       if (p.role_type) {
-        const roleColors = {
-          'tech': { backgroundColor: '#1F479B', color: 'white' },
-          'business': { backgroundColor: '#8D43A7', color: 'white' },
-          'visual': { backgroundColor: '#F8625A', color: 'white' },
-          'film': { backgroundColor: '#FFBF4A', color: 'black' },
-          'performing': { backgroundColor: '#93D695', color: 'black' },
-          'general': { backgroundColor: '#D9D9D9', color: 'black' },
-        };
-
         const selectedColor = roleColors[p.role_type.toLowerCase()];
 
         if (selectedColor) {
