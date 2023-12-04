@@ -326,6 +326,70 @@ if ($stmtlinked->execute()) {
     echo "Error updating profile: " . $conn->error;
 }
 
+$skill1 = $_REQUEST['skill1'];
+$s1Query = "UPDATE profiles_x_skills SET skill_id = ? WHERE ps_id = ?";
+$stmts1 = $conn->prepare($s1Query);
+
+if (!$stmts1) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$ps1Id = $_REQUEST['ps1_id'];
+
+
+$stmts1->bind_param("si", $skill1, $ps1Id);
+
+if ($stmts1->execute()) {
+    // Update successful
+    echo "Skills updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+$skill2 = $_REQUEST['skill2'];
+$s2Query = "UPDATE profiles_x_skills SET skill_id = ? WHERE ps_id = ?";
+$stmts2 = $conn->prepare($s2Query);
+
+if (!$stmts2) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$ps2Id = $_REQUEST['ps2_id'];
+
+
+$stmts2->bind_param("si", $skill2, $ps2Id);
+
+if ($stmts2->execute()) {
+    // Update successful
+    echo "Skills updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
+
+$skill3 = $_REQUEST['skill3'];
+$s3Query = "UPDATE profiles_x_skills SET skill_id = ? WHERE ps_id = ?";
+$stmts3 = $conn->prepare($s3Query);
+
+if (!$stmts3) {
+    die('Error preparing statement: ' . $conn->error);
+}
+
+$ps3Id = $_REQUEST['ps3_id'];
+
+
+$stmts3->bind_param("si", $skill3, $ps3Id);
+
+if ($stmts3->execute()) {
+    // Update successful
+    echo "Skills updated successfully!";
+} else {
+    // Update failed
+    echo "Error updating profile: " . $conn->error;
+}
+
 
 ?>
     <div id="buttons">

@@ -77,6 +77,10 @@ header-nav{
     width: 260px;
     z-index: 333;
     transform: rotate(-2deg);
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    max-width: 100%; /* Ensure the image doesn't exceed container width */
+    max-height: 100%; /* Ensure the image doesn't exceed container height */
 }
 
 .majors{
@@ -221,4 +225,12 @@ a{
     align-content: flex-start;
     gap: 4px;
     flex-wrap: wrap;
+}
+#img-cutoff{
+    width:250px;
+    height: 250px;
+    position:relative;
+    overflow: hidden;
+
+
 }

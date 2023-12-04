@@ -12,6 +12,9 @@ session_start();
     <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap' rel='stylesheet'>
     <script src='../components/Header/HeaderNav.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+
+    </script>
 </head>
 <body>
 <?php
@@ -67,6 +70,33 @@ if ($result->num_rows > 0) {
 } else {
     echo "No results found.";
 }
+    $skill_sql = "SELECT skills, ps_id
+                  FROM profiles_x_skills AS pxs
+                  LEFT JOIN skill AS s ON pxs.skill_id = s.skill_id
+                  WHERE " . $_SESSION['user_id'] . " = pxs.profile_id";
+    $skill_results = $conn->query($skill_sql);
+    if (!$skill_results) {
+        echo "SQL error: " . $conn->error;
+        exit();
+    }
+    $skills = array();
+    $ps_ids = array();
+    while ($skill_row = $skill_results->fetch_assoc()) {
+        $skills[] = $skill_row['skills'];
+        $ps_ids[] = $skill_row['ps_id'];
+    }
+    $row['skills'] = $skills;
+
+$skill1 = $skills[0];
+$ps1_id = $ps_ids[0];
+$skill2 = $skills[1];
+$ps2_id = $ps_ids[1];
+$skill3 = $skills[2];
+$ps3_id = $ps_ids[2];
+
+echo $skill1 . ", " . $skill2 . ", " . $skill3;
+
+
 
 ?>
 
@@ -208,10 +238,9 @@ if ($result->num_rows > 0) {
         <div class="two-fields">
             <div class="field">
                 <label for="role1">Role 1
-                    <img src="../assets/icons/star.png">
                 </label>
-                <select name="role1" id="role1" required >
-                    <option value="ALL" >Select a major</option>
+                <select name="role1" id="role1" >
+                    <option value="ALL" >Select a role</option>
                     <option disabled >–––</option>
                     <?php
                     $rolesql = "SELECT * FROM role";
@@ -360,15 +389,105 @@ if ($result->num_rows > 0) {
 
             </div>
         </div>
+
+        <div class="two-fields">
+            <div class="field">
+                <label for="skill1">Skill 1
+                </label>
+                <select name="skill1" id="skill1"  >
+                    <?php
+                    if($skill1 == null){
+                    echo "<option value='ALL' selected >Select a skill</option>
+                    <option disabled >–––</option>";
+                    }else{
+                    echo "<option value='ALL' >Select a skill</option>
+                    <option disabled >–––</option>";
+                    }
+                    $skillsql = "SELECT * FROM skill";
+                    $skillresults = $conn -> query($skillsql);
+                    while($currentrow = $skillresults->fetch_assoc()){
+                    if($skill1 == $currentrow["skills"]){
+                    echo "<option selected value =" . $currentrow["skill_id"]. " >" . $currentrow["skills"] . "</option>";
+                    }else{
+                    echo "<option value =" . $currentrow["skill_id"]. " >" . $currentrow["skills"] . "</option>";
+                    }
+
+
+                    }
+                    ?>
+                </select>
+
+                <input type="hidden" name="ps1_id" value="<?php echo $ps1_id; ?>">
+
+            </div>
+            <div class="field">
+                <label for="skill2">Skill 2
+
+                </label>
+                <select name="skill2" id="skill2"  >
+
+                    <?php
+                    if($skill2 == null){
+                    echo "<option value='ALL' selected >Select a skill</option>
+                    <option disabled >–––</option>";
+                    }else{
+                    echo "<option value='ALL' >Select a skill</option>
+                    <option disabled >–––</option>";
+                    }
+                    $skillsql = "SELECT * FROM skill";
+                    $skillresults = $conn -> query($skillsql);
+                    while($currentrow = $skillresults->fetch_assoc()){
+                    if($skill2 == $currentrow["skills"]){
+                    echo "<option selected value =" . $currentrow["skill_id"]. " >" . $currentrow["skills"] . "</option>";
+                    }else{
+                    echo "<option value =" . $currentrow["skill_id"]. " >" . $currentrow["skills"] . "</option>";
+                    }
+
+
+                    }
+                    ?>
+                </select>
+                <input type="hidden" name="ps2_id" value="<?php echo $ps2_id; ?>">
+
+            </div>
+            <div class="field">
+                <label for="skill3">Skill 3
+
+                </label>
+                <select name="skill3" id="skill3"  >
+
+                    <?php
+                    if($skill3 == null){
+                    echo "<option value='ALL' selected >Select a skill</option>
+                    <option disabled >–––</option>";
+                    }else{
+
+                        echo "<option value='ALL' >Select a skill</option>
+                    <option disabled >–––</option>";
+                    }
+                    $skillsql = "SELECT * FROM skill";
+                    $skillresults = $conn -> query($skillsql);
+                    while($currentrow = $skillresults->fetch_assoc()){
+                    if($skill3 == $currentrow["skills"]){
+                    echo "<option selected value =" . $currentrow["skill_id"]. " >" . $currentrow["skills"] . "</option>";
+                    }else{
+                    echo "<option value =" . $currentrow["skill_id"]. " >" . $currentrow["skills"] . "</option>";
+                    }
+
+
+                    }
+                    ?>
+                </select>
+
+                <input type="hidden" name="ps3_id" value="<?php echo $ps3_id; ?>">
+
+            </div>
+        </div>
         <input type="submit" value="submit">
 
 
     </form>
 
-    <?php
-    closeCon($conn);
-
-    ?>
 </div>
 </body>
 
