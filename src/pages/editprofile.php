@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-x
+
 <html lang='en' dir='ltr'>
 <head>
     <meta charset='utf-8'>
@@ -30,6 +30,11 @@ $sql = "SELECT p.profile_id, p.profile_pic, m1.major AS major1, m2.major AS majo
 
 
 $result = $conn->query($sql);
+
+$majorsql = "SELECT * FROM major";
+$majorresults = $conn -> query($majorsql);
+$rolesql = "SELECT * FROM role";
+$roleresults = $conn -> query($rolesql);
 
 if (!$result) {
     echo "SQL error: " . $conn->error;
@@ -65,7 +70,6 @@ if ($result->num_rows > 0) {
 } else {
     echo "No results found.";
 }
-
 closeCon($conn);
 
 ?>
@@ -87,15 +91,262 @@ closeCon($conn);
         }
         ?>
         <input type="file" name="profile">
+        <div class="two-fields">
         <div class="field">
-        <label for="fname">First name:</label>
-            <input type="text" id="fname" name="fname">
+            <label for="fname">First name:
+            <img src="../assets/icons/star.png">
+            </label>
+            <?php
+            echo "<input type= 'text' id='fname' name='fname' class='filled' placeholder ='" . $fname  ."' required>";
+            ?>
+        </div>
+        <div class="field">
+            <label for="lname">Last name:
+                <img src="../assets/icons/star.png"></label>
+            <?php
+            echo "<input type= 'text' id='lname' name='lname' class='filled' placeholder ='" . $lname  ."' required >";
+            ?>
+        </div>
+        </div>
+
+        <div class="two-fields">
+            <div class="field">
+                <label for="fname">Pronouns
+
+                </label>
+                <?php
+                echo "<input type= 'text' id='fname' name='fname' class='filled' placeholder ='" . $fname  ."'>";
+                ?>
+            </div>
+            <div class="field">
+
+            </div>
+        </div>
+
+        <div class="two-fields">
+            <div class="field">
+                <label for="major">Major
+                    <img src="../assets/icons/star.png">
+                </label>
+                <select name="major" id="major" required >
+                    <option value="ALL" >Select a major</option>
+                    <option disabled >–––</option>
+                <?php
+
+                    while($currentrow = $majorresults->fetch_assoc()){
+                        if($major1 == $currentrow["major"]){
+                            echo "<option selected>" . $currentrow["major"] . "</option>";
+                        }else{
+                            echo "<option>" . $currentrow["major"] . "</option>";
+                        }
+
+
+                    }
+                ?>
+                </select>
+
+            </div>
+            <div class="field">
+                <label for="major2">Second Major
+                    <img src="../assets/icons/star.png">
+                </label>
+                <select name="major2" id="major2" required >
+                    <?php
+                    if($major2 == null){
+                        echo "<option value='ALL' selected >Select a major</option>
+                    <option disabled >–––</option>";
+                    }else{
+                        echo "<option value='ALL' >Select a major</option>
+                    <option disabled >–––</option>";
+                    }
+
+                    while($currentrow = $majorresults->fetch_assoc()){
+                        if($major2 == $currentrow["major"]){
+                            echo "<option selected>" . $currentrow["major"] . "</option>";
+                        }else{
+                            echo "<option>" . $currentrow["major"] . "</option>";
+                        }
+
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+        <div class="two-fields">
+            <div class="field">
+                <label for="fname">Graduation Year
+                    <img src="../assets/icons/star.png">
+                </label>
+                <?php
+                echo "<input type= 'text' id='fname' name='fname' class='filled' placeholder ='" . $grad
+                    ."'>";
+                ?>
+            </div>
+            <div class="field">
+
+            </div>
+        </div>
+
+        <div class="two-fields">
+            <div class="field">
+                <label for="role1">Role 1
+                    <img src="../assets/icons/star.png">
+                </label>
+                <select name="role1" id="role1" required >
+                    <option value="ALL" >Select a major</option>
+                    <option disabled >–––</option>
+                    <?php
+
+                    while($currentrow = $roleresults->fetch_assoc()){
+                        if($role1 == $currentrow["role_name"]){
+                            echo "<option selected>" . $currentrow["role_name"] . "</option>";
+                        }else{
+                            echo "<option>" . $currentrow["role_name"] . "</option>";
+                        }
+
+
+                    }
+                    ?>
+                </select>
+
+            </div>
+            <div class="field">
+                <label for="role2">Role 2
+
+                </label>
+                <select name="role2" id="role2"  >
+
+                    <?php
+                    if($role2 == null){
+                        echo "<option value='ALL' selected >Select a role</option>
+                    <option disabled >–––</option>";
+                    }else{
+                        echo "<option value='ALL' >Select a role</option>
+                    <option disabled >–––</option>";
+                    }
+
+                    while($currentrow = $roleresults->fetch_assoc()){
+                        if($role2 == $currentrow["role_name"]){
+                            echo "<option selected>" . $currentrow["role_name"] . "</option>";
+                        }else{
+                            echo "<option>" . $currentrow["role_name"] . "</option>";
+                        }
+
+
+                    }
+                    ?>
+                </select>
+
+            </div>
+            <div class="field">
+                <label for="role3">Role 3
+
+                </label>
+                <select name="role3" id="role3"  >
+
+                    <?php
+                    if($role3 == null){
+                        echo "<option value='ALL' selected >Select a role</option>
+                    <option disabled >–––</option>";
+                    }else{
+                        echo "<option value='ALL' >Select a role</option>
+                    <option disabled >–––</option>";
+                    }
+
+                    while($currentrow = $roleresults->fetch_assoc()){
+                        if($role3 == $currentrow["role_name"]){
+                            echo "<option selected>" . $currentrow["role_name"] . "</option>";
+                        }else{
+                            echo "<option>" . $currentrow["role_name"] . "</option>";
+                        }
+
+
+                    }
+                    ?>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="field" id="bio">
+            <label for="about">About
+
+            </label>
+            <?php
+                echo "<input type='text' id='about' name='about' class='filled'placeholder = " . $bio . ">";
+            ?>
+
+
+        </div>
+
+        <div class="two-fields">
+            <div class="field">
+                <label for="website1">Website 1
+                </label>
+
+                <?php
+                if($website1){
+                    echo "<input type='text' id='website1' name='website1' class='filled' placeholder = " . $website1 . ">";
+                }else{
+                    echo "<input type='text' id='website1' name='website1'  placeholder = 'Website 1'>";
+                }
+
+                ?>
+
+            </div>
+            <div class="field">
+                <label for="website2">Website 2
+                </label>
+
+                <?php
+                if($website2){
+                    echo "<input type='text' id='website2' name='website2' class='filled' placeholder = " . $website2 . ">";
+                }else{
+                    echo "<input type='text' id='website2' name='website2'  placeholder = 'Website 2'>";
+                }
+
+                ?>
+
+            </div>
+        </div>
+        <div class="two-fields">
+            <div class="field">
+                <label for="instagram">Instagram
+                </label>
+
+                <?php
+                if($instagram){
+                    echo "<input type='text' id='instagram' name='instagram' class='filled' placeholder = " . $instagram . ">";
+                }else{
+                    echo "<input type='text' id='instagram' name='instagram'  placeholder = 'Instagram'>";
+                }
+
+                ?>
+
+            </div>
+            <div class="field">
+                <label for="linkedin">LinkedIn
+                </label>
+
+                <?php
+                if($linkedin){
+                    echo "<input type='text' id='linkedin' name='linkedin' class='filled' placeholder = " . $linkedin . ">";
+                }else{
+                    echo "<input type='text' id='linkedin' name='linkedin'  placeholder = 'Website 2'>";
+                }
+
+                ?>
+
+            </div>
         </div>
         <input type="submit" value="submit">
 
 
     </form>
 
+    <?php
+
+    ?>
 </div>
 </body>
 

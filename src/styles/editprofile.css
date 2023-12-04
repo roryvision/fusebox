@@ -74,11 +74,30 @@ label{
 }
 
 input[type="text"] {
-    width: ;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    display: flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 12px;
+    border: 1px solid  #BBB;
+    background: #FBFBFB;
+}
+
+select{
+    display: flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 12px;
+    border: 1px solid  #BBB;
+    background: #FBFBFB;
+}
+.filled::placeholder{
+    color:#0B0B0C;
 }
 .field{
     display: flex;
@@ -88,3 +107,13 @@ input[type="text"] {
     gap: 4px;
     flex: 1 0 0;
 }
+.two-fields{
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    align-self: stretch;
+}
+#bio{
+    width:100%;
+}
+
