@@ -1,28 +1,26 @@
 <?php
 require_once(__DIR__ . '/../../helpers/db-connection.php');
 
-//shows if user is logged in or not
-//either starts new session or resumes existing one
 session_start();
-
 $conn = openCon();
 
 //check for user_id value, if it is set,
 //if (!isset($_SESSION["user_id"])) {
 //    die();
 //}
-$sql = sprintf("SELECT * FROM profile
-                    WHERE email = '%s'", //%s placeholder
-    //avoid sql attack
-    $conn->real_escape_string($_POST["email"]));
 
-$result = $conn->query($sql);
-//grab user data in array
-if(!$result) {
-    echo "SQL error: ". $conn->error;
-    exit();
-}
-$user = $result->fetch_assoc();
+//for Hello, name
+//$sql = sprintf("SELECT * FROM profile
+//                    WHERE email = '%s'", //%s placeholder
+//    //avoid sql attack
+//    $conn->real_escape_string($_GET["email"]));
+//$result = $conn->query($sql);
+////grab user data in array
+//if(!$result) {
+//    echo "SQL error: ". $conn->error;
+//    exit();
+//}
+//$user = $result->fetch_assoc();
 
 
 ?>
@@ -62,11 +60,11 @@ $user = $result->fetch_assoc();
 
     </head>
     <body>
-        <form method="post" action="sql_injection.php">
+        <form method="post" action="sql_injection.php" enctype="multipart/form-data">>
             <div id="onboard-1" class="step-card show">
                 <img src="../../assets/icons/icon_profile.svg" alt="profile icon">
-                <h1>Hello, <?= htmlspecialchars($user["fname"]) ?></h1>
-
+                <h1>Hello!</h1>
+<!--                <h1>Hello, --><?php //= htmlspecialchars($user["fname"]) ?><!--</h1>-->
                 <p>Help us set up your business card to show your peers by answering the next few questions.</p>
                 <div class="button">
                     <input type="button" value="Next" class="button" id="click-1" data-onboard-target="onboard-2">
@@ -81,7 +79,7 @@ $user = $result->fetch_assoc();
                     <option value="ALL">Select a major</option>
                     <?php
 
-                    $sql = "SELECT * FROM skill";
+                    $sql = "SELECT * FROM major";
 
                     $results = $conn->query($sql);
 
@@ -91,7 +89,7 @@ $user = $result->fetch_assoc();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['skill'] . "</option>";
+                        echo "<option>" . $currentrow['major'] . "</option>";
                     }
                     ?>
                 </select>
@@ -210,7 +208,7 @@ $user = $result->fetch_assoc();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['skill'] . "</option>";
+                        echo "<option>" . $currentrow['skills'] . "</option>";
                     }
                     ?>
                 </select>
@@ -232,7 +230,7 @@ $user = $result->fetch_assoc();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['skill'] . "</option>";
+                        echo "<option>" . $currentrow['skills'] . "</option>";
                     }
                     ?>
                 </select>
@@ -253,7 +251,7 @@ $user = $result->fetch_assoc();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['skill'] . "</option>";
+                        echo "<option>" . $currentrow['skills'] . "</option>";
                     }
                     ?>
                 </select>
@@ -273,9 +271,8 @@ $user = $result->fetch_assoc();
             </div>
 
             <div id="onboard-6" class="step-card">
-                <h1>What are you good at?</h1>
-                <p>You can change this at any time</p>
-                <input type="text" placeholder="20XX">
+                <h1>Remember to upload a profile picture!</h1>
+                <p>Navigate to your account profile to add a profile picture.</p>
                 <div class="button">
                     <input type="button" value="Next" class="button" id="click-6" data-onboard-target="onboard-7">
                 </div>
@@ -283,13 +280,14 @@ $user = $result->fetch_assoc();
 
             <div id="onboard-7" class="step-card">
                 <img src="../../assets/icons/icon_profile.svg" alt="profile icon">
-                <h1>Welcome to Fusebox, <?= htmlspecialchars($user["fname"]) ?></h1>
+                <h1>Welcome to Fusebox!</h1>
+<!--                <h1>Welcome to Fusebox, --><?php //= htmlspecialchars($user["fname"]) ?><!--</h1>-->
 
                 <div class="button">
-                    <input type="submit" href="../dashboard.php" value="Start Browsing Projects" class="button" id="click-7">
+                    <a href="../dashboard.php"><input type="submit" value="Start Browsing Projects" class="button" id="click-7"></a>
                 </div>
                 <div class="button">
-                    <input type="submit" href="../createprofile" value="Create a Project" class="button2" id="click-8">
+                    <a href="../dashboard.php"><input type="submit"  value="Create a Project" class="button2" id="click-8">
                 </div>
             </div>
 

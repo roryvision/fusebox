@@ -10,9 +10,10 @@ $conn = openCon();
 //    die();
 //}
 
+
 print_r($_REQUEST);
 
-$sql = "UPDATE profile SET " .
+$profilesql = "UPDATE profile SET " .
 
     "major_id = '" . $_REQUEST["major"] . "', " . //***if you're updating myScheudle, which doesn't have "name" how do you change the name since you can't directly access it
 
@@ -28,11 +29,11 @@ $sql = "UPDATE profile SET " .
 
     " WHERE profile_id = " . $_SESSION["user_id"]; //id that's being passed from page to page
 
-echo $sql . "<br><hr>";
+echo $profilesql . "<br><hr>";
 
-$results = $conn->query($sql);
+$results1 = $conn->query($profilesql);
 
-if (!$results) {
+if (!$results1) {
 
     echo "Could NOT save changes.";
 
@@ -42,7 +43,7 @@ if (!$results) {
 
 }
 
-echo "Changes saved!";
+//need to do skills sql
 
 header("Location: ../dashboard.php");
 

@@ -3,6 +3,10 @@ h1 {
     margin: 25px;
 }
 
+body {
+    background-color: #FBFBFB;
+}
+
 input[type=text] {
     width: 488px;
     height: 38px;
