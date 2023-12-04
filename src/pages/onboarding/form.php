@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo $_SESSION['user_id'];
 
 require_once(__DIR__ . '/../../helpers/db-connection.php');
 $conn = openCon();
@@ -90,7 +89,7 @@ $conn = openCon();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['major'] . "</option>";
+                        echo "<option value='" . $currentrow['major_id'] . "'>" . $currentrow['major'] . "</option>";
                     }
                     ?>
                 </select>
@@ -112,7 +111,7 @@ $conn = openCon();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['major'] . "</option>";
+                        echo "<option value='" . $currentrow['major_id'] . "'>" . $currentrow['major'] . "</option>";
                     }
                     ?>
                 </select>
@@ -124,7 +123,7 @@ $conn = openCon();
 
             <div id="onboard-3" class="step-card">
                 <h1>What do you do?</h1>
-                <label for="primary">Primary</label><br>
+                <label for="primary-role">Primary</label><br>
                 <select name="primary" id="primary">
                     <option value="none">Select your primary role.</option>
                     <?php
@@ -139,7 +138,7 @@ $conn = openCon();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['role_type'] . ": " . $currentrow['role_name'] . "</option>";
+                        echo "<option value='" . $currentrow['role_id'] . "'>" . $currentrow['role_type'] . ": " . $currentrow['role_name'] . "</option>";
                     }
                     ?>
                 </select>
@@ -147,7 +146,7 @@ $conn = openCon();
                 <br>
 
                 <label for="secondary">Secondary</label><br>
-                <select name="secondary" id="secondary">
+                <select name="secondary-role" id="secondary">
                     <option value="none">Select your secondary role.</option>
                     <?php
 
@@ -161,14 +160,14 @@ $conn = openCon();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['role_type'] . ": " . $currentrow['role_name'] . "</option>";
+                        echo "<option value='" . $currentrow['role_id'] . "'>" . $currentrow['role_type'] . ": " . $currentrow['role_name'] . "</option>";
                     }
                     ?>
                 </select>
 
                 <br>
                 <label for="tertiary">Tertiary</label><br>
-                <select name="tertiary" id="tertiary">
+                <select name="tertiary-role" id="tertiary">
                     <option value="none">Select your tertiary role.</option>
                     <?php
 
@@ -182,7 +181,7 @@ $conn = openCon();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['role_type'] . ": " . $currentrow['role_name'] . "</option>";
+                        echo "<option value='" . $currentrow['role_id'] . "'>" . $currentrow['role_type'] . ": " . $currentrow['role_name'] . "</option>";
                     }
                     ?>
                 </select>
@@ -194,7 +193,7 @@ $conn = openCon();
 
             <div id="onboard-4" class="step-card">
                 <h1>What are your skills?</h1>
-                <label for="primary">Primary</label><br>
+                <label for="-skill">Primary</label><br>
                 <select name="primary" id="primary">
                     <option value="none">Select your primary skill.</option>
                     <?php
@@ -209,14 +208,14 @@ $conn = openCon();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['skills'] . "</option>";
+                        echo "<option value='" . $currentrow['skill_id'] . "'>" . $currentrow['skills'] . "</option>";
                     }
                     ?>
                 </select>
 
                 <br>
 
-                <label for="secondary">Secondary</label><br>
+                <label for="secondary-skill">Secondary</label><br>
                 <select name="secondary" id="secondary">
                     <option value="none">Select your secondary skill.</option>
                     <?php
@@ -231,13 +230,13 @@ $conn = openCon();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['skills'] . "</option>";
+                        echo "<option value='" . $currentrow['skill_id'] . "'>" . $currentrow['skills'] . "</option>";
                     }
                     ?>
                 </select>
 
                 <br>
-                <label for="tertiary">Tertiary</label><br>
+                <label for="tertiary-skill">Tertiary</label><br>
                 <select name="tertiary" id="tertiary">
                     <option value="none">Select your tertiary skill.</option>
                     <?php
@@ -252,7 +251,7 @@ $conn = openCon();
                     }
 
                     while($currentrow = $results->fetch_assoc()) {
-                        echo "<option>" . $currentrow['skills'] . "</option>";
+                        echo "<option value='" . $currentrow['skill_id'] . "'>" . $currentrow['skills'] . "</option>";
                     }
                     ?>
                 </select>
