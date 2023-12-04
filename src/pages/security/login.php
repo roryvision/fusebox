@@ -44,6 +44,15 @@ closeCon($conn);
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRJE9WJPQ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-EMRJE9WJPQ');
+    </script>
     <title>Login</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../styles/global.css">

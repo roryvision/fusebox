@@ -5,6 +5,15 @@ session_start();
 <!DOCTYPE html>
 <html lang='en' dir='ltr'>
   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRJE9WJPQ"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-EMRJE9WJPQ');
+      </script>
     <meta charset='utf-8'>
     <title>Fusebox</title>
       <meta name="description" content="Connecting to create.">
@@ -17,14 +26,6 @@ session_start();
     <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src='../pages/dashboard.js' type='module'></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRJE9WJPQ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-EMRJE9WJPQ');
-    </script>
   </head>
 
   <body>
