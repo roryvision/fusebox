@@ -1,4 +1,4 @@
-import { displayProject, displayPerson } from '../helpers/CardHelper.js';
+import { displayProject, displayPerson, displayEditProject } from '../helpers/CardHelper.js';
 let projects = [];
 let people = [];
 let savedProjects = [];

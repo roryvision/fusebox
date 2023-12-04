@@ -24,8 +24,8 @@ session_start();
     <script src='../components/Header/HeaderNav.js' type='text/javascript'></script>
     <script src='../components/Card/CardProject.js' type='text/javascript'></script>
     <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='../pages/dashboard.js' type='module'></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src='../pages/dashboard.js' type='module'></script>
   </head>
 
   <body>

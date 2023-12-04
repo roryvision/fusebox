@@ -17,7 +17,28 @@ a {
   border-radius: 50px 0px 50px 50px;
   outline: 2px solid #BAB3A6;
   outline-offset: -16px;
-  position: relative;
+}
+
+.circle {
+  position: absolute;
+  top: 32px;
+  right: 42px;
+  width: 46px;
+  height: 46px;
+  background-color: #C1BAAD;
+  border-radius: 50%;
+  cursor:pointer;
+}
+
+.circle2 {
+  position: absolute;
+  top: 26px;
+  right: 36px;
+  width: 32px;
+  height: 32px;
+  background-color: #C1BAAD;
+  border-radius: 50%;
+  cursor:pointer;
 }
 
 .card-save {
@@ -51,6 +72,11 @@ a {
   height: 308px;
   padding: 50px;
 }
+
+.project-card{
+  position: relative;
+}
+
 
 .card-project h2 {
   margin: 24px 0px;
@@ -97,6 +123,10 @@ a {
   height: 250px;
   padding: 50px;
   z-index: 1;
+}
+
+.person-card{
+  position: relative;
 }
 
 .card-person img {
