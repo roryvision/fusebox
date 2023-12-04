@@ -8,7 +8,7 @@
 
 #search {
   position: relative;
-  width: 661px;
+  width: 50%;
   height: 43px;
   font-size: 18px;
   color: #BBBBBB;
@@ -28,4 +28,10 @@
   background-color: #F6F6F6;
   border: 1px solid #BBBBBB;
   border-radius: 20px;
+}
+
+@media only screen and (max-width: 1200px) {
+  #search {
+    width: 25%;
+  }
 }
