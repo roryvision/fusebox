@@ -3,6 +3,15 @@ let projectId = -1;
 let roleId = -1;
 import confetti from 'https://cdn.skypack.dev/canvas-confetti';
 
+const roleColors = {
+  'tech': { backgroundColor: '#1F479B', color: 'white' },
+  'business': { backgroundColor: '#8D43A7', color: 'white' },
+  'visual': { backgroundColor: '#F8625A', color: 'white' },
+  'film': { backgroundColor: '#FFBF4A', color: 'black' },
+  'performing': { backgroundColor: '#93D695', color: 'black' },
+  'general': { backgroundColor: '#D9D9D9', color: 'black' },
+};
+
 $(document).ready(async () => {
   $('.button-apply').on('click', async function() {
     projectId = $(this).attr('project');

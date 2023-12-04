@@ -187,3 +187,29 @@
   z-index: 1;
   display: none;
 }
+
+/*colors*/
+#Tech{
+  background-color: #1F479B;
+  color: white;
+}
+#Business{
+  background-color: #8D43A7;
+  color: white;
+}
+#Visual{
+  background-color: #F8625A;
+  color: white;
+}
+#Film{
+  background-color: #FFBF4A;
+  color: black;
+}
+#Performing {
+  background-color: #93D695;
+  color: black;
+}
+#General{
+  background-color: #D9D9D9;
+  color: black;
+}

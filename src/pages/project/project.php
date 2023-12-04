@@ -20,7 +20,7 @@ if (!$results) {
 
 $project = $results->fetch_assoc();
 
-$role_sql = "SELECT role_name, pxr.role_id
+$role_sql = "SELECT role_name, role_type, pxr.role_id
             FROM projects_x_roles AS pxr
             LEFT JOIN role AS r ON pxr.role_id = r.role_id
             WHERE " . $project['project_id'] . " = pxr.project_id";
@@ -35,7 +35,8 @@ $roles = array();
 while ($role_row = $role_results->fetch_assoc()) {
   $roles[] = array(
     'role_id' => $role_row['role_id'],
-    'role_name' => $role_row['role_name']
+    'role_name' => $role_row['role_name'],
+      'role_type' => $role_row['role_type']
   );
 }
 
@@ -77,7 +78,7 @@ closeCon($conn);
                     <div class="center"><u>Apply:</u></div>
                     <?php
                     foreach ($roles as $role) {
-                        echo "<li class='button-apply' value='" . $role['role_name'] . "' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "'>" . $role['role_name'] . "</li>";
+                        echo "<li class='button-apply' id='" . $role['role_type'] . "' value='" . $role['role_name'] . "' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "'>" . $role['role_name'] . "</li>";
                     }
                     ?>
                 </div>
