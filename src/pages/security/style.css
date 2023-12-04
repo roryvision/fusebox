@@ -6,12 +6,14 @@ h2 {
 
 h4 {
     color: #DC1F1F;
-    font-size: 43pt;
+    font-size: 50pt;
+    margin-top: 0px;
     margin-bottom: 20px;
+    line-height: 80px;
 }
 
 h1 {
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 img {
@@ -27,6 +29,14 @@ img {
     margin-bottom: 10px;
 }
 
+.flex-big {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 30px;
+    align-items: center;
+}
+
 .flex {
     display: flex;
     flex-direction: row;
@@ -35,19 +45,20 @@ img {
 }
 
 .secondary {
-    margin-top: 10px; margin-bottom: 40px; font-weight: bold; color: #4E4E4E;
+    margin:0px;font-weight: bold; color: #4E4E4E;
 }
 
 .left_content {
     text-align: right;
-    width: 750px;
-    margin-right: 64px;
+    width: 550px;
+    margin-right: 20px;
+    margin-left: 30px;
+
 }
 
 .right_content{
     background-color: #F0EBE2;
     width: 500px;
-    height: 700px;
     padding: 80px 128px;
     border-bottom-left-radius: 33px;
     border-bottom-right-radius: 33px;
@@ -57,11 +68,6 @@ img {
 
 .title {
     margin-bottom: 20px;
-}
-
-.left_text {
-    margin-top: 40%;
-    margin-left: 30px;
 }
 
 .button {
@@ -93,5 +99,7 @@ input {
 
 #text{
     margin-top: 0px;
+    font-family: 'Poppins', Helvetica, Arial, sans-serif;
+    font-weight: normal;
 }
 
