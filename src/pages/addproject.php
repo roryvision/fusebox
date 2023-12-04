@@ -161,7 +161,15 @@ require_once('../helpers/db-connection.php');
                     ?>
                     <br />
                     <?php
-                    echo '<p> ' . 'Your logline goes in here! This is a short, attention-grabbing description of your project.'. '</p>';
+                    echo '<div class ="tags"> ';
+                        echo '<p class=" tag w-fit"> ' . "Role" . '</p>';
+                        echo '<p class=" tag w-fit"> ' . "Role" . '</p>';
+                        echo '<p class=" tag w-fit"> ' . "Role" . '</p>';
+                        echo '<p class=" tag w-fit"> ' . "Role" . '</p>';
+                        echo '<p class=" tag w-fit"> ' . "Role" . '</p>';
+                        echo '<p class=" tag w-fit"> ' . "Role" . '</p>';
+
+                    echo '</div> ';
                     ?>
 
 
@@ -183,7 +191,21 @@ require_once('../helpers/db-connection.php');
                 <select class="category2" class ="dropbtn" name="selectedCategory">
                     <button class="dropbtn">Select Roles</button>
                     <div class = "dropdown-content">
-
+                        <?php
+                        $conn = openCon();
+                        // Fetch all categories from the database
+                        $categoriesQuery = "SELECT * FROM category";
+                        $categoriesResult = $conn->query($categoriesQuery);
+                        if (!$categoriesResult) {
+                            echo "SQL error: " . $conn->error;
+                            exit();
+                        }
+                        while ($categoryRow = $categoriesResult->fetch_assoc()) {
+                            $categoryName = $categoryRow["category_name"];
+                            $isSelected = ($categoryName == $currentrow['category_name']) ? 'selected' : '';
+                            echo "<option value='$categoryName' $isSelected>$categoryName</option>";
+                        }
+                        ?>
                     </div>
                 </select>
 
@@ -191,7 +213,19 @@ require_once('../helpers/db-connection.php');
                 <div class="dropdown">
                     <button class="dropbtn">Select Roles</button>
                     <div class="dropdown-content">
-
+                        <?php
+                        // Fetch all roles from the database
+                        $rolesQuery = "SELECT * FROM role";
+                        $rolesResult = $conn->query($rolesQuery);
+                        if (!$rolesResult) {
+                            echo "SQL error: " . $conn->error;
+                            exit();
+                        }
+                        while ($roleRow = $rolesResult->fetch_assoc()) {
+                            $roleName = $roleRow["role_name"];
+                            echo "<input type='checkbox' name='selectedRoles[]' value='$roleName'> $roleName<br>";
+                        }
+                        ?>
                     </div>
                 </div>
 
