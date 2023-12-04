@@ -24,7 +24,7 @@ $(document).ready(async () => {
     document.getElementById('congrats').style.display = 'block';
     makeConfetti();
 
-    // handleApply(projectId, roleId);
+    handleApply(projectId, roleId);
     console.log("you applied yaya");
   });
   $('#send').on('click', async function() {
@@ -36,7 +36,7 @@ $(document).ready(async () => {
     document.getElementById('congrats').style.display = 'block';
     makeConfetti();
 
-    // handleApply(projectId, roleId);
+    handleApply(projectId, roleId);
     console.log("you applied yaya");
   });
 

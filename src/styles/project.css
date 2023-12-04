@@ -98,11 +98,14 @@
 }
 
 #form{
+  display: none;
+}
+
+#email-text{
+  outline: 1px solid #BAB3A6;
   margin: 20px 0px;
   padding: 10px;
-  display: none;
   border-radius: 20px;
-  outline: 1px solid #BAB3A6;
 }
 
 #email-message{

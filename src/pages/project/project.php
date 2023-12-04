@@ -106,8 +106,15 @@ closeCon($conn);
             </div>
 
             <div id="form">
-                <form action="email.php">
-                    <input type="text" id="email-message" name="email-message" placeholder="Ex: I really enjoy this aspect of the project..."></input>
+                <form action="email.php" method="post" id="emailForm">
+                    <input type="hidden" name="creator-email" value="<?php echo $project['email']; ?>">
+                    <div id="email-text">
+                        <input type="text" id="email-message" name="email-message" placeholder="Ex: I really enjoy this aspect of the project...">
+                    </div>
+                    <div id="form-buttons">
+                        <button id="cancel">Cancel</button>
+                        <input type="submit" value="Send" id="send">
+                    </div>
                 </form>
             </div>
 
@@ -116,14 +123,32 @@ closeCon($conn);
                 <button id="no-note">Send without a note</button>
             </div>
 
-            <div id="form-buttons">
-                <button id="cancel">Cancel</button>
-                <button id="send">Send</button>
-            </div>
         </div>
     </div>
   <script>
       var projectName = "<?php echo $project['project_name']; ?>";
+          $(document).ready(function () {
+          // Intercept the form submission
+          $("#emailForm").submit(function (event) {
+              // Prevent the default form submission
+              event.preventDefault();
+
+              // Perform an AJAX request
+              $.ajax({
+                  type: "POST",
+                  url: "email.php",
+                  data: $("#emailForm").serialize(), // Serialize the form data
+                  success: function (response) {
+                      // Handle the response from the server
+                      console.log(response);
+                      // Update the page or perform any additional actions as needed
+                  },
+                  error: function (error) {
+                      console.log("Error:", error);
+                  }
+              });
+          });
+      });
   </script>
   </body>
 </html>
