@@ -161,3 +161,18 @@ textarea{
     gap: 4px;
     flex-wrap: wrap;
 }
+
+.field img{
+    width: 11px;
+}
+
+input[type="submit"]{
+    width: fit-content;
+    font-size: 18px;
+    background-color: #DC1F1F;
+    color: white;
+    padding: 8px 24px;
+    border: 2px solid white;
+    box-sizing: border-box;
+    border-radius: 50px;
+}

@@ -23,8 +23,8 @@ require_once('../helpers/db-connection.php');
 $conn = openCon();
 $sql = "SELECT p.profile_id, p.profile_pic, m1.major AS major1, m2.major AS major2, p.fname, p.lname, p.email, pr.pronouns, p.bio, p.website1, p.website2, p.gradyear, p.linkedin, p.instagram, r1.role_name AS r1name, r2.role_name AS r2name, r3.role_name AS r3name, r1.role_type AS r1type, r2.role_type AS r2type, r3.role_type AS r3type
         FROM profile p
-        INNER JOIN major m1 ON p.major_id = m1.major_id
-        INNER JOIN major m2 ON p.major2_id = m2.major_id
+        LEFT JOIN major m1 ON p.major_id = m1.major_id
+        LEFT JOIN major m2 ON p.major2_id = m2.major_id
         LEFT JOIN role r1 ON p.role1_id = r1.role_id
         LEFT JOIN role r2 ON p.role2_id = r2.role_id
         LEFT JOIN role r3 ON p.role3_id = r3.role_id
@@ -81,20 +81,28 @@ if ($result->num_rows > 0) {
     }
     $skills = array();
     $ps_ids = array();
+    $count = 0;
     while ($skill_row = $skill_results->fetch_assoc()) {
         $skills[] = $skill_row['skills'];
         $ps_ids[] = $skill_row['ps_id'];
+        $count++;
     }
     $row['skills'] = $skills;
+if($count >0){
+    $skill1 = $skills[0];
+    $ps1_id = $ps_ids[0];
+}
+if($count >1){
 
-$skill1 = $skills[0];
-$ps1_id = $ps_ids[0];
-$skill2 = $skills[1];
-$ps2_id = $ps_ids[1];
-$skill3 = $skills[2];
-$ps3_id = $ps_ids[2];
+    $skill2 = $skills[1];
+    $ps2_id = $ps_ids[1];
+}
+if($count>2){
 
-echo $skill1 . ", " . $skill2 . ", " . $skill3;
+    $skill3 = $skills[2];
+    $ps3_id = $ps_ids[2];
+}
+
 
 
 
@@ -195,9 +203,8 @@ echo $skill1 . ", " . $skill2 . ", " . $skill3;
             </div>
             <div class="field">
                 <label for="major2">Second Major
-                    <img src="../assets/icons/star.png">
                 </label>
-                <select name="major2" id="major2" required >
+                <select name="major2" id="major2" >
                     <?php
                     if($major2 == null){
                         echo "<option value='ALL' selected >Select a major</option>
@@ -238,8 +245,10 @@ echo $skill1 . ", " . $skill2 . ", " . $skill3;
         <div class="two-fields">
             <div class="field">
                 <label for="role1">Role 1
+                    <img src="../assets/icons/star.png">
+
                 </label>
-                <select name="role1" id="role1" >
+                <select name="role1" id="role1" required>
                     <option value="ALL" >Select a role</option>
                     <option disabled >–––</option>
                     <?php
@@ -416,9 +425,12 @@ echo $skill1 . ", " . $skill2 . ", " . $skill3;
                     }
                     ?>
                 </select>
+<?php
 
-                <input type="hidden" name="ps1_id" value="<?php echo $ps1_id; ?>">
-
+    if ($count > 0) {
+        echo "<input type='hidden' name='ps1_id' value='" . $ps1_id . "'>";
+    }
+?>
             </div>
             <div class="field">
                 <label for="skill2">Skill 2
@@ -447,8 +459,12 @@ echo $skill1 . ", " . $skill2 . ", " . $skill3;
                     }
                     ?>
                 </select>
-                <input type="hidden" name="ps2_id" value="<?php echo $ps2_id; ?>">
+                <?php
 
+    if ($count > 1) {
+        echo "<input type='hidden' name='ps2_id' value='" . $ps2_id . "'>";
+    }
+    ?>
             </div>
             <div class="field">
                 <label for="skill3">Skill 3
@@ -479,11 +495,14 @@ echo $skill1 . ", " . $skill2 . ", " . $skill3;
                     ?>
                 </select>
 
-                <input type="hidden" name="ps3_id" value="<?php echo $ps3_id; ?>">
-
+                <?php
+                if ($count > 2) {
+                    echo "<input type='hidden' name='ps3_id' value='" . $ps3_id . "'>";
+                }
+                ?>
             </div>
         </div>
-        <input type="submit" value="submit">
+        <input type="submit" value="submit" class="button-red">
 
 
     </form>
