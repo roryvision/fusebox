@@ -15,22 +15,13 @@ h2 {
     margin: 34px;
     display: flex;
     flex-direction: column;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     padding-left: 20px;
     padding-right: 20px;
-=======
-=======
->>>>>>> Stashed changes
 }
 
 .first {
     display: flex;
     flex-direction: row;
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 }
 
 .button-red {
@@ -51,8 +42,6 @@ h2 {
     border-radius: 50px;
 }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 .flex-row-btwn {
     display: flex;
     flex-direction: row;
@@ -127,9 +116,3 @@ h2 {
 .sixth {
     margin-bottom: 50px;
 }
-=======
-
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
