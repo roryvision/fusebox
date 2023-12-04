@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require_once('../../helpers/db-connection.php');
 
 if (empty($_POST["fname"])) {
@@ -45,8 +47,6 @@ if (!$stmt->prepare($sql)) {
     die("SQL error: " . $conn->error);
 }
 
-session_start();
-
 //bind values to parameters of SQL object
 $stmt->bind_param("ssss",
     $_POST["fname"],
@@ -56,6 +56,11 @@ $stmt->bind_param("ssss",
 
 //execute statement
 if ($stmt->execute()) {
+    $insertedKey = $conn->insert_id;
+    $_SESSION["user_id"] = $insertedKey;
+    $_SESSION["user_fname"] = $_POST["fname"];
+    $_SESSION["user_lname"] = $_POST["lname"];
+
     header("Location: ../onboarding/form.php");
     closeCon($conn);
     exit;
