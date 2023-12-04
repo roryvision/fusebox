@@ -26,7 +26,7 @@
   font-size: 18pt;
 }
 
-.project-name {
+.project-name{
   font-size: 34pt;
   font-family: 'Visby';
   margin: auto;
@@ -58,7 +58,7 @@
 
 .description-text {
   padding: 34px;
-  padding-left: 40px;
+  padding-left: 37px;
   font-size: 13pt;
 }
 
@@ -73,17 +73,105 @@
 }
 
 /*for apply modal*/
-#modal{
+#modal-1{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
-  padding: 20px;
-  border-radius: 8px;
+  padding: 50px 85px;
+  padding-right: 70px;
+  border-radius: 32px 0px 32px 32px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   z-index: 2;
   display: none;
+}
+
+#prompt{
+  margin: 0px;
+  margin-bottom: 40px;
+  display: block;
+}
+
+#form{
+  margin: 20px 0px;
+  padding: 10px;
+  display: none;
+  border-radius: 20px;
+  outline: 1px solid #BAB3A6;
+}
+
+#email-message{
+  font-size: 12pt;
+  font-family: 'Poppins';
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+
+#note-buttons{
+  display:flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+}
+
+#form-buttons{
+  display:none;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+
+#modal-text{
+  margin: 0px;
+  display: block;
+}
+
+#congrats{
+  display:none;
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.modal-title{
+  font-family: 'Visby';
+  font-size: 25pt;
+
+}
+
+#add-note{
+  color: #DC1F1F;
+  border: #DC1F1F 2px solid;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
+#no-note{
+  color: white;
+  background-color: #DC1F1F;
+  border: #DC1F1F 2px solid;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
+#cancel{
+  color: black;
+}
+
+#send{
+  color: white;
+  background-color: #DC1F1F;
+  border: #DC1F1F 2px solid;
+  border-radius: 20px;
+  padding: 5px 15px;
+}
+
+#modal-icon{
+  width: 35px;
 }
 
 #overlay {
