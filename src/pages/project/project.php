@@ -55,6 +55,7 @@ closeCon($conn);
   </head>
 
   <body>
+    <div id="overlay"></div>
     <div id='container'>
       <header-nav></header-nav>
       <br />
@@ -89,6 +90,11 @@ closeCon($conn);
 
         </div>
 
+        <div id="modal">
+            You are applying to the Front-End Role for LPL: Rocket Innovation. Would you like to add a note?
+            <button id="add-note">Add a note</button>
+            <button id="no-note">Send without a note</button>
+        </div>
     </div>
   </body>
 </html>
