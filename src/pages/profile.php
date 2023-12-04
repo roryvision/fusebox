@@ -24,14 +24,15 @@ require_once('../helpers/db-connection.php');
 $conn = openCon();
 $sql = "SELECT p.profile_id, p.profile_pic, m1.major AS major1, m2.major AS major2, p.fname, p.lname, p.email, pr.pronouns, p.bio, p.website1, p.website2, p.gradyear, p.linkedin, p.instagram, r1.role_name AS r1name, r2.role_name AS r2name, r3.role_name AS r3name, r1.role_type AS r1type, r2.role_type AS r2type, r3.role_type AS r3type
         FROM profile p
-        INNER JOIN major m1 ON p.major_id = m1.major_id
-        INNER JOIN major m2 ON p.major2_id = m2.major_id
+        LEFT JOIN major m1 ON p.major_id = m1.major_id
+        LEFT JOIN major m2 ON p.major2_id = m2.major_id
         LEFT JOIN role r1 ON p.role1_id = r1.role_id
         LEFT JOIN role r2 ON p.role2_id = r2.role_id
         LEFT JOIN role r3 ON p.role3_id = r3.role_id
         LEFT JOIN pronoun pr ON p.pronoun_id = pr.pronoun_id
         WHERE p.profile_id =" . $_SESSION["user_id"];
 
+echo $_SESSION["user_id"];
 
 $result = $conn->query($sql);
 
@@ -92,11 +93,16 @@ closeCon($conn);
                     <div id="major-1" class="majors"><?php
                         echo $major1;
                         ?></div>
-                    <div id="major-2" class="majors">
-                        <?php
+                    <?php
+                    if($major2!=null){
+                        echo "<div id='major-2' class='majors'>";
+
                         echo $major2;
+                        echo "</div>";
+                    }
+
                         ?>
-                    </div>
+
                     <div class="b2">
                         <?php
                         echo "Graduating " . $grad;
@@ -144,29 +150,32 @@ closeCon($conn);
                 </div>
                 <div id="roles">
                     <?php
-                    $roleclass = '';
+                    if($roletype1!=null && $role1!=null){
+                        $roleclass = '';
 
-                    switch ($roletype1) {
-                        case 'Tech':
-                            $roleclass = 'tech-role';
-                            break;
-                        case 'Visual':
-                            $roleclass = 'visual-role'; // Assign a specific class for Type B
-                            break;
-                        case 'Business':
-                            $roleclass = 'business-role'; // Assign a specific class for Type B
-                            break;
-                        case 'Film':
-                            $roleclass = 'film-role'; // Assign a specific class for Type B
-                            break;
-                        case 'Performing':
-                            $roleclass = 'performing-role'; // Assign a specific class for Type B
-                            break;
-                        default:
-                            $roleclass = 'general-role'; // Default color class
-                            break;
+                        switch ($roletype1) {
+                            case 'Tech':
+                                $roleclass = 'tech-role';
+                                break;
+                            case 'Visual':
+                                $roleclass = 'visual-role'; // Assign a specific class for Type B
+                                break;
+                            case 'Business':
+                                $roleclass = 'business-role'; // Assign a specific class for Type B
+                                break;
+                            case 'Film':
+                                $roleclass = 'film-role'; // Assign a specific class for Type B
+                                break;
+                            case 'Performing':
+                                $roleclass = 'performing-role'; // Assign a specific class for Type B
+                                break;
+                            default:
+                                $roleclass = 'general-role'; // Default color class
+                                break;
+                        }
+                        echo "<div class='" . $roleclass . "'>" . $role1 . "</div>";
+
                     }
-                    echo "<div class='" . $roleclass . "'>" . $role1 . "</div>";
 
                     if ($role2 != null) {
                         switch ($roletype2) {
