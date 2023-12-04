@@ -81,7 +81,6 @@ class CardProject extends HTMLElement {
       });
 
       shadow.querySelector('h2').addEventListener('mouseout', () => {
-        // Replace 'oldColor' with the original color of the card
         cardProject.style.backgroundColor = '#F0EBE2';
       });
     }
