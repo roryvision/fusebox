@@ -5,6 +5,7 @@ h1 {
 
 body {
     background-color: #FBFBFB;
+    overflow-y: hidden;
 }
 
 input[type=text] {
@@ -25,6 +26,13 @@ select {
     padding: 10px;
 }
 
+#container {
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .step-card {
     margin: auto;
     width: 500px;
@@ -42,10 +50,6 @@ select {
     display: block;
 }
 
-#onboard-1 {
-    text-align: center;
-}
-
 #onboard-1 img {
     width: 100px;
 }
@@ -61,20 +65,31 @@ select {
     border-width: 0;
     border-color: white;
     transition: border-width 0.2s;
-    /*position: absolute;*/
-    /*bottom: 80px;*/
+    position: absolute;
+    bottom: 80px;
+}
+
+.button1 {
+    width: 488px;
+    height: 43px;
+    background-color: #DC1F1F !important;
+    border-radius: 29px !important;
+    cursor: pointer;
+    color: white !important;
+    border-width: 0 !important;
+    border-color: white !important;
+    transition: border-width 0.2s;
+    margin-bottom: 10px;
 }
 
 .button2 {
     width: 488px;
     height: 43px;
-    background-color: white;
-    border-radius: 29px;
+    background-color: white !important;
+    border-radius: 29px !important;
     cursor: pointer;
-    color: #DC1F1F;
-    border: 1px solid #DC1F1F;
-    /*position: absolute;*/
-    /*bottom: 80px;*/
+    color: #DC1F1F !important;
+    border: 1px solid #DC1F1F !important;
 }
 
 /*.center {*/
