@@ -58,21 +58,37 @@ closeCon($conn);
     <div id='container'>
       <header-nav></header-nav>
       <br />
-      <?php
-        echo "Project Name: " . $project['project_name'] . "<br>";
-        echo "Description: " . $project['description'] . "<br>";
-        echo "Category: " . $project['category_name'] . "<br>";
-        echo "Creator: " . $project['fname'] . " " . $project['lname'] . " (" . $project['email'] . ")";
-      ?>
-      <br /> <br />
+        <div class="project-name">
+            <?php echo $project['project_name']; ?>
+        </div>
+        <div class="project-category">
+            <?php echo $project['category_name']; ?>
+        </div>
 
-      <ul>
-        <?php
-          foreach ($roles as $role) {
-            echo "<li class='button-apply' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "'>" . $role['role_name'] . "</li>";
-          }
-        ?>
-      </ul>
+        <div class="project-details">
+            <div style="display: flex; flex-direction: column; padding-top: 10px;">
+                <div class="creator">
+                    <?php
+                    echo "Created By: " . $project['fname'] . " " . $project['lname'] . " (" . $project['email'] . ")";
+                    ?>
+                </div>
+                <div class="apply-buttons">
+                    <div class="center"><u>Apply:</u></div>
+                    <?php
+                    foreach ($roles as $role) {
+                        echo "<li class='button-apply' project='" . $project['project_id'] . "' role='" . $role['role_id'] . "'>" . $role['role_name'] . "</li>";
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="project-description">
+                <div class="description-text">
+                    <?php echo $project['description']; ?>
+                </div>
+            </div>
+
+        </div>
+
     </div>
   </body>
 </html>

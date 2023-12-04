@@ -1,6 +1,73 @@
 .button-apply {
-  border: 1px solid #000000;
   margin: 12px 0px;
+  padding: 6px 10px;
   cursor: pointer;
-  width: fit-content;
+  width: 275px;
+  font-family: 'Poppins';
+  font-weight: 400;
+  font-size: 16px;
+  background-color: #F8625A;
+  color: white;
+  border-radius: 20px;
+  list-style: none;
+  text-align: center;
+}
+
+.apply-buttons{
+  margin:auto;
+}
+
+.button-apply:hover {
+  filter: brightness(85%);
+}
+
+.center{
+  text-align: center;
+  font-size: 18pt;
+}
+
+.project-name{
+  font-size: 34pt;
+  font-family: 'Visby';
+  margin: auto;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.project-category{
+  color: #BBBBBB;
+  margin: auto;
+  text-align: center;
+}
+
+.project-details{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 35px;
+  gap: 80px;
+}
+
+.project-description{
+  width: 800px;
+  border-radius: 50px 0px 50px 50px;
+  outline: 1px solid #BAB3A6;
+  display: block;
+}
+
+.description-text{
+  padding: 34px;
+  padding-left: 40px;
+  font-size: 13pt;
+}
+
+.apply-buttons{
+  display: block;
+}
+
+.creator{
+  color: #BBBBBB;
+  font-size: 12pt;
+  margin-bottom: 25px;
 }
