@@ -74,7 +74,7 @@ $user = $result->fetch_assoc();
             </div>
 
 
-            <div id="onboard-2" class="step-card hide">
+            <div id="onboard-2" class="step-card">
                 <h1>What's your major?</h1>
                 <label for="major">Major 1</label><br>
                 <select name="major" id="major">
@@ -123,7 +123,7 @@ $user = $result->fetch_assoc();
                 </div>
             </div>
 
-            <div id="onboard-3" class="step-card hide">
+            <div id="onboard-3" class="step-card">
                 <h1>What do you do?</h1>
                 <label for="primary">Primary</label><br>
                 <select name="primary" id="primary">
@@ -193,7 +193,7 @@ $user = $result->fetch_assoc();
                 </div>
             </div>
 
-            <div id="onboard-4" class="step-card hide">
+            <div id="onboard-4" class="step-card">
                 <h1>What are your skills?</h1>
                 <label for="primary">Primary</label><br>
                 <select name="primary" id="primary">
@@ -263,7 +263,7 @@ $user = $result->fetch_assoc();
                 </div>
             </div>
 
-            <div id="onboard-5" class="step-card hide">
+            <div id="onboard-5" class="step-card">
                 <h1>What year do you expect to graduate?</h1>
                 <label for="gradyear"></label>
                 <input type="text" name="gradyear" placeholder="20XX">
@@ -272,15 +272,16 @@ $user = $result->fetch_assoc();
                 </div>
             </div>
 
-            <div id="onboard-6" class="step-card hide">
-                <h1>Upload a profile picture!</h1>
-                <input type="file" name="profile_pic">
+            <div id="onboard-6" class="step-card">
+                <h1>What are you good at?</h1>
+                <p>You can change this at any time</p>
+                <input type="text" placeholder="20XX">
                 <div class="button">
                     <input type="button" value="Next" class="button" id="click-6" data-onboard-target="onboard-7">
                 </div>
             </div>
 
-            <div id="onboard-7" class="step-card hide">
+            <div id="onboard-7" class="step-card">
                 <img src="../../assets/icons/icon_profile.svg" alt="profile icon">
                 <h1>Welcome to Fusebox, <?= htmlspecialchars($user["fname"]) ?></h1>
 

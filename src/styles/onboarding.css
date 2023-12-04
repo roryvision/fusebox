@@ -31,9 +31,6 @@ select {
     border-top-left-radius: 33px;
     border-bottom: 33px;
     position: relative;
-}
-
-.hide {
     display: none;
 }
 
