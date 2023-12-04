@@ -116,6 +116,7 @@ require_once('../helpers/db-connection.php');
             color: #BBBBBB;
             padding: 10px;
             font-size: 12pt;
+            cursor: pointer; /* Add this line to make the cursor change to a pointer on hover */
         }
 
         .dropdown-content {
@@ -133,7 +134,7 @@ require_once('../helpers/db-connection.php');
             display: block;
         }
 
-        .dropdown:hover .dropdown-content {
+        .dropdown:active .dropdown-content {
             display: block;
         }
 
@@ -166,6 +167,10 @@ require_once('../helpers/db-connection.php');
             flex-direction: row;
             gap: 30px;
             margin-top: 30px;
+        }
+
+        .buttontext{
+            font-size: 8pt;
         }
 
 
@@ -212,7 +217,7 @@ require_once('../helpers/db-connection.php');
 
                 <div class = "buttons">
                     <button class = discard>Discard</button>
-                    <button class = save>Save Changes</button>
+                    <button class = save type = "submit" name = "submit">Save Changes</button>
                 </div>
 
 
@@ -231,7 +236,7 @@ require_once('../helpers/db-connection.php');
 
                 <div class = "projectdetails">Category:</div>
                 <select class="category2" class ="dropbtn" name="selectedCategory" ">
-                    <button class="dropbtn">Select Roles</button>
+                    <button class="dropbtn"></button>
                     <div class = "dropdown-content">
                         <?php
                         $conn = openCon();
@@ -254,22 +259,46 @@ require_once('../helpers/db-connection.php');
 
                 <div class = "projectdetails">Roles Needed:</div>
                 <div class="dropdown">
-                    <button class="dropbtn" name="role">Select Roles</button>
-                    <div class="dropdown-content">
+                    <button class="dropbtn" onclick="toggleDropdown()">Select Roles</button>
+                    <div class="dropdown-content" id="rolesDropdown">
                         <?php
                         // Fetch all roles from the database
                         $rolesQuery = "SELECT * FROM role";
                         $rolesResult = $conn->query($rolesQuery);
+
                         if (!$rolesResult) {
                             echo "SQL error: " . $conn->error;
                             exit();
                         }
+
                         while ($roleRow = $rolesResult->fetch_assoc()) {
                             $roleName = $roleRow["role_name"];
-                            echo "<input type='checkbox' name='selectedRoles[]' value='$roleName'> $roleName<br>";
+                            $roleId = $roleRow["role_id"];
+                            echo "<label><input type='checkbox' name='selectedRoles[]' value='$roleId'>$roleName</label><br>";
                         }
                         ?>
                     </div>
+                </div>
+
+                <script>
+                    function toggleDropdown() {
+                        var dropdown = document.querySelector(".dropdown");
+                        dropdown.classList.toggle("active");
+                    }
+
+                    // Close the dropdown if the user clicks outside of it
+                    window.onclick = function(event) {
+                        if (!event.target.matches('.dropbtn')) {
+                            var dropdowns = document.getElementsByClassName("dropdown");
+                            for (var i = 0; i < dropdowns.length; i++) {
+                                var openDropdown = dropdowns[i];
+                                if (openDropdown.classList.contains('active')) {
+                                    openDropdown.classList.remove('active');
+                                }
+                            }
+                        }
+                    }
+                </script>
                 </div>
 
             </div>
