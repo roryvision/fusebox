@@ -12,6 +12,15 @@ cardProjectTemplate.innerHTML = `
   </div>
 `;
 
+const roleColors = {
+  film: { backgroundColor: '#FFBF4A', color: '#0B0B0C' },
+  visual: { backgroundColor: '#F8625A', color: '#FBFBFB' },
+  tech: { backgroundColor: '#1F479B', color: '#FBFBFB' },
+  performing: { backgroundColor: '#93D695', color: '#0B0B0C' },
+  business: { backgroundColor: '#8D43A7', color: '#FBFBFB' },
+  general: { backgroundColor: '#D9D9D9', color: '#0B0B0C' },
+};
+
 class CardProject extends HTMLElement {
   constructor() {
     super();

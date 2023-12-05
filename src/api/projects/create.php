@@ -18,8 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     exit();
   }
 
-  $created = array();
-
+  $createdProjects = array();
     while ($row = $results->fetch_assoc()) {
         $role_sql = "SELECT role_name, role_type
                   FROM projects_x_roles AS pxr
@@ -43,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     }
   
   header('Content-Type: application/json');
-  echo json_encode($created);
+  echo json_encode($createdProjects);
 
   closeCon($conn);
   exit();
