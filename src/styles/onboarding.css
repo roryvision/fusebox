@@ -4,6 +4,7 @@ h1 {
 }
 
 body {
+    margin-top: 30px;
     background-color: #FBFBFB;
 }
 
@@ -50,6 +51,18 @@ select {
     width: 100px;
 }
 
+#onboard-6 {
+    text-align: center;
+}
+
+#onboard-7 img {
+    width: 100px;
+}
+
+#onboard-7 {
+    text-align: center;
+}
+
 
 .button {
     width: 488px;
@@ -61,20 +74,27 @@ select {
     border-width: 0;
     border-color: white;
     transition: border-width 0.2s;
-    /*position: absolute;*/
-    /*bottom: 80px;*/
+    /* position: absolute; Remove this line */
+    bottom: 20px; /* Adjust the distance from the bottom as needed */
+    margin-top: auto; /* Add this line */
 }
 
-.button2 {
-    width: 488px;
-    height: 43px;
-    background-color: white;
-    border-radius: 29px;
-    cursor: pointer;
-    color: #DC1F1F;
-    border: 1px solid #DC1F1F;
-    /*position: absolute;*/
-    /*bottom: 80px;*/
+/*.button2 {*/
+/*    width: 488px;*/
+/*    height: 43px;*/
+/*    background-color: white;*/
+/*    border-radius: 29px;*/
+/*    cursor: pointer;*/
+/*    color: #DC1F1F;*/
+/*    border: 1px solid #DC1F1F;*/
+/*    position: absolute;*/
+/*    bottom: 80px;*/
+/*}*/
+
+.button[disabled] {
+    background-color: #ccc;
+    color: white;
+    cursor: not-allowed;
 }
 
 /*.center {*/

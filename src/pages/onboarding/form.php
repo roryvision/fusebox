@@ -32,13 +32,8 @@ $conn = openCon();
         <link rel="stylesheet" href="../../styles/global.css">
         <link rel="stylesheet" href="../../styles/onboarding.css">
 
+<!--        <script src='onboard.js' type='text/javascript'></script>-->
         <script>
-            //event listener on all ids starting with "click"
-            //onclick:
-            //set a variable = id name step EX: let stepId = this.id.splitafter"_"
-            //remove.show class from["onboard-" . stepId] EX: lookforthis =onboard-stepId;
-            //add show class to ["onboard-" . stepId] EX: $(lookforthis).addClass(show);
-
             document.addEventListener('DOMContentLoaded', function () {
                 const buttons = document.querySelectorAll('[data-onboard-target]');
 
@@ -55,7 +50,6 @@ $conn = openCon();
                     });
                 });
             });
-
         </script>
 
     </head>
@@ -74,9 +68,9 @@ $conn = openCon();
 
             <div id="onboard-2" class="step-card">
                 <h1>What's your major?</h1>
-                <label for="major">Major 1</label><br>
-                <select name="major" id="major">
-                    <option value="ALL">Select a major</option>
+                <label for="major1">Major 1</label><br>
+                <select name="major1" id="major1">
+                    <option value="" disabled selected>Select a major</option>
                     <?php
 
                     $sql = "SELECT * FROM major";
@@ -123,9 +117,9 @@ $conn = openCon();
 
             <div id="onboard-3" class="step-card">
                 <h1>What do you do?</h1>
-                <label for="primary-role">Primary</label><br>
-                <select name="primary" id="primary">
-                    <option value="none">Select your primary role.</option>
+                <label for="primaryRole">Primary</label><br>
+                <select name="primaryRole" id="primaryRole">
+                    <option value="none" disabled selected>Select your primary role.</option>
                     <?php
 
                     $sql = "SELECT * FROM role";
@@ -145,9 +139,9 @@ $conn = openCon();
 
                 <br>
 
-                <label for="secondary">Secondary</label><br>
-                <select name="secondary-role" id="secondary">
-                    <option value="none">Select your secondary role.</option>
+                <label for="secondaryRole">Secondary</label><br>
+                <select name="secondaryRole" id="secondaryRole">
+                    <option value="none" disabled selected>Select your secondary role.</option>
                     <?php
 
                     $sql = "SELECT * FROM role";
@@ -166,9 +160,9 @@ $conn = openCon();
                 </select>
 
                 <br>
-                <label for="tertiary">Tertiary</label><br>
-                <select name="tertiary-role" id="tertiary">
-                    <option value="none">Select your tertiary role.</option>
+                <label for="tertiaryRole">Tertiary</label><br>
+                <select name="tertiaryRole" id="tertiaryRole">
+                    <option value="none" disabled selected>Select your tertiary role.</option>
                     <?php
 
                     $sql = "SELECT * FROM role";
@@ -193,9 +187,9 @@ $conn = openCon();
 
             <div id="onboard-4" class="step-card">
                 <h1>What are your skills?</h1>
-                <label for="-skill">Primary</label><br>
-                <select name="primary" id="primary">
-                    <option value="none">Select your primary skill.</option>
+                <label for="primarySkill">Primary</label><br>
+                <select name="primarySkill" id="primarySkill">
+                    <option value="none" disabled selected>Select your primary skill.</option>
                     <?php
 
                     $sql = "SELECT * FROM skill";
@@ -215,9 +209,9 @@ $conn = openCon();
 
                 <br>
 
-                <label for="secondary-skill">Secondary</label><br>
-                <select name="secondary" id="secondary">
-                    <option value="none">Select your secondary skill.</option>
+                <label for="secondarySkill">Secondary</label><br>
+                <select name="secondarySkill" id="secondarySkill">
+                    <option value="none" disabled selected>Select your secondary skill.</option>
                     <?php
 
                     $sql = "SELECT * FROM skill";
@@ -236,9 +230,9 @@ $conn = openCon();
                 </select>
 
                 <br>
-                <label for="tertiary-skill">Tertiary</label><br>
-                <select name="tertiary" id="tertiary">
-                    <option value="none">Select your tertiary skill.</option>
+                <label for="tertiarySkill">Tertiary</label><br>
+                <select name="tertiarySkill" id="tertiarySkill">
+                    <option value="none" disabled selected>Select your tertiary skill.</option>
                     <?php
 
                     $sql = "SELECT * FROM skill";
@@ -285,9 +279,6 @@ $conn = openCon();
 
                 <div class="button">
                     <a href="../dashboard.php"><input type="submit" value="Start Browsing Projects" class="button" id="click-7"></a>
-                </div>
-                <div class="button">
-                    <a href="../dashboard.php"><input type="submit"  value="Create a Project" class="button2" id="click-8">
                 </div>
             </div>
 

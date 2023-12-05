@@ -11,19 +11,21 @@ $conn = openCon();
 
 $profilesql = "UPDATE profile SET " .
 
-    "major_id = '" . $_REQUEST["major"] . "', " . //***if you're updating myScheudle, which doesn't have "name" how do you change the name since you can't directly access it
+    "major_id = '" . $_REQUEST["major1"] . "', " . //***if you're updating myScheudle, which doesn't have "name" how do you change the name since you can't directly access it
 
     "major2_id= " . $_REQUEST["major2"] . ", " .
 
     "gradyear= '" . $_REQUEST["gradyear"] . "', " . //no lookup table
 
-    "role1_id= '" . $_REQUEST["primary"] . "', " .
+    "role1_id= '" . $_REQUEST["primaryRole"] . "', " .
 
-    "role2_id= '" . $_REQUEST["secondary"] . "', " .
+    "role2_id= '" . $_REQUEST["secondaryRole"] . "', " .
 
-    "role3_id= " . $_REQUEST["tertiary"] .
+    "role3_id= " . $_REQUEST["tertiaryRole"] .
 
-    " WHERE profile_id = " . $_SESSION["user_id"]; //id that's being passed from page to page
+    " WHERE profile_id = 73";
+
+//    " WHERE profile_id = " . $_SESSION["user_id"];
 
 $results = $conn->query($profilesql);
 
