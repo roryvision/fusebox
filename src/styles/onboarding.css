@@ -1,0 +1,99 @@
+h1 {
+    text-align: center;
+    margin: 25px;
+}
+
+body {
+    background-color: #FBFBFB;
+    overflow-y: hidden;
+}
+
+input[type=text] {
+    width: 488px;
+    height: 38px;
+    border: 1px solid #BBBBBB;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    padding: 10px;
+}
+
+select {
+    width: 488px;
+    height: 38px;
+    border: 1px solid #BBBBBB;
+    border-radius: 12px;
+    margin-bottom: 32px;
+    padding: 10px;
+}
+
+#container {
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.step-card {
+    margin: auto;
+    width: 500px;
+    height: 600px;
+    background-color: white;
+    box-shadow: 2px 2px 4px grey;
+    padding: 80px 54px;
+    border-top-left-radius: 33px;
+    border-bottom: 33px;
+    position: relative;
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+#onboard-1 img {
+    width: 100px;
+}
+
+
+.button {
+    width: 488px;
+    height: 43px;
+    background-color: #DC1F1F;
+    border-radius: 29px;
+    cursor: pointer;
+    color: white;
+    border-width: 0;
+    border-color: white;
+    transition: border-width 0.2s;
+    position: absolute;
+    bottom: 80px;
+}
+
+.button1 {
+    width: 488px;
+    height: 43px;
+    background-color: #DC1F1F !important;
+    border-radius: 29px !important;
+    cursor: pointer;
+    color: white !important;
+    border-width: 0 !important;
+    border-color: white !important;
+    transition: border-width 0.2s;
+    margin-bottom: 10px;
+}
+
+.button2 {
+    width: 488px;
+    height: 43px;
+    background-color: white !important;
+    border-radius: 29px !important;
+    cursor: pointer;
+    color: #DC1F1F !important;
+    border: 1px solid #DC1F1F !important;
+}
+
+/*.center {*/
+/*    text-align: left;*/
+/*    align-content: center;*/
+/*    margin: auto;*/
+/*}*/

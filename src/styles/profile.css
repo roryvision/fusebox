@@ -1,0 +1,235 @@
+#select-menu {
+    width: 336px;
+    margin: auto;
+    margin-top: 34px;
+    font-family: 'Visby';
+    font-weight: bold;
+    font-size: 28px;
+    color: #D9D9D9;
+}
+
+.selected {
+    color: #DC1F1F;
+}
+header-nav{
+    width:100%;
+}
+#container{
+    display:flex;
+    flex-direction:column;
+    gap:34px;
+    align-items:center;
+}
+#outer-card{
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width:fit-content;
+    border-radius: 33px 0px 33px 33px;
+    background: #F0EBE2;
+}
+
+#border-card{
+    display: flex;
+    width: 822px;
+    padding: 34px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 34px 0px 34px 34px;
+    border: 2px solid #BAB3A6;
+}
+
+#profile-content{
+    display: flex;
+    align-items: flex-start;
+    gap: 34px;
+    flex: 1 0 0;
+}
+
+#content-left{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-self: stretch;
+    width:260px;
+}
+
+.img-container {
+    position: relative;
+}
+
+.img-container::before {
+    content: "";
+    width: 260px;
+    height: 260px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: #FBFBFB;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.25);
+}
+
+.img-container img {
+    width: 260px;
+    z-index: 333;
+    transform: rotate(-2deg);
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    max-width: 100%; /* Ensure the image doesn't exceed container width */
+    max-height: 100%; /* Ensure the image doesn't exceed container height */
+}
+
+.majors{
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.b2{
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color:#878787;
+}
+
+.sides{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    width:100%;
+}
+#cards-container {
+    display: flex;
+    flex-flow: row wrap;
+    column-gap: 10px;
+    row-gap: 50px;
+    width: 1049px;
+    margin:auto;
+}
+
+a{
+    color: #1F479B;
+    font-size: 14px;
+}
+
+#social-links{
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+}
+
+#social-links a img{
+    width: 30px;
+}
+
+#email{
+    float:right;
+}
+
+.tech-role{
+    background-color: #F8625A;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #FBFBFB;
+}
+.visual-role{
+    background-color: #93D695;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #0B0B0C;
+}
+.business-role{
+    background-color: #FFBF4A;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #0B0B0C;
+}
+.business-role{
+    background-color: #FFBF4A;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #0B0B0C;
+}
+
+.film-role{
+    background-color: #1F479B;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #FBFBFB;
+}
+.film-role{
+    background-color: #8D43A7;
+    display: inline-flex;
+    padding: 4px 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: #FBFBFB;
+}
+
+#content-right{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+}
+#roles{
+    display:flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.skill{
+    display: flex;
+    padding: 4px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 20px;
+    border: 1px solid #4E4E4E;
+    background: #FBFBFB;
+
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #4E4E4E;
+}
+#skill-container{
+    display: flex;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+#img-cutoff{
+    width:250px;
+    height: 250px;
+    position:relative;
+    overflow: hidden;
+
+
+}

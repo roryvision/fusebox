@@ -1,8 +1,8 @@
 const cardProjectTemplate = document.createElement('template');
 
 cardProjectTemplate.innerHTML = `
-  <link rel='stylesheet' href='../styles/global.css'>
-  <link rel='stylesheet' href='../components/Card/card.css'>
+  <link rel='stylesheet' href='/acad276/fusebox/src/styles/global.css'>
+  <link rel='stylesheet' href='/acad276/fusebox/src/components/Card/card.css'>
   <div class='card card-project'>
     <p class='category'></p>
     <h2 class='cursor-pointer'></h2>
@@ -33,29 +33,55 @@ class CardProject extends HTMLElement {
       p.roles.forEach((role) => {
         const tagElement = document.createElement('div');
         tagElement.className = 'tag w-fit';
-        tagElement.innerText = role;
+        tagElement.innerText = role['role_name'];
+        let roleType = role['role_type'];
+        const selectedColor = roleColors[roleType.toLowerCase()];
+
+        if (selectedColor) {
+          tagElement.style.backgroundColor = selectedColor.backgroundColor;
+          tagElement.style.color = selectedColor.color;
+        }
         tagsContainer.appendChild(tagElement);
       });
 
-      if (p.isSaved) {
-        const savedOverlay = document.createElement('div');
-        savedOverlay.alt = 'Unsave project';
-        savedOverlay.className = 'saved';
-        shadow.querySelector('.card-project').appendChild(savedOverlay);
+      switch (p.cardType) {
+        case 'save':
+          if (p.isSaved) {
+            const savedOverlay = document.createElement('div');
+            savedOverlay.alt = 'Unsave project';
+            savedOverlay.className = 'saved';
+            shadow.querySelector('.card-project').appendChild(savedOverlay);
 
-        savedOverlay.addEventListener('click', () => this.handleUnsave(p.project_id));
-      } else {
-        const saveOverlay = document.createElement('img');
-        saveOverlay.src = '../assets/icons/save_overlay.svg';
-        saveOverlay.alt = 'Save project';
-        saveOverlay.className = 'card-save';
-        shadow.querySelector('.card-project').appendChild(saveOverlay);
+            savedOverlay.addEventListener('click', () => this.handleUnsave(p.project_id));
+          } else {
+            const saveOverlay = document.createElement('img');
+            saveOverlay.src = '../assets/icons/save_overlay.svg';
+            saveOverlay.alt = 'Save project';
+            saveOverlay.className = 'card-save';
+            shadow.querySelector('.card-project').appendChild(saveOverlay);
 
-        saveOverlay.addEventListener('click', () => this.handleSave(p.project_id));
+            saveOverlay.addEventListener('click', () => this.handleSave(p.project_id));
+          }
+          break;
+        
+        case 'edit':
+          break;
+
+        default:
+          break;
       }
+
+      let cardProject = shadow.querySelector('.card-project');
 
       shadow.querySelector('h2').addEventListener('click', () => {
         window.location.href = `project/${encodeURIComponent(p.project_id)}`;
+      });
+      shadow.querySelector('h2').addEventListener('mouseover', () => {
+        cardProject.style.backgroundColor = '#E0D9CC';
+      });
+
+      shadow.querySelector('h2').addEventListener('mouseout', () => {
+        cardProject.style.backgroundColor = '#F0EBE2';
       });
     }
   }

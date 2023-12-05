@@ -5,6 +5,15 @@ session_start();
 <!DOCTYPE html>
 <html lang='en' dir='ltr'>
   <head>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRJE9WJPQ"></script>
+      <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-EMRJE9WJPQ');
+      </script>
     <meta charset='utf-8'>
     <title>Fusebox</title>
       <meta name="description" content="Connecting to create.">
@@ -15,16 +24,8 @@ session_start();
     <script src='../components/Header/HeaderNav.js' type='text/javascript'></script>
     <script src='../components/Card/CardProject.js' type='text/javascript'></script>
     <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='../pages/dashboard.js' type='module'></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EMRJE9WJPQ"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-EMRJE9WJPQ');
-    </script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src='../pages/dashboard.js' type='module'></script>
   </head>
 
   <body>
@@ -40,7 +41,7 @@ session_start();
       <div>
         <div id='filter-container'>
           Welcome back, <?php echo($_SESSION["user_fname"]);?>!
-          <p>Results: <span id="numResults"></span></p>
+          <p>Project results: <span id="numResults"></span></p>
 
           <h3>Applied Filters:</h3>
             <div id="appliedTypeFilters"><strong>Types:</strong> </div>
