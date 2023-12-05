@@ -23,15 +23,73 @@ $profilesql = "UPDATE profile SET " .
 
     "role3_id= " . $_REQUEST["tertiaryRole"] .
 
-    " WHERE profile_id = 73";
+    " WHERE profile_id = " . $_SESSION["user_id"];
+
+$profileresults = $conn->query($profilesql);
+
+if (!$profileresults) {
+
+    echo "Could NOT save profile changes.";
+
+    echo $conn->error;
+
+    exit();
+
+}
+
+$primaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES " .
+
+    "profile_id= " . $_SESSION["user_id"] . ", " .
+
+    "skill_id= " . $_REQUEST["primarySkill"] ;
 
 //    " WHERE profile_id = " . $_SESSION["user_id"];
 
-$results = $conn->query($profilesql);
+$primaryskillresults = $conn->query($primaryskillsql);
 
-if (!$results) {
+if (!$primaryskillresults) {
 
-    echo "Could NOT save changes.";
+    echo "Could NOT save primary SQL changes.";
+
+    echo $conn->error;
+
+    exit();
+
+}
+
+$secondaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES " .
+
+    "profile_id= " . $_SESSION["user_id"] . ", " .
+
+    "skill_id= " . $_REQUEST["secondarySkill"] ;
+
+//    " WHERE profile_id = " . $_SESSION["user_id"];
+
+$secondaryskillresults = $conn->query($primaryskillsql);
+
+if (!$secondaryskillresults) {
+
+    echo "Could NOT save secondary SQL changes.";
+
+    echo $conn->error;
+
+    exit();
+
+}
+
+$tertiaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES " .
+
+    "profile_id= " . $_SESSION["user_id"] . ", " .
+
+    "skill_id= " . $_REQUEST["tertiarySkill"] ;
+
+//    " WHERE profile_id = " . $_SESSION["user_id"];
+
+$tertiaryskillresults = $conn->query($tertiaryskillsql);
+
+if (!$secondaryskillresults) {
+
+    echo "Could NOT save tertiary SQL changes.";
 
     echo $conn->error;
 
