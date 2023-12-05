@@ -137,7 +137,7 @@ closeCon($conn);
                             echo "<div class='sides'>";
                             echo "<div>" . $pronouns . "</div>";
                             echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
-                            echo "</a></div>";
+                            echo "</a></div></div>";
                         } else {
                             echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
                             echo "</a></div> ";
@@ -265,7 +265,6 @@ closeCon($conn);
             </div>
         </div>
     </div>
-</div>
 <a href="editprofile.php">
     <div class="button-basic">Edit Profile</div>
 </a>
@@ -276,6 +275,7 @@ closeCon($conn);
 </ul>
 <div id='cards-container'></div>
 
+</div>
 
 </body>
 
