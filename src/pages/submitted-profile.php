@@ -47,9 +47,7 @@ if (empty($_FILES["profile"]["name"])) {
         $stmt->bind_param("si", $targetFilePath, $profileId);
 
         if ($stmt->execute()) {
-            $connected = false;
 
-            echo "File content inserted into the database for profile ID: " . $profileId;
         } else {
             $connected = false;
 
@@ -207,7 +205,7 @@ if (!$stmtr2) {
     die('Error preparing statement: ' . $conn->error);
 }
 
-$stmtr2->bind_param("si", $role2, $profileId);
+$stmtr2->bind_param("ii", $role2, $profileId);
 
 if ($stmtr2->execute()) {
 
@@ -243,7 +241,6 @@ $stmtabt = $conn->prepare($abtQuery);
 
 if (!$stmtabt) {
     $connected = false;
-
     die('Error preparing statement: ' . $conn->error);
 }
 

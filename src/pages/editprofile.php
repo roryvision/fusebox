@@ -280,6 +280,7 @@ if($count>2){
                     }else{
                         echo "<option value='ALL' >Select a role</option>
                     <option disabled >–––</option>";
+
                     }
                     $rolesql = "SELECT * FROM role";
                     $roleresults = $conn -> query($rolesql);

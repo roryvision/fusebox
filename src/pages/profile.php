@@ -12,7 +12,6 @@ session_start();
     <script src='../components/Header/HeaderNav.js' type='text/javascript'></script>
     <script src='../helpers/CardHelper.js' type='module'></script>
     <script src='../components/Card/CardProject.js' type='text/javascript'></script>
-    <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src='../pages/profile.js' type='module'></script>
 </head>
@@ -94,14 +93,14 @@ closeCon($conn);
                         echo $major1;
                         ?></div>
                     <?php
-                    if($major2!=null){
+                    if ($major2 != null) {
                         echo "<div id='major-2' class='majors'>";
 
                         echo $major2;
                         echo "</div>";
                     }
 
-                        ?>
+                    ?>
 
                     <div class="b2">
                         <?php
@@ -147,98 +146,97 @@ closeCon($conn);
 
                         ?>
                     </div>
-                </div>
-                <div id="roles">
-                    <?php
-                    if($roletype1!=null && $role1!=null){
-                        $roleclass = '';
+                    <div id="roles">
+                        <?php
+                        if ($roletype1 != null && $role1 != null) {
+                            $roleclass = '';
 
-                        switch ($roletype1) {
-                            case 'Tech':
-                                $roleclass = 'tech-role';
-                                break;
-                            case 'Visual':
-                                $roleclass = 'visual-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Business':
-                                $roleclass = 'business-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Film':
-                                $roleclass = 'film-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Performing':
-                                $roleclass = 'performing-role'; // Assign a specific class for Type B
-                                break;
-                            default:
-                                $roleclass = 'general-role'; // Default color class
-                                break;
+                            switch ($roletype1) {
+                                case 'Tech':
+                                    $roleclass = 'tech-role';
+                                    break;
+                                case 'Visual':
+                                    $roleclass = 'visual-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Business':
+                                    $roleclass = 'business-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Film':
+                                    $roleclass = 'film-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Performing':
+                                    $roleclass = 'performing-role'; // Assign a specific class for Type B
+                                    break;
+                                default:
+                                    $roleclass = 'general-role'; // Default color class
+                                    break;
+                            }
+                            echo "<div class='" . $roleclass . "'>" . $role1 . "</div>";
+
                         }
-                        echo "<div class='" . $roleclass . "'>" . $role1 . "</div>";
 
-                    }
-
-                    if ($role2 != null) {
-                        switch ($roletype2) {
-                            case 'Tech':
-                                $roleclass = 'tech-role';
-                                break;
-                            case 'Visual':
-                                $roleclass = 'visual-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Business':
-                                $roleclass = 'business-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Film':
-                                $roleclass = 'film-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Performing':
-                                $roleclass = 'performing-role'; // Assign a specific class for Type B
-                                break;
-                            default:
-                                $roleclass = 'general-role'; // Default color class
-                                break;
+                        if ($role2 != null) {
+                            switch ($roletype2) {
+                                case 'Tech':
+                                    $roleclass = 'tech-role';
+                                    break;
+                                case 'Visual':
+                                    $roleclass = 'visual-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Business':
+                                    $roleclass = 'business-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Film':
+                                    $roleclass = 'film-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Performing':
+                                    $roleclass = 'performing-role'; // Assign a specific class for Type B
+                                    break;
+                                default:
+                                    $roleclass = 'general-role'; // Default color class
+                                    break;
+                            }
+                            echo "<div class='" . $roleclass . "'>" . $role2 . "</div>";
                         }
-                        echo "<div class='" . $roleclass . "'>" . $role2 . "</div>";
-                    }
-                    if ($role3 != null) {
-                        switch ($roletype3) {
-                            case 'Tech':
-                                $roleclass = 'tech-role';
-                                break;
-                            case 'Visual':
-                                $roleclass = 'visual-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Business':
-                                $roleclass = 'business-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Film':
-                                $roleclass = 'film-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Performing':
-                                $roleclass = 'performing-role'; // Assign a specific class for Type B
-                                break;
-                            default:
-                                $roleclass = 'general-role'; // Default color class
-                                break;
+                        if ($role3 != null) {
+                            switch ($roletype3) {
+                                case 'Tech':
+                                    $roleclass = 'tech-role';
+                                    break;
+                                case 'Visual':
+                                    $roleclass = 'visual-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Business':
+                                    $roleclass = 'business-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Film':
+                                    $roleclass = 'film-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Performing':
+                                    $roleclass = 'performing-role'; // Assign a specific class for Type B
+                                    break;
+                                default:
+                                    $roleclass = 'general-role'; // Default color class
+                                    break;
+                            }
+                            echo "<div class='" . $roleclass . "'>" . $role3 . "</div>";
                         }
-                        echo "<div class='" . $roleclass . "'>" . $role3 . "</div>";
-                    }
-                    ?>
-                </div>
-                <div id="profile-section" class="w-100">
-                    <h2>About</h2>
-                    <hr>
-                    <?php
-                    echo $bio;
-                    ?>
+                        ?>
+                    </div>
+                    <div id="profile-section" class="w-100">
+                        <h2>About</h2>
+                        <hr>
+                        <?php
+                        echo $bio;
+                        ?>
 
-                </div>
-                <div id="profile-section" class="w-100">
-                    <h2>Skills</h2>
-                    <hr>
-                    <div id="skill-container">
-                    <?php
-                    $conn = openCon();
+                    </div>
+                    <div id="profile-section" class="w-100">
+                        <h2>Skills</h2>
+                        <hr>
+                        <div id="skill-container">
+                            <?php
+                            $conn = openCon();
 
 
                             $skill_sql = "SELECT skills
@@ -257,10 +255,11 @@ closeCon($conn);
                             }
                             $row['skills'] = $skills;
 
-                    closeCon($conn);
+                            closeCon($conn);
 
 
-                    ?>
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -277,7 +276,7 @@ closeCon($conn);
 </ul>
 <div id='cards-container'></div>
 
-</div>
+
 </body>
 
 
