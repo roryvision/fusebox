@@ -378,7 +378,7 @@ if($count>2){
                 if($instagram){
                     echo "<input type='text' id='instagram' name='instagram' class='filled' value = " . $instagram . ">";
                 }else{
-                    echo "<input type='text' id='instagram' name='instagram'  value = 'Instagram'>";
+                    echo "<input type='text' id='instagram' name='instagram'  placeholder = 'Instagram'>";
                 }
 
                 ?>
@@ -392,7 +392,7 @@ if($count>2){
                 if($linkedin){
                     echo "<input type='text' id='linkedin' name='linkedin' class='filled' value = " . $linkedin . ">";
                 }else{
-                    echo "<input type='text' id='linkedin' name='linkedin'  value = 'Website 2'>";
+                    echo "<input type='text' id='linkedin' name='linkedin'  placeholder = 'Website'>";
                 }
 
                 ?>

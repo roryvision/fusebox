@@ -31,7 +31,6 @@ $sql = "SELECT p.profile_id, p.profile_pic, m1.major AS major1, m2.major AS majo
         LEFT JOIN pronoun pr ON p.pronoun_id = pr.pronoun_id
         WHERE p.profile_id =" . $_SESSION["user_id"];
 
-echo $_SESSION["user_id"];
 
 $result = $conn->query($sql);
 
@@ -82,7 +81,7 @@ closeCon($conn);
                     <div class='img-container'>
                         <?php
                         if ($pfp != null) {
-                            echo "<img src=" . $pfp . ">";
+                            echo "<div id='img-cutoff'><img src=" . $pfp . "></div>";
                         } else {
                             echo "<div id='img-cutoff'><img src='../assets/images/chuubear.jpeg'></div>";
 

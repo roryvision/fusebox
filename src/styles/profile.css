@@ -48,6 +48,7 @@ header-nav{
     flex: 1 0 0;
 }
 
+
 #content-left{
     display: flex;
     flex-direction: column;
@@ -76,10 +77,8 @@ header-nav{
     width: 260px;
     z-index: 333;
     transform: rotate(-2deg);
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    max-width: 100%; /* Ensure the image doesn't exceed container width */
-    max-height: 100%; /* Ensure the image doesn't exceed container height */
+    top: 50%;
+    left: 50%;
 }
 
 .majors{
@@ -193,7 +192,7 @@ a{
 #content-right{
     display:flex;
     flex-direction:column;
-    gap:24px;
+    gap:16px;
 }
 #roles{
     display:flex;
@@ -226,8 +225,8 @@ a{
     flex-wrap: wrap;
 }
 #img-cutoff{
-    width:250px;
-    height: 250px;
+    width:260px;
+    height: 260px;
     position:relative;
     overflow: hidden;
 

@@ -1,4 +1,5 @@
 import { displayProject } from '../helpers/CardHelper.js';
+
 let createdProjects = [];
 let savedProjects = [];
 let appliedProjects = [];
