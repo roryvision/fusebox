@@ -69,6 +69,14 @@ require_once('../helpers/db-connection.php');
             white-space: nowrap;
         }
 
+        #editButton{
+
+        }
+
+        #deleteButton{
+
+        }
+
         .popupbuttons{
             display: flex;
             flex-direction: column;
