@@ -60,9 +60,7 @@ $conn = openCon();
                 <h1>Hello!</h1>
 <!--                <h1>Hello, --><?php //= htmlspecialchars($user["fname"]) ?><!--</h1>-->
                 <p>Help us set up your business card to show your peers by answering the next few questions.</p>
-                <div class="button">
                     <input type="button" value="Next" class="button" id="click-1" data-onboard-target="onboard-2">
-                </div>
             </div>
 
 
@@ -110,9 +108,7 @@ $conn = openCon();
                     ?>
                 </select>
                 <br>
-                <div class="button">
                     <input type="button" value="Next" class="button" id="click-2" data-onboard-target="onboard-3">
-                </div>
             </div>
 
             <div id="onboard-3" class="step-card">
@@ -180,9 +176,9 @@ $conn = openCon();
                     ?>
                 </select>
                 <br>
-                <div class="button">
+
                     <input type="button" value="Next" class="button" id="click-3" data-onboard-target="onboard-4">
-                </div>
+
             </div>
 
             <div id="onboard-4" class="step-card">
@@ -250,35 +246,31 @@ $conn = openCon();
                     ?>
                 </select>
                 <br>
-                <div class="button">
                     <input type="button" value="Next" class="button" id="click-34" data-onboard-target="onboard-5">
-                </div>
             </div>
 
             <div id="onboard-5" class="step-card">
                 <h1>What year do you expect to graduate?</h1>
                 <label for="gradyear"></label>
                 <input type="text" name="gradyear" placeholder="20XX">
-                <div class="button">
                     <input type="button" value="Next" class="button" id="click-5" data-onboard-target="onboard-6">
-                </div>
+
             </div>
 
             <div id="onboard-6" class="step-card">
                 <h1>Remember to upload a profile picture!</h1>
                 <p>Navigate to your account profile to add a profile picture.</p>
-                <div class="button">
                     <input type="button" value="Next" class="button" id="click-6" data-onboard-target="onboard-7">
-                </div>
+
             </div>
 
             <div id="onboard-7" class="step-card">
                 <img src="../../assets/icons/icon_profile.svg" alt="profile icon">
                 <h1>Welcome to Fusebox!</h1>
 <!--                <h1>Welcome to Fusebox, --><?php //= htmlspecialchars($user["fname"]) ?><!--</h1>-->
-
-                <div class="button">
-                    <a href="../dashboard.php"><input type="submit" value="Start Browsing Projects" class="button" id="click-7"></a>
+                <div>
+                <input type="submit" value="Start Browsing Projects"  id="click-7">
+<!--                    <a href="../dashboard.php"><input type="submit" value="Start Browsing Projects"  id="click-7"></a>-->
                 </div>
             </div>
 
