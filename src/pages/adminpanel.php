@@ -205,11 +205,6 @@ require_once('../helpers/db-connection.php');
             modal.style.display = 'none';
         }
 
-        document.getElementById('editButton').addEventListener('click', function () {
-            // Change the window location to your edit page URL
-            window.location.href = `../fusebox/src/pages/editproject.php?id=${projectId}`;
-        });
-
         document.getElementById('deleteButton').addEventListener('click', function () {
             // Change the window location to your edit page URL
             window.location.href = '../fusebox/src/pages/deleteprojectindb.php';

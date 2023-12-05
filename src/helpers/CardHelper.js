@@ -95,6 +95,18 @@ const displayEditPerson = (personData, isSaved) => {
       modal.style.display = 'none';
     });
 
+    const edit = document.createElement('div');
+    edit.className = 'editbutton';
+    // Add a click event listener to the circle element
+    edit.addEventListener('click', () => {
+      // Extract the project ID from projectData (replace 'project_id' with the actual property)
+      const projectId = projectData.project_id;
+      // Construct the URL for the edit project page
+      const editProjectURL = `editproject.php?id=${projectId}`;
+      // Navigate to the edit project page
+      window.location.href = editProjectURL;
+    });
+
   });
 
   // Append the circle element to your document or another container
