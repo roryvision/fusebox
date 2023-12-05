@@ -4,7 +4,7 @@ let typesArray = [];
 let rolesArray = [];
 let numResults = 0;
 $(document).ready(async () => {
-    projects = await fetch('../api/projects.php')
+    projects = await fetch('../api/projects')
         .then(res => {
             if (!res.ok) {
                 throw new Error('Error fetching projects');
@@ -14,11 +14,10 @@ $(document).ready(async () => {
         }).catch(error => {
             console.error(error);
         });
-
+    
     if (projectSearch) {
-        console.log("i'm here");
-        projects = projects.filter(function (p){
-            return p.project_name.includes(projectSearch) || p.category_name.includes(projectSearch);
+        projects = projects.filter(function (p) {
+            return p.project_name.toLowerCase().includes(projectSearch.toLowerCase()) || p.category_name.toLowerCase().includes(projectSearch.toLowerCase());
         });
         $('#cards-container').empty();
 
@@ -99,8 +98,6 @@ document.addEventListener('DOMContentLoaded', function () { // event listener fo
 });
 
 function performSearch() {
-    console.log("performsearch");
-
     if (rolesArray.length !== 0 || typesArray.length !== 0) {
         let filteredProjects = projects.filter(function (p) {
             // Check if at least one selected role is in p's roles
@@ -117,7 +114,6 @@ function performSearch() {
 
         $('#cards-container').empty();
 
-        console.log(filteredProjects);
         filteredProjects.forEach(function (p) {
             displayProject(p);
         });
@@ -140,6 +136,5 @@ function performSearch() {
 function displayAllProjects() {
     $('#cards-container').empty();
     projects.forEach(p => displayProject(p));
-    console.log("displayall");
 }
 
