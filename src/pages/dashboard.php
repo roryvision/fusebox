@@ -24,8 +24,8 @@ session_start();
     <script src='../components/Header/HeaderNav.js' type='text/javascript'></script>
     <script src='../components/Card/CardProject.js' type='text/javascript'></script>
     <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src='../pages/dashboard.js' type='module'></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script src='../pages/dashboard.js' type='module'></script>
   </head>
 
   <body>
@@ -41,7 +41,7 @@ session_start();
       <div>
         <div id='filter-container'>
           Welcome back, <?php echo($_SESSION["user_fname"]);?>!
-          <p>Results: <span id="numResults"></span></p>
+          <p>Project results: <span id="numResults"></span></p>
 
           <h3>Applied Filters:</h3>
             <div id="appliedTypeFilters"><strong>Types:</strong> </div>

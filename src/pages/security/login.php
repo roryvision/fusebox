@@ -61,17 +61,14 @@ closeCon($conn);
 </head>
 <body>
 
-<div class="flex">
+<div class="flex-big">
     <div class="left_content">
-        <div class="left_text">
-            <h4>The best place to find your dream team.</h4>
-
-            <p>Find the students you need to bring your project to life.</p>
-        </div>
+        <h4>The best place to find your dream team.</h4>
+        <p>Find the students you need to bring your project to life.</p>
     </div>
 
     <div class="flex">
-        <div class="right_content">
+        <div class="right_content" style="height: 475px;">
             <div class="title">
                 <img src="../../assets/icons/icon_profile.svg">
                 <h1>Welcome Back!</h1>
@@ -94,9 +91,7 @@ closeCon($conn);
                         <label for="password">Password</label><br>
                         <input type="password" id="password" name="password"  placeholder="Password">
                     </div>
-
-                    <div class="secondary"><a href="">Forgot Password?</a></div>
-
+                    <br/>
                     <div class="button">
                         <input type="submit" value="Log In" class="button">
                     </div>
