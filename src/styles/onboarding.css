@@ -44,20 +44,19 @@ select {
     display: block;
 }
 
-/*#onboard-1 {*/
-/*    text-align: center;*/
-/*}*/
-
 #onboard-1 img {
     width: 100px;
     margin-left: 200px;
 }
 
 
-#onboard-7 img {
+#onboard-6 img {
     width: 100px;
     margin-left: 200px;
+    margin-top: 40px;
 }
+
+
 
 
 .button {
@@ -93,5 +92,9 @@ input[type="submit"] {
     background-color: #ccc;
     color: white;
     cursor: not-allowed;
+}
+
+.center {
+    text-align: center;
 }
 

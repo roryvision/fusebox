@@ -59,7 +59,7 @@ $conn = openCon();
                 <img src="../../assets/icons/icon_profile.svg" alt="profile icon">
                 <h1>Hello!</h1>
 <!--                <h1>Hello, --><?php //= htmlspecialchars($user["fname"]) ?><!--</h1>-->
-                <p>Help us set up your business card to show your peers by answering the next few questions.</p>
+                <p class="center">Help us set up your business card to show your peers by answering the next few questions.</p>
                     <input type="button" value="Next" class="button" id="click-1" data-onboard-target="onboard-2">
             </div>
 
@@ -68,7 +68,7 @@ $conn = openCon();
                 <h1>What's your major?</h1>
                 <label for="major1">Major 1</label><br>
                 <select name="major1" id="major1">
-                    <option value="" disabled selected>Select a major</option>
+                    <option value="NULL">Select a major</option>
                     <?php
 
                     $sql = "SELECT * FROM major";
@@ -181,95 +181,95 @@ $conn = openCon();
 
             </div>
 
+<!--            <div id="onboard-4" class="step-card">-->
+<!--                <h1>What are your skills?</h1>-->
+<!--                <label for="primarySkill">Primary</label><br>-->
+<!--                <select name="primarySkill" id="primarySkill">-->
+<!--                    <option value="NULL">Select your primary skill.</option>-->
+<!--                    --><?php
+//
+//                    $sql = "SELECT * FROM skill";
+//
+//                    $results = $conn->query($sql);
+//
+//                    if(!$results) {
+//                        echo "SQL error: ". $conn->error;
+//                        exit();
+//                    }
+//
+//                    while($currentrow = $results->fetch_assoc()) {
+//                        echo "<option value='" . $currentrow['skill_id'] . "'>" . $currentrow['skills'] . "</option>";
+//                    }
+//                    ?>
+<!--                </select>-->
+<!---->
+<!--                <br>-->
+<!---->
+<!--                <label for="secondarySkill">Secondary</label><br>-->
+<!--                <select name="secondarySkill" id="secondarySkill">-->
+<!--                    <option value="NULL">Select your secondary skill.</option>-->
+<!--                    --><?php
+//
+//                    $sql = "SELECT * FROM skill";
+//
+//                    $results = $conn->query($sql);
+//
+//                    if(!$results) {
+//                        echo "SQL error: ". $conn->error;
+//                        exit();
+//                    }
+//
+//                    while($currentrow = $results->fetch_assoc()) {
+//                        echo "<option value='" . $currentrow['skill_id'] . "'>" . $currentrow['skills'] . "</option>";
+//                    }
+//                    ?>
+<!--                </select>-->
+<!---->
+<!--                <br>-->
+<!--                <label for="tertiarySkill">Tertiary</label><br>-->
+<!--                <select name="tertiarySkill" id="tertiarySkill">-->
+<!--                    <option value="NULL">Select your tertiary skill.</option>-->
+<!--                    --><?php
+//
+//                    $sql = "SELECT * FROM skill";
+//
+//                    $results = $conn->query($sql);
+//
+//                    if(!$results) {
+//                        echo "SQL error: ". $conn->error;
+//                        exit();
+//                    }
+//
+//                    while($currentrow = $results->fetch_assoc()) {
+//                        echo "<option value='" . $currentrow['skill_id'] . "'>" . $currentrow['skills'] . "</option>";
+//                    }
+//                    ?>
+<!--                </select>-->
+<!--                <br>-->
+<!--                    <input type="button" value="Next" class="button" id="click-34" data-onboard-target="onboard-5">-->
+<!--            </div>-->
+
             <div id="onboard-4" class="step-card">
-                <h1>What are your skills?</h1>
-                <label for="primarySkill">Primary</label><br>
-                <select name="primarySkill" id="primarySkill">
-                    <option value="NULL">Select your primary skill.</option>
-                    <?php
-
-                    $sql = "SELECT * FROM skill";
-
-                    $results = $conn->query($sql);
-
-                    if(!$results) {
-                        echo "SQL error: ". $conn->error;
-                        exit();
-                    }
-
-                    while($currentrow = $results->fetch_assoc()) {
-                        echo "<option value='" . $currentrow['skill_id'] . "'>" . $currentrow['skills'] . "</option>";
-                    }
-                    ?>
-                </select>
-
-                <br>
-
-                <label for="secondarySkill">Secondary</label><br>
-                <select name="secondarySkill" id="secondarySkill">
-                    <option value="NULL">Select your secondary skill.</option>
-                    <?php
-
-                    $sql = "SELECT * FROM skill";
-
-                    $results = $conn->query($sql);
-
-                    if(!$results) {
-                        echo "SQL error: ". $conn->error;
-                        exit();
-                    }
-
-                    while($currentrow = $results->fetch_assoc()) {
-                        echo "<option value='" . $currentrow['skill_id'] . "'>" . $currentrow['skills'] . "</option>";
-                    }
-                    ?>
-                </select>
-
-                <br>
-                <label for="tertiarySkill">Tertiary</label><br>
-                <select name="tertiarySkill" id="tertiarySkill">
-                    <option value="NULL">Select your tertiary skill.</option>
-                    <?php
-
-                    $sql = "SELECT * FROM skill";
-
-                    $results = $conn->query($sql);
-
-                    if(!$results) {
-                        echo "SQL error: ". $conn->error;
-                        exit();
-                    }
-
-                    while($currentrow = $results->fetch_assoc()) {
-                        echo "<option value='" . $currentrow['skill_id'] . "'>" . $currentrow['skills'] . "</option>";
-                    }
-                    ?>
-                </select>
-                <br>
-                    <input type="button" value="Next" class="button" id="click-34" data-onboard-target="onboard-5">
-            </div>
-
-            <div id="onboard-5" class="step-card">
                 <h1>What year do you expect to graduate?</h1>
                 <label for="gradyear"></label>
                 <input type="text" name="gradyear" placeholder="20XX">
+                    <input type="button" value="Next" class="button" id="click-4" data-onboard-target="onboard-5">
+
+            </div>
+
+            <div id="onboard-5" class="step-card">
+                <h1>Fine tune your profile.</h1>
+                <p class="center">Navigate to your account profile to add a profile picture, skills, and more.</p>
                     <input type="button" value="Next" class="button" id="click-5" data-onboard-target="onboard-6">
 
             </div>
 
             <div id="onboard-6" class="step-card">
-                <h1>Remember to upload a profile picture!</h1>
-                <p>Navigate to your account profile to add a profile picture.</p>
-                    <input type="button" value="Next" class="button" id="click-6" data-onboard-target="onboard-7">
-
-            </div>
-
-            <div id="onboard-7" class="step-card">
                 <img src="../../assets/icons/icon_profile.svg" alt="profile icon">
                 <h1>Welcome to Fusebox!</h1>
 <!--                <h1>Welcome to Fusebox, --><?php //= htmlspecialchars($user["fname"]) ?><!--</h1>-->
                 <div>
-                <input type="submit" value="Start Browsing Projects"  id="click-7">
+                <input type="submit" value="Start Browsing Projects"  id="click-6">
 <!--                    <a href="../dashboard.php"><input type="submit" value="Start Browsing Projects"  id="click-7"></a>-->
                 </div>
             </div>

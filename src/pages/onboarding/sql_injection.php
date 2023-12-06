@@ -46,7 +46,7 @@ if (!$major2results) {
     exit();
 }
 
-if ($gradyear === "NULL") {
+if (empty($gradyear)) {
     $gradyearsql = "UPDATE profile SET gradyear = NULL WHERE profile_id = '$profile_id'";
 }
 else {
@@ -107,6 +107,53 @@ if (!$role3results) {
     echo $conn->error;
     exit();
 }
+
+//if ($primarySkill === "NULL") {
+//    $primaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id=NULL";
+//}
+//else {
+//    $primaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id='primarySkill'";
+//}
+//
+//$primaryskillresults = $conn->query($primaryskillsql);
+//
+//if (!$primaryskillresults) {
+//    echo "Could NOT save primarySkill changes.";
+//    echo $conn->error;
+//    exit();
+//}
+//
+//if ($secondarySkill === "NULL") {
+//    $secondaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id=NULL";
+////    exit(); or this because we just won't enter anything?
+//}
+//else {
+//    $secondaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id='secondarySkill'";
+//}
+//
+//$secondaryskillresults = $conn->query($secondaryskillsql);
+//
+//if (!$secondaryskillresults) {
+//    echo "Could NOT save secondarySkill changes.";
+//    echo $conn->error;
+//    exit();
+//}
+//
+//if ($tertiarySkill === "NULL") {
+//    $tertiaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id=NULL";
+////    exit(); or this because we just won't enter anything?
+//}
+//else {
+//    $tertiaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id='tertiarySkill'";
+//}
+//
+//$tertiaryskillresults = $conn->query($tertiaryskillsql);
+//
+//if (!$tertiaryskillresults) {
+//    echo "Could NOT save tertiarySkill changes.";
+//    echo $conn->error;
+//    exit();
+//}
 
 header("Location: ../dashboard.php");
 
@@ -211,52 +258,7 @@ closeCon($conn);
 //
 
 //
-//if ($primarySkill === "NULL") {
-//    $primaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id=NULL";
-//}
-//else {
-//    $primaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id='primarySkill'";
-//}
-//
-//$primaryskillresults = $conn->query($primaryskillsql);
-//
-//if (!$primaryskillresults) {
-//    echo "Could NOT save primarySkill changes.";
-//    echo $conn->error;
-//    exit();
-//}
-//
-//if ($secondarySkill === "NULL") {
-//    $secondaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id=NULL";
-////    exit(); or this because we just won't enter anything?
-//}
-//else {
-//    $secondaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id='secondarySkill'";
-//}
-//
-//$secondaryskillresults = $conn->query($secondaryskillsql);
-//
-//if (!$secondaryskillresults) {
-//    echo "Could NOT save secondarySkill changes.";
-//    echo $conn->error;
-//    exit();
-//}
-//
-//if ($tertiarySkill === "NULL") {
-//    $tertiaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id=NULL";
-////    exit(); or this because we just won't enter anything?
-//}
-//else {
-//    $tertiaryskillsql = "INSERT INTO profiles_x_skills (profile_id, skill_id) VALUES profile_id='$profile_id', skill_id='tertiarySkill'";
-//}
-//
-//$tertiaryskillresults = $conn->query($tertiaryskillsql);
-//
-//if (!$tertiaryskillresults) {
-//    echo "Could NOT save tertiarySkill changes.";
-//    echo $conn->error;
-//    exit();
-//}
+
 ?>
 
 
