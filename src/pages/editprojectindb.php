@@ -12,6 +12,7 @@ if (isset($_REQUEST["selectedRoles"]) && is_array($_REQUEST["selectedRoles"])) {
     $selectedRoles = ''; // Set a default value or handle it accordingly based on your logic
 }
 
+$projectId = isset($_GET['id']) ? $_GET['id'] : null;
 
 $sql = "UPDATE project 
         SET 
@@ -20,7 +21,7 @@ $sql = "UPDATE project
             description='{$_REQUEST['description']}',
             category_id='{$_REQUEST['selectedCategory']}'
         WHERE 
-            project_id='$projectId'";
+            project_id=" . ($projectId !== null ? $projectId : 'NULL');
 
 if ($conn->query($sql) !== TRUE) {
     echo "Error: " . $sql . "<br>" . $conn->error;
