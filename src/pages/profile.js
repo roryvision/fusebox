@@ -1,5 +1,4 @@
-import { displayProject } from '../helpers/CardHelper.js';
-
+import {displayEditProject, displayProject} from '../helpers/CardHelper.js';
 let createdProjects = [];
 let savedProjects = [];
 let appliedProjects = [];
@@ -41,7 +40,7 @@ $(document).ready(async () => {
       console.error(error);
     });
   
-  createdProjects.forEach((p) => displayProject(p, 'default', null));
+  createdProjects.forEach((p) => displayEditProject(p, false));
 
   $('#select-menu li').click(async function () {
     $('#select-menu li').removeClass('selected');
@@ -51,7 +50,7 @@ $(document).ready(async () => {
 
     switch ($(this).attr('value')) {
       case 'created':
-        createdProjects.forEach((p) => displayProject(p, 'default', null));
+        createdProjects.forEach((p) => displayEditProject(p, false));
         break;
       case 'saved':
         savedProjects = await fetch('../api/projects/save.php')
@@ -75,3 +74,5 @@ $(document).ready(async () => {
 
 
 });
+
+

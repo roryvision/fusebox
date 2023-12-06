@@ -274,6 +274,34 @@ closeCon($conn);
 </ul>
 <div id='cards-container'></div>
 
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span onclick="closeModal()" style="float: right; cursor: pointer;">&times;</span>
+            <!-- Add your modal content here -->
+            <div class = "popupButtons">
+                <button id = "editbutton" class = "editButton">Edit Project</button>
+                <button id = "deletebutton">Delete Project</button>
+            </div>
+        </div>
+        <script>
+            function closeModal() {
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'none';
+            }
+
+            document.getElementById('editbutton').addEventListener('click', function () {
+                // Change the window location to your edit page URL
+                window.location.href = `../fusebox/src/pages/editproject.php?id=${projectId}`;
+            });
+
+            document.getElementById('deletebutton').addEventListener('click', function () {
+                // Change the window location to your edit page URL
+                window.location.href = '../fusebox/src/pages/deleteprojectindb.php';
+            });
+        </script>
+    </div>
+
 </div>
 
 </body>
