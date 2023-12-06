@@ -136,6 +136,37 @@ require_once('../helpers/db-connection.php');
             display: block;
         }
 
+        .discard{
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            color: #DC1F1F;
+            font-size: 10pt;
+        }
+
+        .save{
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            background-color: #DC1F1F;
+            color: white;
+            font-size: 10pt;
+            white-space: nowrap;
+        }
+
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
 
 
     </style>
@@ -201,6 +232,24 @@ require_once('../helpers/db-connection.php');
                     ?>
 
                 </div>
+
+                <div class = "buttons">
+                    <button class = discard id="discardBtn">Discard</button>
+                    <button class = save type = "submit" name = "submit">Add Project</button>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            // Add an event listener to the "Discard" button
+                            const discardBtn = document.getElementById('discardBtn');
+
+                            discardBtn.addEventListener('click', () => {
+                                // Navigate back to dashboard.php
+                                window.location.href = 'dashboard.php';
+                            });
+                        });
+                    </script>
+                </div>
+
 
             </div>
 
