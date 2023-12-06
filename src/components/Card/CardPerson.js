@@ -25,7 +25,7 @@ cardPersonTemplate.innerHTML = `
         <p class='major2' style='font-weight: 700; margin-top: 4px; margin-bottom: 6px; line-height: 18px;'></p>
         <div style='margin-top: 10px'>
          <p class='website1' style="font-size:9pt; width: 225px; line-height: 15px; overflow-wrap: break-word;"></p>
-         <p class='website2'></p>
+         <p class='website2' style="font-size:9pt; width: 225px; margin-top: 5px; line-height: 15px; overflow-wrap: break-word;"></p>
         </div>    
       </div>
       <div style= 'margin-top: 4px; text-align: left; display: flex; flex-direction: row; justify-content:flex-end; gap: 6px;'>
