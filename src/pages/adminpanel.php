@@ -45,7 +45,7 @@ require_once('../helpers/db-connection.php');
             box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.25);
         }
 
-        .editbutton{
+        #editButton{
             width: fit-content;
             padding-left: 15px;
             padding-right: 15px;
@@ -56,7 +56,7 @@ require_once('../helpers/db-connection.php');
             font-size: 10pt;
         }
 
-        .deletebutton{
+        #deleteButton{
             width: fit-content;
             padding-left: 15px;
             padding-right: 15px;
@@ -67,14 +67,6 @@ require_once('../helpers/db-connection.php');
             color: white;
             font-size: 10pt;
             white-space: nowrap;
-        }
-
-        #editButton{
-
-        }
-
-        #deleteButton{
-
         }
 
         .popupbuttons{
@@ -187,6 +179,7 @@ require_once('../helpers/db-connection.php');
         <div id='cards-container'>
         </div>
 
+    <input type="hidden" id="projectId" value="<?php echo isset($projectId) ? $projectId : ''; ?>">
 
     <!-- The Modal -->
     <div id="myModal" class="modal">
@@ -195,21 +188,33 @@ require_once('../helpers/db-connection.php');
             <span onclick="closeModal()" style="float: right; cursor: pointer;">&times;</span>
             <!-- Add your modal content here -->
             <div class = "popupbuttons">
-                <button id = "editButton" class = "editbutton">Edit Project</button>
-                <button class = "deletebutton">Delete Project</button>
+                <button id = "editButton">Edit Project</button>
+                <button id = "deleteButton">Delete Project</button>
             </div>
         </div>
-    <script>
-        function closeModal() {
-            var modal = document.getElementById('myModal');
-            modal.style.display = 'none';
-        }
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const editButton = document.getElementById('editButton');
+                const deleteButton = document.getElementById('deleteButton');
 
-        document.getElementById('deleteButton').addEventListener('click', function () {
-            // Change the window location to your edit page URL
-            window.location.href = '../fusebox/src/pages/deleteprojectindb.php';
-        });
-    </script>
+                editButton.addEventListener('click', function() {
+                    // Assuming you have a variable $projectId in your PHP code
+                    // to store the project ID fetched from the database
+                    <?php
+                    if (isset($projectId)) {
+                        echo "const projectId = " . json_encode($projectId) . ";";
+                        echo "window.location.href = 'editproject.php?id=' + projectId;";
+                    }
+                    ?>
+                });
+
+                function closeModal() {
+                    var modal = document.getElementById('myModal');
+                    modal.style.display = 'none';
+                }
+            });
+        </script>
+
 </div>
 </form>
 </body>

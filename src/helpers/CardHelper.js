@@ -9,6 +9,7 @@ const displayProject = (projectData, cardType, isSaved) => {
 const displayEditProject = (projectData, isSaved) => {
   const projectContainer = document.getElementById('cards-container');
   const project = document.createElement('card-project');
+  let projectId;
   const data = { ...projectData, isSaved };
   project.setProjectData(data);
   projectContainer.appendChild(project);
@@ -22,7 +23,7 @@ const displayEditProject = (projectData, isSaved) => {
 // Add a click event listener to the circle element
   circle.addEventListener('click', () => {
     // Replace 'project_id' with the actual property from projectData
-    const projectId = projectData.project_id;
+    projectId = projectData.project_id;
 
     // Assuming 'myModal' is the ID of your modal
     const modal = document.getElementById('myModal');
@@ -71,6 +72,7 @@ const displayEditPerson = (personData, isSaved) => {
 
   const circle = document.createElement('div');
   circle.className = 'circle2';
+  circle.innerHTML = '...';
 
   // Add a click event listener to the circle element
   circle.addEventListener('click', () => {
@@ -95,8 +97,11 @@ const displayEditPerson = (personData, isSaved) => {
       modal.style.display = 'none';
     });
 
+
+
     const edit = document.createElement('div');
     edit.className = 'editbutton';
+
     // Add a click event listener to the circle element
     edit.addEventListener('click', () => {
       // Extract the project ID from projectData (replace 'project_id' with the actual property)
@@ -106,6 +111,8 @@ const displayEditPerson = (personData, isSaved) => {
       // Navigate to the edit project page
       window.location.href = editProjectURL;
     });
+
+    document.getElementById('container').appendChild(edit);
 
   });
 
@@ -118,3 +125,7 @@ const displayEditPerson = (personData, isSaved) => {
 };
 
 export { displayProject, displayPerson, displayEditProject, displayEditPerson };
+
+console.log(projectData);
+console.log(projectData.project_id);
+console.log(editProjectURL);
