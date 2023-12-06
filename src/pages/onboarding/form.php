@@ -90,7 +90,7 @@ $conn = openCon();
 
                 <label for="major2">Major 2</label><br>
                 <select name="major2" id="major2">
-                    <option value="null">None</option>
+                    <option value="NULL">None</option>
                     <?php
 
                     $sql = "SELECT * FROM major";
@@ -115,7 +115,7 @@ $conn = openCon();
                 <h1>What do you do?</h1>
                 <label for="primaryRole">Primary</label><br>
                 <select name="primaryRole" id="primaryRole">
-                    <option value="none" disabled selected>Select your primary role.</option>
+                    <option value="NULL">Select your primary role.</option>
                     <?php
 
                     $sql = "SELECT * FROM role";
@@ -137,7 +137,7 @@ $conn = openCon();
 
                 <label for="secondaryRole">Secondary</label><br>
                 <select name="secondaryRole" id="secondaryRole">
-                    <option value="none" disabled selected>Select your secondary role.</option>
+                    <option value="NULL">Select your secondary role.</option>
                     <?php
 
                     $sql = "SELECT * FROM role";
@@ -158,7 +158,7 @@ $conn = openCon();
                 <br>
                 <label for="tertiaryRole">Tertiary</label><br>
                 <select name="tertiaryRole" id="tertiaryRole">
-                    <option value="none" disabled selected>Select your tertiary role.</option>
+                    <option value="NULL">Select your tertiary role.</option>
                     <?php
 
                     $sql = "SELECT * FROM role";
@@ -185,7 +185,7 @@ $conn = openCon();
                 <h1>What are your skills?</h1>
                 <label for="primarySkill">Primary</label><br>
                 <select name="primarySkill" id="primarySkill">
-                    <option value="none" disabled selected>Select your primary skill.</option>
+                    <option value="NULL">Select your primary skill.</option>
                     <?php
 
                     $sql = "SELECT * FROM skill";
@@ -207,7 +207,7 @@ $conn = openCon();
 
                 <label for="secondarySkill">Secondary</label><br>
                 <select name="secondarySkill" id="secondarySkill">
-                    <option value="none" disabled selected>Select your secondary skill.</option>
+                    <option value="NULL">Select your secondary skill.</option>
                     <?php
 
                     $sql = "SELECT * FROM skill";
@@ -228,7 +228,7 @@ $conn = openCon();
                 <br>
                 <label for="tertiarySkill">Tertiary</label><br>
                 <select name="tertiarySkill" id="tertiarySkill">
-                    <option value="none" disabled selected>Select your tertiary skill.</option>
+                    <option value="NULL">Select your tertiary skill.</option>
                     <?php
 
                     $sql = "SELECT * FROM skill";
