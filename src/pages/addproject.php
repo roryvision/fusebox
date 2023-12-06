@@ -149,6 +149,10 @@ require_once('../helpers/db-connection.php');
             font-size: 10pt;
         }
 
+        #discardBtn{
+
+        }
+
         .save{
             width: fit-content;
             padding-left: 15px;
@@ -216,8 +220,20 @@ require_once('../helpers/db-connection.php');
                 </div>
 
                 <div class = "buttons">
-                    <button class = discard>Discard</button>
-                    <button class = save type = "submit" name = "submit">Save Changes</button>
+                    <button class = discard id="discardBtn">Discard</button>
+                    <button class = save type = "submit" name = "submit">Add Project</button>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            // Add an event listener to the "Discard" button
+                            const discardBtn = document.getElementById('discardBtn');
+
+                            discardBtn.addEventListener('click', () => {
+                                // Navigate back to dashboard.php
+                                window.location.href = 'dashboard.php';
+                            });
+                        });
+                    </script>
                 </div>
 
 
@@ -298,6 +314,8 @@ require_once('../helpers/db-connection.php');
                             }
                         }
                     }
+
+
                 </script>
                 </div>
 
