@@ -180,20 +180,6 @@ require_once('../helpers/db-connection.php');
 
     <input type="hidden" id="projectId" value="<?php echo isset($projectId) ? $projectId : ''; ?>">
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span onclick="closeModal()" style="float: right; cursor: pointer;">&times;</span>
-            <!-- Add your modal content here -->
-            <div class = "popupbuttons">
-                <button id = "editButton">Edit Project</button>
-                <button id = "deleteButton">Delete Project</button>
-            </div>
-        </div>
-
-
-</div>
 </form>
 </body>
 </html>
