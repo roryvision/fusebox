@@ -170,8 +170,7 @@ require_once('../helpers/db-connection.php');
     ?>
 
     <ul class='flex-btwn' id='select-menu'>
-        <li class='cursor-pointer selected' value='projects'>projects</li>
-        <li class='cursor-pointer' value='people'>people</li>
+        <li class='cursor-pointer selected' value='projects' style="margin: auto;">projects</li>
     </ul>
 
     <br />

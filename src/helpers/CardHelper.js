@@ -5,12 +5,11 @@ const displayProject = (projectData, cardType, isSaved) => {
   project.setProjectData(data);
   projectContainer.appendChild(project);
 };
-
-const displayEditProject = (projectData, isSaved) => {
+let projectId;
+const displayEditProject = (projectData, cardType, isSaved) => {
   const projectContainer = document.getElementById('cards-container');
   const project = document.createElement('card-project');
-  let projectId;
-  const data = { ...projectData, isSaved };
+  const data = { ...projectData, cardType, isSaved };
   project.setProjectData(data);
   projectContainer.appendChild(project);
 
@@ -23,7 +22,8 @@ const displayEditProject = (projectData, isSaved) => {
 // Add a click event listener to the circle element
   circle.addEventListener('click', () => {
     // Replace 'project_id' with the actual property from projectData
-    projectId = projectData.project_id;
+    projectId = project.project_id;
+    console.log(projectId);
 
     // Assuming 'myModal' is the ID of your modal
     const modal = document.getElementById('myModal');
@@ -35,13 +35,13 @@ const displayEditProject = (projectData, isSaved) => {
     const closeModalBtn = document.getElementById('closeModalBtn');
 
 // Add a click event listener to the close button
-    closeModalBtn.addEventListener('click', () => {
-      // Assuming 'myModal' is the ID of your modal
-      const modal = document.getElementById('myModal');
-
-      // Set the display style to none to hide the modal
-      modal.style.display = 'none';
-    });
+//     closeModalBtn.addEventListener('click', () => {
+//       // Assuming 'myModal' is the ID of your modal
+//       const modal = document.getElementById('myModal');
+//
+//       // Set the display style to none to hide the modal
+//       modal.style.display = 'none';
+//     });
 
   });
 
@@ -125,7 +125,3 @@ const displayEditPerson = (personData, isSaved) => {
 };
 
 export { displayProject, displayPerson, displayEditProject, displayEditPerson };
-
-console.log(projectData);
-console.log(projectData.project_id);
-console.log(editProjectURL);
