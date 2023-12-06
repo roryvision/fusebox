@@ -191,28 +191,7 @@ require_once('../helpers/db-connection.php');
                 <button id = "deleteButton">Delete Project</button>
             </div>
         </div>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const editButton = document.getElementById('editButton');
-                const deleteButton = document.getElementById('deleteButton');
 
-                editButton.addEventListener('click', function() {
-                    // Assuming you have a variable $projectId in your PHP code
-                    // to store the project ID fetched from the database
-                    <?php
-                    if (isset($projectId)) {
-                        echo "const projectId = " . json_encode($projectId) . ";";
-                        echo "window.location.href = 'editproject.php?id=' + projectId;";
-                    }
-                    ?>
-                });
-
-                function closeModal() {
-                    var modal = document.getElementById('myModal');
-                    modal.style.display = 'none';
-                }
-            });
-        </script>
 
 </div>
 </form>

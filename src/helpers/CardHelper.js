@@ -19,30 +19,10 @@ const displayEditProject = (projectData, cardType, isSaved) => {
   const circle = document.createElement('div');
   circle.className = 'circle';
 
-// Add a click event listener to the circle element
   circle.addEventListener('click', () => {
-    // Replace 'project_id' with the actual property from projectData
-    projectId = project.project_id;
-    console.log(projectId);
+    projectId = projectData.project_id;
 
-    // Assuming 'myModal' is the ID of your modal
-    const modal = document.getElementById('myModal');
-
-    // Set the display style to block
-    modal.style.display = 'block';
-
-    // Assuming 'closeModalBtn' is the ID of the close button (x) inside your modal
-    const closeModalBtn = document.getElementById('closeModalBtn');
-
-// Add a click event listener to the close button
-//     closeModalBtn.addEventListener('click', () => {
-//       // Assuming 'myModal' is the ID of your modal
-//       const modal = document.getElementById('myModal');
-//
-//       // Set the display style to none to hide the modal
-//       modal.style.display = 'none';
-//     });
-
+    window.location.href = `editproject.php?id=${projectId}`;
   });
 
 // Append the circle element to your document or another container
@@ -78,41 +58,6 @@ const displayEditPerson = (personData, isSaved) => {
   circle.addEventListener('click', () => {
     // Replace 'person_id' with the actual property from personData
     const personId = personData.profile_id;
-
-    // Assuming 'myModal' is the ID of your modal
-    const modal = document.getElementById('myModal');
-
-    // Set the display style to block
-    modal.style.display = 'block';
-
-    // Assuming 'closeModalBtn' is the ID of the close button (x) inside your modal
-    const closeModalBtn = document.getElementById('closeModalBtn');
-
-    // Add a click event listener to the close button
-    closeModalBtn.addEventListener('click', () => {
-      // Assuming 'myModal' is the ID of your modal
-      const modal = document.getElementById('myModal');
-
-      // Set the display style to none to hide the modal
-      modal.style.display = 'none';
-    });
-
-
-
-    const edit = document.createElement('div');
-    edit.className = 'editbutton';
-
-    // Add a click event listener to the circle element
-    edit.addEventListener('click', () => {
-      // Extract the project ID from projectData (replace 'project_id' with the actual property)
-      const projectId = projectData.project_id;
-      // Construct the URL for the edit project page
-      const editProjectURL = `editproject.php?id=${projectId}`;
-      // Navigate to the edit project page
-      window.location.href = editProjectURL;
-    });
-
-    document.getElementById('container').appendChild(edit);
 
   });
 
