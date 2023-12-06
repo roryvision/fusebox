@@ -187,11 +187,17 @@ require_once('../helpers/db-connection.php');
 </head>
 
 <body>
-<a href="editproject.php?id=<?php echo $projectId; ?>">Edit Project</a>
 
     <form action="editprojectindb.php"
           method ="get">
-        <input type="hidden" name="id" value="<?php echo $projectId; ?>">
+        <input type="hidden" name="id" value="<?php echo $_REQUEST["id"]; ?>">
+        <?php
+        $projectId = isset($_GET['id']) ? $_GET['id'] : null;
+        echo "Project ID: " . $projectId;
+        $selectedCategory = isset($_GET['selectedCategory']) ? $_GET['selectedCategory'] : '';
+
+        ?>
+
 
 
         <div class="outer">
@@ -202,14 +208,12 @@ require_once('../helpers/db-connection.php');
                         <?php
                         $conn = openCon();
 
-                        $projectId = isset($_GET['id']) ? $_GET['id'] : null;
-
                         if ($projectId === null) {
                             echo "Error: Project ID is not set.";
                             exit();
                         }
 
-                        $sql = "SELECT p.project_id, p.project_name, p.logline, c.category_name, p.description
+                        $sql = "SELECT p.project_id, p.project_name, p.logline, c.category_name, p.description, c.category_id
                           FROM project AS p
                           LEFT JOIN category AS c ON p.category_id = c.category_id
                           WHERE project_id = " . $_REQUEST["id"];
@@ -314,29 +318,27 @@ require_once('../helpers/db-connection.php');
             $currentrow['description']
             ?>">
 
-            <div class = "projectdetails">Category:</div>
-            <select class="category2" class ="dropbtn" name="selectedCategory">
-                <button class="dropbtn">Select Roles</button>
-                <div class = "dropdown-content">
-                    <?php
-                    // Fetch all categories from the database
-                    $categoriesQuery = "SELECT * FROM category";
-                    $categoriesResult = $conn->query($categoriesQuery);
+            <div class = "projectdetails">Category:
+                <?php
+                // Fetch all roles from the database
+                $categoryQuery = "SELECT * FROM category";
+                $categoryResult = $conn->query($categoryQuery);
 
-                    if (!$categoriesResult) {
-                        echo "SQL error: " . $conn->error;
-                        exit();
-                    }
+                if (!$categoryResult) {
+                    echo "SQL error: " . $conn->error;
+                    exit();
+                }
 
-                    while ($categoryRow = $categoriesResult->fetch_assoc()) {
-                        $categoryName = $categoryRow["category_name"];
-                        $isSelected = ($categoryName == $currentrow['category_name']) ? 'selected' : '';
+                while ($categoryRow = $categoryResult->fetch_assoc()) {
+                    $categoryId = $categoryRow["category_id"];
+                    $categoryName = $categoryRow["category_name"];
+                    $isSelected = ($categoryId == $currentrow['category_id']) ? 'checked' : '';
 
-                        echo "<option value='$categoryName' $isSelected>$categoryName</option>";
-                    }
-                    ?>
-                </div>
-            </select>
+                    echo "<input type='checkbox' name='selectedCategory' value='$categoryId' $isSelected> $categoryName<br>";
+                }
+                ?>
+            </div>
+
 
             <div class = "projectdetails">Roles Needed:</div>
             <div class="dropdown">
@@ -353,10 +355,11 @@ require_once('../helpers/db-connection.php');
                     }
 
                     while ($roleRow = $rolesResult->fetch_assoc()) {
+                        $roleId = $roleRow["role_id"];
                         $roleName = $roleRow["role_name"];
                         $isChecked = in_array($roleName, $roles) ? 'checked' : '';
 
-                        echo "<input type='checkbox' name='selectedRoles[]' value='$roleName' $isChecked> $roleName<br>";
+                        echo "<input type='checkbox' name='selectedRoles[]' value='$roleId' $isChecked> $roleName<br>";
                     }
                     ?>
                 </div>
