@@ -2,6 +2,9 @@
 require_once('../helpers/db-connection.php');
 $conn = openCon();
 session_start();
+
+
+
 if($conn->connect_errno) {
     echo "db connection error : " . $conn->connect_error;
     exit();
@@ -11,6 +14,7 @@ if (isset($_REQUEST["selectedRoles"]) && is_array($_REQUEST["selectedRoles"])) {
 } else {
     $selectedRoles = ''; // Set a default value or handle it accordingly based on your logic
 }
+
 
 
 $sql = "INSERT INTO project (project_name, logline, description, creator_id, category_id) 

@@ -149,6 +149,18 @@ require_once('../helpers/db-connection.php');
             font-size: 10pt;
         }
 
+        #discardBtn{
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            color: #DC1F1F;
+            font-size: 10pt;
+
+        }
+
         .save{
             width: fit-content;
             padding-left: 15px;
@@ -216,8 +228,7 @@ require_once('../helpers/db-connection.php');
                 </div>
 
                 <div class = "buttons">
-                    <button class = discard>Discard</button>
-                    <button class = save type = "submit" name = "submit">Save Changes</button>
+                    <button class = "save" type = "submit" name = "submit">Add Project</button>
                 </div>
 
 
@@ -279,26 +290,6 @@ require_once('../helpers/db-connection.php');
                         ?>
                     </div>
                 </div>
-
-                <script>
-                    function toggleDropdown() {
-                        var dropdown = document.querySelector(".dropdown");
-                        dropdown.classList.toggle("active");
-                    }
-
-                    // Close the dropdown if the user clicks outside of it
-                    window.onclick = function(event) {
-                        if (!event.target.matches('.dropbtn')) {
-                            var dropdowns = document.getElementsByClassName("dropdown");
-                            for (var i = 0; i < dropdowns.length; i++) {
-                                var openDropdown = dropdowns[i];
-                                if (openDropdown.classList.contains('active')) {
-                                    openDropdown.classList.remove('active');
-                                }
-                            }
-                        }
-                    }
-                </script>
                 </div>
 
             </div>
@@ -308,6 +299,37 @@ require_once('../helpers/db-connection.php');
     </div>
 </div>
 </form>
+
+<script>
+    function toggleDropdown() {
+        var dropdown = document.querySelector(".dropdown");
+        dropdown.classList.toggle("active");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('active')) {
+                    openDropdown.classList.remove('active');
+                }
+            }
+        }
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Add an event listener to the "Discard" button
+        const discardBtn = document.getElementById('discardBtn');
+        discardBtn.addEventListener('click', () => {
+            // Navigate back to dashboard.php
+            console.log("hi");
+            // window.location.href = 'adminpanel.php';
+        });
+    });
+</script>
 
 </body>
 
