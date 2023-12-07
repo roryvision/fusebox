@@ -39,14 +39,6 @@ foreach ($selectedRoles as $roleId) {
     }
 }
 
-$results = $conn->query($sql);
-
-
-if(!$results){
-    echo "DATABASE ERROR: " . $conn->error;
-    exit();
-}
-
 ?>
 
 <html>

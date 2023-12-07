@@ -135,6 +135,7 @@ a {
   height: 115px;
   z-index: 333;
   transform: rotate(-2deg);
+  object-fit: cover;
 }
 
 .img-container {

@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (!isset($_SESSION["user_id"])) {
+    // redirect
+    header("Location: security/login.php");
+    exit();
+}
 require_once('../helpers/db-connection.php');
 ?>
 
