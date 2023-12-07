@@ -193,7 +193,6 @@ require_once('../helpers/db-connection.php');
         <input type="hidden" name="id" value="<?php echo $_REQUEST["id"]; ?>">
         <?php
         $projectId = isset($_GET['id']) ? $_GET['id'] : null;
-        echo "Project ID: " . $projectId;
         $selectedCategory = isset($_GET['selectedCategory']) ? $_GET['selectedCategory'] : '';
 
         ?>
