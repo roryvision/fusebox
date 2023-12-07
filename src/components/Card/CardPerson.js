@@ -66,6 +66,12 @@ class CardPerson extends HTMLElement {
       shadow.querySelector('.major2').innerText = p.major2 || '';
       shadow.querySelector('.role').innerText = p.role_name || '';
 
+      const profilePic = shadow.querySelector('.img-container img');
+      if (p.profile_pic) {
+        profilePic.src = p.profile_pic;
+        profilePic.alt = 'Profile photo';
+      }
+
       const roleElement = shadow.querySelector('.role');
       if (p.role_type) {
         const selectedColor = roleColors[p.role_type.toLowerCase()];
