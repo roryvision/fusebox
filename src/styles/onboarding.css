@@ -52,8 +52,15 @@ select {
 
 #onboard-1 img {
     width: 100px;
+    display: block;
+    margin: auto;
 }
 
+#onboard-6 img {
+    width: 38px;
+    display: block;
+    margin: auto;
+}
 
 .button {
     width: 488px;
@@ -80,9 +87,11 @@ select {
     border-color: white !important;
     transition: border-width 0.2s;
     margin-bottom: 10px;
+    position: absolute;
+    bottom: 80px;
 }
 
-.button2 {
+/* .button2 {
     width: 488px;
     height: 43px;
     background-color: white !important;
@@ -90,10 +99,4 @@ select {
     cursor: pointer;
     color: #DC1F1F !important;
     border: 1px solid #DC1F1F !important;
-}
-
-/*.center {*/
-/*    text-align: left;*/
-/*    align-content: center;*/
-/*    margin: auto;*/
-/*}*/
+} */

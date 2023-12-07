@@ -205,7 +205,7 @@ if (!$stmtr2) {
     die('Error preparing statement: ' . $conn->error);
 }
 
-$stmtr2->bind_param("si", $role2, $profileId);
+$stmtr2->bind_param("ii", $role2, $profileId);
 
 if ($stmtr2->execute()) {
 
@@ -241,7 +241,6 @@ $stmtabt = $conn->prepare($abtQuery);
 
 if (!$stmtabt) {
     $connected = false;
-
     die('Error preparing statement: ' . $conn->error);
 }
 

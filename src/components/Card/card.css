@@ -71,6 +71,7 @@ a {
   width: 243px;
   height: 308px;
   padding: 50px;
+  position: relative;
 }
 
 .project-card{

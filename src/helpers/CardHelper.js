@@ -12,10 +12,6 @@ const displayEditProject = (projectData, isSaved) => {
   const project = document.createElement('card-project');
   const data = { ...projectData, isSaved };
   project.setProjectData(data);
-  projectContainer.appendChild(project);
-
-  const cardElement = document.createElement('div');
-  cardElement.className = 'project-card';
 
   const circle = document.createElement('div');
   circle.className = 'circle';
@@ -29,14 +25,13 @@ const displayEditProject = (projectData, isSaved) => {
     window.location.href = `editproject.php?id=${projectId}`;
   });
 
-// Append the circle element to your document or another container
-// Replace 'container' with the ID or class of the container where you want to append the circle
-  document.getElementById('container').appendChild(circle);
+  // Append the circle inside the shadow DOM of card-project
+  const shadow = project.shadowRoot;
+  const card = shadow.querySelector('.card');
+  card.appendChild(circle);
 
-  cardElement.appendChild(circle);
-  projectContainer.appendChild(cardElement);
+  projectContainer.appendChild(project);
 };
-
 const displayPerson = (personData) => {
   const projectContainer = document.getElementById('cards-container');
   const person = document.createElement('card-person');

@@ -10,11 +10,10 @@ headerTemplate.innerHTML = `
       <li><a href='/acad276/fusebox/src/pages/dashboard.php'><img src='/acad276/fusebox/src/assets/images/masthead.svg' alt='Fusebox masthead' class='cursor-pointer' id='header-logo' style='height: 30px;' /></a></li>
       <li id='search'>
         <img src='/acad276/fusebox/src/assets/icons/icon_search.svg' alt='Search' id='search-icon' />
-        <img src='/acad276/fusebox/src/assets/icons/icon_search.svg' alt='Search' id='search-icon' />
-        <form id="search-form" action="results.php"><input type='text' id='search-box' name='projectsearch' placeholder='Search' /></form>
+        <form id="search-form" action="/acad276/fusebox/src/pages/project-results.php"><input type='text' id='search-box' name='projectsearch' placeholder='Search' /></form>
       </li>
       <div class='flex-btwn'>
-        <li><a href='/acad276/fusebox/src/pages/createProject.html'><button class='button-basic cursor-pointer' id='button-create'>Create a Project</button></a></li>
+        <li><a href='/acad276/fusebox/src/pages/addproject.php'><button class='button-basic cursor-pointer' id='button-create'>Create a Project</button></a></li>
         <li><a href='/acad276/fusebox/src/pages/profile.php'><img src='/acad276/fusebox/src/assets/icons/icon_profile.svg' alt='Profile' class='button-nav cursor-pointer' /></a></li>
       </div>
     </ul>
