@@ -227,10 +227,9 @@ require_once('../helpers/db-connection.php');
                         document.addEventListener('DOMContentLoaded', function() {
                             // Add an event listener to the "Discard" button
                             const discardBtn = document.getElementById('discardBtn');
-
                             discardBtn.addEventListener('click', () => {
                                 // Navigate back to dashboard.php
-                                window.location.href = 'dashboard.php';
+                                window.location.href = 'adminpanel.php';
                             });
                         });
                     </script>
