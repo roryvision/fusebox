@@ -62,8 +62,12 @@ $(document).ready(async () => {
 
     if ($(this).attr('value') == 'projects') {
       displayAllProjects();
+      document.querySelector('#filter-container').style.display = 'block';
+
     } else if ($(this).attr('value') == 'people') {
       people.forEach((p) => displayPerson(p));
+      document.querySelector('#filter-container').style.display = 'none';
+
     }
   });
 });

@@ -65,6 +65,7 @@ input[type="checkbox"] {
   flex-flow: row wrap;
   column-gap: 10px;
   row-gap: 50px;
+  justify-content: center;
 }
 
 #appliedRoleFilters{
