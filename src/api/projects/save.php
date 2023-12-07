@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     exit();
   }
 
-  $savedProjects = array();
+  $saved = array();
     while ($row = $results->fetch_assoc()) {
         $role_sql = "SELECT role_name, role_type
                   FROM projects_x_roles AS pxr
@@ -39,10 +39,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 //          $roles[] = $role_row['role_name'];
         }
         $row['roles'] = $roles;
-        $savedProjects[] = $row;
+        $saved[] = $row;
     }
   header('Content-Type: application/json');
-  echo json_encode($savedProjects);
+  echo json_encode($saved);
 
   closeCon($conn);
   exit();
