@@ -48,6 +48,7 @@ header-nav{
     flex: 1 0 0;
 }
 
+
 #content-left{
     display: flex;
     flex-direction: column;
@@ -76,10 +77,8 @@ header-nav{
     width: 260px;
     z-index: 333;
     transform: rotate(-2deg);
-    top: 50%; /* Center vertically */
-    left: 50%; /* Center horizontally */
-    max-width: 100%; /* Ensure the image doesn't exceed container width */
-    max-height: 100%; /* Ensure the image doesn't exceed container height */
+    top: 50%;
+    left: 50%;
 }
 
 .majors{
@@ -193,7 +192,7 @@ a{
 #content-right{
     display:flex;
     flex-direction:column;
-    gap:24px;
+    gap:16px;
 }
 #roles{
     display:flex;
@@ -226,10 +225,255 @@ a{
     flex-wrap: wrap;
 }
 #img-cutoff{
-    width:250px;
-    height: 250px;
+    width:260px;
+    height: 260px;
     position:relative;
     overflow: hidden;
 
 
+}
+
+#myModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 200px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    padding: 20px;
+    padding-: 20px;
+    padding: 20px;
+    width: 9%;
+    border-radius: 25px;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.25);
+}
+
+#editbutton{
+    width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 35px;
+    border: 1px solid #DC1F1F;
+    border-radius: 30px;
+    color: #DC1F1F;
+    font-size: 10pt;
+}
+
+#deletebutton{
+    width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 35px;
+    border: 1px solid #DC1F1F;
+    border-radius: 30px;
+    background-color: #DC1F1F;
+    color: white;
+    font-size: 10pt;
+    white-space: nowrap;
+}
+
+.popupbuttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.button-apply {
+    margin: 12px 0px;
+    padding: 6px 10px;
+    cursor: pointer;
+    width: 275px;
+    font-family: 'Poppins';
+    font-weight: 400;
+    font-size: 16px;
+    background-color: #F8625A;
+    color: white;
+    border-radius: 20px;
+    list-style: none;
+    text-align: center;
+}
+
+.apply-buttons{
+    margin:auto;
+}
+
+.button-apply:hover {
+    filter: brightness(85%);
+}
+
+.center{
+    text-align: center;
+    font-size: 18pt;
+}
+
+#red-role{
+    color: #DC1F1F;
+}
+
+.project-name{
+    font-size: 34pt;
+    font-family: 'Visby';
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.project-category{
+    color: #BBBBBB;
+    margin: auto;
+    text-align: center;
+}
+
+.project-details{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 35px;
+    gap: 80px;
+}
+
+.project-description{
+    width: 800px;
+    border-radius: 50px 0px 50px 50px;
+    outline: 1px solid #BAB3A6;
+    display: block;
+}
+
+.description-text{
+    padding: 34px;
+    padding-left: 37px;
+    font-size: 13pt;
+}
+
+.apply-buttons{
+    display: block;
+}
+
+.creator{
+    color: #BBBBBB;
+    font-size: 12pt;
+    margin-bottom: 25px;
+}
+
+/*for apply modal*/
+#modal-1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 50px 85px;
+    padding-right: 70px;
+    border-radius: 32px 0px 32px 32px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+    display: none;
+}
+
+#prompt{
+    margin: 0px;
+    margin-bottom: 40px;
+    display: block;
+}
+
+#form{
+    margin: 20px 0px;
+    padding: 10px;
+    display: none;
+    border-radius: 20px;
+    outline: 1px solid #BAB3A6;
+}
+
+#email-message{
+    font-size: 12pt;
+    font-family: 'Poppins';
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
+#note-buttons{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+}
+
+#form-buttons{
+    display:none;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 16px;
+}
+
+#modal-text{
+    margin: 0px;
+    display: block;
+}
+
+#congrats{
+    display:none;
+    margin: 0px;
+    margin-bottom: 10px;
+}
+
+.modal-title{
+    font-family: 'Visby';
+    font-size: 25pt;
+
+}
+
+#add-note{
+    color: #DC1F1F;
+    border: #DC1F1F 2px solid;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+#no-note{
+    color: white;
+    background-color: #DC1F1F;
+    border: #DC1F1F 2px solid;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+#cancel{
+    color: black;
+}
+
+#send{
+    color: white;
+    background-color: #DC1F1F;
+    border: #DC1F1F 2px solid;
+    border-radius: 20px;
+    padding: 5px 15px;
+}
+
+#modal-icon{
+    width: 35px;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
 }

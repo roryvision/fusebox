@@ -19,23 +19,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
   }
 
   $created = array();
-  while ($row = $results->fetch_assoc()) {
-    $role_sql = "SELECT role_name
-                FROM projects_x_roles AS pxr
-                LEFT JOIN role AS r ON pxr.role_id = r.role_id
-                WHERE " . $row['project_id'] . " = pxr.project_id";
-    $role_results = $conn->query($role_sql);
-    if (!$role_results) {
-      echo "SQL error: " . $conn->error;
-      exit();
+    while ($row = $results->fetch_assoc()) {
+        $role_sql = "SELECT role_name, role_type
+                  FROM projects_x_roles AS pxr
+                  LEFT JOIN role AS r ON pxr.role_id = r.role_id
+                  WHERE " . $row['project_id'] . " = pxr.project_id";
+        $role_results = $conn->query($role_sql);
+        if (!$role_results) {
+            echo "SQL error: " . $conn->error;
+            exit();
+        }
+        $roles = array();
+        while ($role_row = $role_results->fetch_assoc()) {
+            $roles[] = array(
+                'role_name' => $role_row['role_name'],
+                'role_type' => $role_row['role_type']
+            );
+//          $roles[] = $role_row['role_name'];
+        }
+        $row['roles'] = $roles;
+        $created[] = $row;
     }
-    $roles = array();
-    while ($role_row = $role_results->fetch_assoc()) {
-      $roles[] = $role_row['role_name'];
-    }
-    $row['roles'] = $roles;
-    $created[] = $row;
-  }
   
   header('Content-Type: application/json');
   echo json_encode($created);

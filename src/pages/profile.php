@@ -13,6 +13,7 @@ session_start();
     <script src='../helpers/CardHelper.js' type='module'></script>
     <script src='../components/Card/CardProject.js' type='text/javascript'></script>
     <script src='../components/Card/CardPerson.js' type='text/javascript'></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src='../pages/profile.js' type='module'></script>
 </head>
@@ -82,191 +83,189 @@ closeCon($conn);
                     <div class='img-container'>
                         <?php
                         if ($pfp != null) {
-                            echo "<img src=" . $pfp . ">";
+                            echo "<div id='img-cutoff'><img src=" . $pfp . "></div>";
                         } else {
                             echo "<div id='img-cutoff'><img src='../assets/images/chuubear.jpeg'></div>";
 
                         }
                         ?>
                     </div>
+                    <div id="major-1" class="majors"><?php
+                        echo $major1;
+                        ?></div>
                     <?php
-                    echo "<div id='major-1' class='majors'>";
-                    echo $major1;
-                    ?></div>
-                <?php
-                if ($major2 != null) {
-                    echo "<div id='major-2' class='majors'>";
-                    echo $major2;
-                    echo "</div>";
-                }
+                    if ($major2 != null) {
+                        echo "<div id='major-2' class='majors'>";
 
-                ?>
-
-                <div class="b2">
-                    <?php
-                    echo "Graduating " . $grad;
-                    ?>
-                </div>
-                <?php
-                echo "<a class= 'link' href = " . $website1 . ">" . $website1 . "</a>";
-                if ($website2 != null) {
-                    echo "<a class= 'link' href = " . $website2 . ">" . $website2 . "</a>";
-                }
-                ?>
-                <div id="social-links">
-                    <?php
-                    if ($instagram != null) {
-                        echo "<a href = 'https://instagram.com/" . $instagram . "'><img src='../assets/icons/instagram.png'></a>";
-                    }
-                    if ($linkedin != null) {
-                        echo "<a href = " . $linkedin . "><img src='../assets/icons/linkedin.png'></a>";
+                        echo $major2;
+                        echo "</div>";
                     }
 
                     ?>
-                </div>
-            </div>
-            <div id="content-right" class="w-100">
-                <div id="profile-section" class="w-100">
-                    <?php
-                    echo "<h1>" . $fname . " " . $lname . "</h1>";
-                    ?>
-                    <hr>
 
-                    <?php
-                    if ($pronouns != null) {
-                        echo "<div class='sides'>";
-                        echo "<div>" . $pronouns . "</div>";
-                        echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
-                        echo "</a></div></div>";
-                    } else {
-                        echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
-                        echo "</a></div> ";
-                    }
-
-
-                    ?>
-                </div>
-
-                <div id="roles">
-                    <?php
-                    if ($roletype1 != null && $role1 != null) {
-                        $roleclass = '';
-
-                        switch ($roletype1) {
-                            case 'Tech':
-                                $roleclass = 'tech-role';
-                                break;
-                            case 'Visual':
-                                $roleclass = 'visual-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Business':
-                                $roleclass = 'business-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Film':
-                                $roleclass = 'film-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Performing':
-                                $roleclass = 'performing-role'; // Assign a specific class for Type B
-                                break;
-                            default:
-                                $roleclass = 'general-role'; // Default color class
-                                break;
-                        }
-                        echo "<div class='" . $roleclass . "'>" . $role1 . "</div>";
-
-                    }
-
-                    if ($role2 != null) {
-                        switch ($roletype2) {
-                            case 'Tech':
-                                $roleclass = 'tech-role';
-                                break;
-                            case 'Visual':
-                                $roleclass = 'visual-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Business':
-                                $roleclass = 'business-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Film':
-                                $roleclass = 'film-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Performing':
-                                $roleclass = 'performing-role'; // Assign a specific class for Type B
-                                break;
-                            default:
-                                $roleclass = 'general-role'; // Default color class
-                                break;
-                        }
-                        echo "<div class='" . $roleclass . "'>" . $role2 . "</div>";
-                    }
-                    if ($role3 != null) {
-                        switch ($roletype3) {
-                            case 'Tech':
-                                $roleclass = 'tech-role';
-                                break;
-                            case 'Visual':
-                                $roleclass = 'visual-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Business':
-                                $roleclass = 'business-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Film':
-                                $roleclass = 'film-role'; // Assign a specific class for Type B
-                                break;
-                            case 'Performing':
-                                $roleclass = 'performing-role'; // Assign a specific class for Type B
-                                break;
-                            default:
-                                $roleclass = 'general-role'; // Default color class
-                                break;
-                        }
-                        echo "<div class='" . $roleclass . "'>" . $role3 . "</div>";
-                    }
-                    ?>
-                </div>
-                <div id="profile-section" class="w-100">
-                    <h2>About</h2>
-                    <hr>
-                    <?php
-                    echo $bio;
-                    ?>
-
-                </div>
-                <div id="profile-section" class="w-100">
-                    <h2>Skills</h2>
-                    <hr>
-                    <div id="skill-container">
+                    <div class="b2">
                         <?php
-                        $conn = openCon();
-
-
-                        $skill_sql = "SELECT skills
-                              FROM profiles_x_skills AS pxs
-                              LEFT JOIN skill AS s ON pxs.skill_id = s.skill_id
-                              WHERE " . $_SESSION['user_id'] . " = pxs.profile_id";
-                        $skill_results = $conn->query($skill_sql);
-                        if (!$skill_results) {
-                            echo "SQL error: " . $conn->error;
-                            exit();
+                        echo "Graduating " . $grad;
+                        ?>
+                    </div>
+                    <?php
+                    echo "<a class= 'link' href = " . $website1 . ">" . $website1 . "</a>";
+                    if ($website2 != null) {
+                        echo "<a class= 'link' href = " . $website2 . ">" . $website2 . "</a>";
+                    }
+                    ?>
+                    <div id="social-links">
+                        <?php
+                        if ($instagram != null) {
+                            echo "<a href = 'https://instagram.com/" . $instagram . "'><img src='../assets/icons/instagram.png'></a>";
                         }
-                        $skills = array();
-                        while ($skill_row = $skill_results->fetch_assoc()) {
-                            $skills[] = $skill_row['skills'];
-                            echo "<div class='skill'>" . $skill_row['skills'] . "</div>";
+                        if ($linkedin != null) {
+                            echo "<a href = " . $linkedin . "><img src='../assets/icons/linkedin.png'></a>";
                         }
-                        $row['skills'] = $skills;
 
-                        closeCon($conn);
+                        ?>
+                    </div>
+                </div>
+                <div id="content-right" class="w-100">
+                    <div id="profile-section" class="w-100">
+                        <?php
+                        echo "<h1>" . $fname . " " . $lname . "</h1>";
+                        ?>
+                        <hr>
+
+                        <?php
+                        if ($pronouns != null) {
+                            echo "<div class='sides'>";
+                            echo "<div>" . $pronouns . "</div>";
+                            echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
+                            echo "</a></div></div>";
+                        } else {
+                            echo "<div id='email'><a href='mailto:'" . $email . ">" . $email;
+                            echo "</a></div> ";
+                        }
 
 
                         ?>
+                    </div>
+                    <div id="roles">
+                        <?php
+                        if ($roletype1 != null && $role1 != null) {
+                            $roleclass = '';
+
+                            switch ($roletype1) {
+                                case 'Tech':
+                                    $roleclass = 'tech-role';
+                                    break;
+                                case 'Visual':
+                                    $roleclass = 'visual-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Business':
+                                    $roleclass = 'business-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Film':
+                                    $roleclass = 'film-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Performing':
+                                    $roleclass = 'performing-role'; // Assign a specific class for Type B
+                                    break;
+                                default:
+                                    $roleclass = 'general-role'; // Default color class
+                                    break;
+                            }
+                            echo "<div class='" . $roleclass . "'>" . $role1 . "</div>";
+
+                        }
+
+                        if ($role2 != null) {
+                            switch ($roletype2) {
+                                case 'Tech':
+                                    $roleclass = 'tech-role';
+                                    break;
+                                case 'Visual':
+                                    $roleclass = 'visual-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Business':
+                                    $roleclass = 'business-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Film':
+                                    $roleclass = 'film-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Performing':
+                                    $roleclass = 'performing-role'; // Assign a specific class for Type B
+                                    break;
+                                default:
+                                    $roleclass = 'general-role'; // Default color class
+                                    break;
+                            }
+                            echo "<div class='" . $roleclass . "'>" . $role2 . "</div>";
+                        }
+                        if ($role3 != null) {
+                            switch ($roletype3) {
+                                case 'Tech':
+                                    $roleclass = 'tech-role';
+                                    break;
+                                case 'Visual':
+                                    $roleclass = 'visual-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Business':
+                                    $roleclass = 'business-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Film':
+                                    $roleclass = 'film-role'; // Assign a specific class for Type B
+                                    break;
+                                case 'Performing':
+                                    $roleclass = 'performing-role'; // Assign a specific class for Type B
+                                    break;
+                                default:
+                                    $roleclass = 'general-role'; // Default color class
+                                    break;
+                            }
+                            echo "<div class='" . $roleclass . "'>" . $role3 . "</div>";
+                        }
+                        ?>
+                    </div>
+                    <div id="profile-section" class="w-100">
+                        <h2>About</h2>
+                        <hr>
+                        <?php
+                        echo $bio;
+                        ?>
+
+                    </div>
+                    <div id="profile-section" class="w-100">
+                        <h2>Skills</h2>
+                        <hr>
+                        <div id="skill-container">
+                            <?php
+                            $conn = openCon();
+
+
+                            $skill_sql = "SELECT skills
+                              FROM profiles_x_skills AS pxs
+                              LEFT JOIN skill AS s ON pxs.skill_id = s.skill_id
+                              WHERE " . $_SESSION['user_id'] . " = pxs.profile_id";
+                            $skill_results = $conn->query($skill_sql);
+                            if (!$skill_results) {
+                                echo "SQL error: " . $conn->error;
+                                exit();
+                            }
+                            $skills = array();
+                            while ($skill_row = $skill_results->fetch_assoc()) {
+                                $skills[] = $skill_row['skills'];
+                                echo "<div class='skill'>" . $skill_row['skills'] . "</div>";
+                            }
+                            $row['skills'] = $skills;
+
+                            closeCon($conn);
+
+
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
 <a href="editprofile.php">
     <div class="button-basic">Edit Profile</div>
 </a>
@@ -276,6 +275,36 @@ closeCon($conn);
     <li class='cursor-pointer' value='applied'>applied</li>
 </ul>
 <div id='cards-container'></div>
+
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span onclick="closeModal()" style="float: right; cursor: pointer;">&times;</span>
+            <!-- Add your modal content here -->
+            <div class = "popupButtons">
+                <button id = "editbutton" class = "editButton">Edit Project</button>
+                <button id = "deletebutton">Delete Project</button>
+            </div>
+        </div>
+        <script>
+            function closeModal() {
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'none';
+            }
+
+            document.getElementById('editbutton').addEventListener('click', function () {
+                // Change the window location to your edit page URL
+                window.location.href = `../fusebox/src/pages/editproject.php?id=${projectId}`;
+            });
+
+            document.getElementById('deletebutton').addEventListener('click', function () {
+                // Change the window location to your edit page URL
+                window.location.href = '../fusebox/src/pages/deleteprojectindb.php';
+            });
+        </script>
+    </div>
+
+</div>
 
 </body>
 
