@@ -1,6 +1,7 @@
 import { displayProject, displayPerson } from '../helpers/CardHelper.js';
 let projects = [];
 let typesArray = [];
+let savedProjects = [];
 let rolesArray = [];
 let numResults = 0;
 $(document).ready(async () => {
@@ -14,6 +15,18 @@ $(document).ready(async () => {
         }).catch(error => {
             console.error(error);
         });
+
+    savedProjects = await fetch('../api/projects/save.php')
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error('Error fetching saved');
+            }
+
+            return res.json();
+        })
+        .catch((error) => {
+            console.error(error);
+        });
     
     if (projectSearch) {
         projects = projects.filter(function (p) {
@@ -21,11 +34,24 @@ $(document).ready(async () => {
         });
         $('#cards-container').empty();
 
-        projects.forEach((p) => displayProject(p));
+        projects.forEach((p) => {
+            if (savedProjects.some((s) => s.project_id === p.project_id)) {
+                displayProject(p, 'save', true);
+            } else {
+                displayProject(p, 'save', false);
+            }
+        });
         numResults = projects.length;
     }
     else{
-        projects.forEach((p) => displayProject(p));
+        // projects.forEach((p) => displayProject(p));
+        projects.forEach((p) => {
+            if (savedProjects.some((s) => s.project_id === p.project_id)) {
+                displayProject(p, 'save', true);
+            } else {
+                displayProject(p, 'save', false);
+            }
+        });
         numResults = projects.length;
     }
     $('#numResults').text(numResults);
