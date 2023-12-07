@@ -40,6 +40,10 @@ if (!isset($_SESSION["user_id"])) {
         <li class='cursor-pointer selected' value='projects'>projects</li>
         <li class='cursor-pointer' value='people'>people</li>
       </ul>
+        <div id="next-prev">
+            <a class="arrow round" id="prev-arrow">Prev.</a>
+            <a class="arrow round" id="next-arrow">Next</a>
+        </div>
 
       <br />
 
@@ -164,8 +168,6 @@ if (!isset($_SESSION["user_id"])) {
         </div>
 
         <div id='cards-container'></div>
-          <a class="arrow round" id="prev-arrow">&#8249;</a>
-          <a class="arrow round" id="next-arrow">&#8250;</a>
       </div>
     </div>
   </body>

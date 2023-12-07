@@ -71,10 +71,12 @@ $(document).ready(async () => {
     if ($(this).attr('value') == 'projects') {
       displayAllProjects();
       document.querySelector('#filter-container').style.display = 'block';
+      document.querySelector('#next-prev').style.display = 'block';
 
     } else if ($(this).attr('value') == 'people') {
       people.forEach((p) => displayPerson(p));
       document.querySelector('#filter-container').style.display = 'none';
+      document.querySelector('#next-prev').style.display = 'none';
 
     }
   });
