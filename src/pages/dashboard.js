@@ -6,6 +6,10 @@ let typesArray = [];
 let rolesArray = [];
 let numResults = 0;
 
+// pagination
+const projectsPerPage = 15;
+let currPage = 1;
+
 $(document).ready(async () => {
   projects = await fetch('../api/projects')
     .then((res) => {
@@ -43,7 +47,11 @@ $(document).ready(async () => {
       console.error(error);
     });
 
-  projects.forEach((p) => {
+  const sIndex = (currPage - 1) * projectsPerPage;
+  const eIndex = sIndex + projectsPerPage;
+
+  let projectsToDisplay = projects.slice(sIndex, eIndex);
+  projectsToDisplay.forEach((p) => {
     if (savedProjects.some((s) => s.project_id === p.project_id)) {
       displayProject(p, 'save', true);
     } else {
@@ -63,10 +71,12 @@ $(document).ready(async () => {
     if ($(this).attr('value') == 'projects') {
       displayAllProjects();
       document.querySelector('#filter-container').style.display = 'block';
+      document.querySelector('#next-prev').style.display = 'block';
 
     } else if ($(this).attr('value') == 'people') {
       people.forEach((p) => displayPerson(p));
       document.querySelector('#filter-container').style.display = 'none';
+      document.querySelector('#next-prev').style.display = 'none';
 
     }
   });
@@ -202,12 +212,42 @@ async function displayAllProjects() {
       console.error(error);
     });
 
+  const sIndex = (currPage - 1) * projectsPerPage;
+  const eIndex = sIndex + projectsPerPage;
+  let projectsToDisplay = projects.slice(sIndex, eIndex);
+
   $('#cards-container').empty();
-  projects.forEach((p) => {
+  projectsToDisplay.forEach((p) => {
     if (savedProjects.some((s) => s.project_id === p.project_id)) {
       displayProject(p, 'save', true);
     } else {
       displayProject(p, 'save', false);
     }
   });
+}
+
+$(document).ready(() => {
+  $('#next-arrow').click(() => {
+    if (currPage < Math.ceil(projects.length / projectsPerPage)) {
+      currPage++;
+      displayAllProjects();
+    }
+    seeNextArrow();
+  });
+
+  $('#prev-arrow').click(() => {
+    if (currPage > 1) {
+      currPage--;
+      displayAllProjects();
+    }
+    seeNextArrow();
+  });
+});
+
+function seeNextArrow() {
+  if (currPage < Math.ceil(projects.length / projectsPerPage)) {
+    $('#next-arrow').show();
+  } else {
+    $('#next-arrow').hide();
+  }
 }

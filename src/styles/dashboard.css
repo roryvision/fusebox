@@ -75,3 +75,23 @@ input[type="checkbox"] {
 #appliedTypeFilters{
   color: #DC1F1F;
 }
+
+.arrow {
+  text-decoration: none;
+  display: inline-block;
+  padding: 7px 25px;
+  border: #DC1F1F 2px solid;
+  color: #DC1F1F;
+}
+
+.round {
+  border-radius: 30px;
+}
+
+#next-arrow{
+  background-color: #DC1F1F;
+  color: white;
+}
+
+#next-prev{
+}
