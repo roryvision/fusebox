@@ -19,17 +19,6 @@ $(document).ready(async () => {
             console.error(error);
         });
 
-    people = await fetch('../api/people')
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error('Error fetching people');
-            }
-
-            return res.json();
-        })
-        .catch((error) => {
-            console.error(error);
-        });
 
     savedProjects = await fetch('../api/projects/save.php')
         .then((res) => {
@@ -44,23 +33,6 @@ $(document).ready(async () => {
         });
 
     displayAllProjects();
-
-
-    numResults = projects.length;
-    $('#numResults').text(numResults);
-
-    $('#select-menu li').click(function () {
-        $('#select-menu li').removeClass('selected');
-        $(this).addClass('selected');
-
-        $('#cards-container').empty();
-
-        if ($(this).attr('value') == 'projects') {
-            displayAllProjects();
-        } else if ($(this).attr('value') == 'people') {
-            people.forEach((p) => displayEditPerson(p));
-        }
-    });
 });
 
 document.addEventListener('DOMContentLoaded', function () {

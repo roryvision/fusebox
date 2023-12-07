@@ -45,7 +45,7 @@ require_once('../helpers/db-connection.php');
             box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.25);
         }
 
-        .editbutton{
+        #editButton{
             width: fit-content;
             padding-left: 15px;
             padding-right: 15px;
@@ -56,7 +56,7 @@ require_once('../helpers/db-connection.php');
             font-size: 10pt;
         }
 
-        .deletebutton{
+        #deleteButton{
             width: fit-content;
             padding-left: 15px;
             padding-right: 15px;
@@ -75,195 +75,59 @@ require_once('../helpers/db-connection.php');
             gap: 10px;
         }
 
-        .button-apply {
-            margin: 12px 0px;
-            padding: 6px 10px;
-            cursor: pointer;
-            width: 275px;
-            font-family: 'Poppins';
-            font-weight: 400;
-            font-size: 16px;
-            background-color: #F8625A;
-            color: white;
-            border-radius: 20px;
-            list-style: none;
-            text-align: center;
-        }
-
-        .apply-buttons{
-            margin:auto;
-        }
-
-        .button-apply:hover {
-            filter: brightness(85%);
-        }
-
         .center{
             text-align: center;
             font-size: 18pt;
         }
-
-        #red-role{
-            color: #DC1F1F;
+]
+        .admin{
+            font-family: Visby;
+            font-weight: 500;
+            color: #EFEFEF;
+            font-size: 22pt;
         }
 
-        .project-name{
-            font-size: 34pt;
-            font-family: 'Visby';
-            margin: auto;
+        #adminname{
+            font-family: Visby;
+            font-weight: 500;
+        }
+
+        #adminpronouns{
+            color: #878787;
+            font-family: Poppins;
+            font-size: 14px;
+            font-style: italic;
+            font-weight: 50;
+            line-height: normal;
+        }
+
+
+        .text-container{
+            text-align: left;
             margin-top: 20px;
-            text-align: center;
         }
 
-        .project-category{
-            color: #BBBBBB;
+        .center{
+            width: fit-content;
             margin: auto;
-            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 80px;
         }
 
-        .project-details{
+        #dontdisplay {
+            /*display: none;*/
+            /*border: none;*/
             display: flex;
             flex-direction: row;
-            align-items: flex-start;
-            justify-content: center;
-            margin-top: 35px;
-            gap: 80px;
+            gap: 130px;
         }
 
-        .project-description{
-            width: 800px;
-            border-radius: 50px 0px 50px 50px;
-            outline: 1px solid #BAB3A6;
-            display: block;
+        .img-container{
+            width: 5px;
         }
 
-        .description-text{
-            padding: 34px;
-            padding-left: 37px;
-            font-size: 13pt;
-        }
-
-        .apply-buttons{
-            display: block;
-        }
-
-        .creator{
-            color: #BBBBBB;
-            font-size: 12pt;
-            margin-bottom: 25px;
-        }
-
-        /*for apply modal*/
-        #modal-1{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 50px 85px;
-            padding-right: 70px;
-            border-radius: 32px 0px 32px 32px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            z-index: 2;
-            display: none;
-        }
-
-        #prompt{
-            margin: 0px;
-            margin-bottom: 40px;
-            display: block;
-        }
-
-        #form{
-            margin: 20px 0px;
-            padding: 10px;
-            display: none;
-            border-radius: 20px;
-            outline: 1px solid #BAB3A6;
-        }
-
-        #email-message{
-            font-size: 12pt;
-            font-family: 'Poppins';
-            width: 100%;
-            height: 100%;
-            border: none;
-            outline: none;
-        }
-
-        #note-buttons{
-            display:flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 12px;
-        }
-
-        #form-buttons{
-            display:none;
-            flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-            gap: 16px;
-        }
-
-        #modal-text{
-            margin: 0px;
-            display: block;
-        }
-
-        #congrats{
-            display:none;
-            margin: 0px;
-            margin-bottom: 10px;
-        }
-
-        .modal-title{
-            font-family: 'Visby';
-            font-size: 25pt;
-
-        }
-
-        #add-note{
-            color: #DC1F1F;
-            border: #DC1F1F 2px solid;
-            border-radius: 20px;
-            padding: 5px 15px;
-        }
-
-        #no-note{
-            color: white;
-            background-color: #DC1F1F;
-            border: #DC1F1F 2px solid;
-            border-radius: 20px;
-            padding: 5px 15px;
-        }
-
-        #cancel{
-            color: black;
-        }
-
-        #send{
-            color: white;
-            background-color: #DC1F1F;
-            border: #DC1F1F 2px solid;
-            border-radius: 20px;
-            padding: 5px 15px;
-        }
-
-        #modal-icon{
-            width: 35px;
-        }
-
-        #overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1;
-            display: none;
+        img{
+            width: 5px;
         }
 
 
@@ -275,9 +139,38 @@ require_once('../helpers/db-connection.php');
 <form>
 <div id='container'>
     <header-nav></header-nav>
+
+    <?php
+        $conn = openCon();
+        $sql = "SELECT fname, lname, pronouns
+                FROM profile, pronoun
+                WHERE profile.pronoun_id=pronoun.pronoun_id";
+
+    $result = $conn->query($sql);
+
+    if ($result && $result->num_rows > 0) {
+        // Fetch the data from the result set
+        $currentrow = $result->fetch_assoc();
+    };
+
+    echo "<div class='container'>";
+    echo "<div class='center'>";
+    echo "<div id = 'dontdisplay';>";
+    echo "<div class='img-container'>
+        <img src='/acad276/fusebox/src/assets/images/chuubear.jpeg' alt='Profile photo'>
+      </div>";
+    echo "<div class='text-container'>";
+    echo '<h2 class="admin">' . 'Admin' . '</h2>';
+    echo '<p class="name" id="adminname"> ' . $currentrow['fname'] . " " . $currentrow['lname'] . '</p>';
+    echo '<p class="pronouns" id = "adminpronouns"> ' . $currentrow['pronouns'] . '</p>';
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
+    echo "</div>";
+    ?>
+
     <ul class='flex-btwn' id='select-menu'>
-        <li class='cursor-pointer selected' value='projects'>projects</li>
-        <li class='cursor-pointer' value='people'>people</li>
+        <li class='cursor-pointer selected' value='projects' style="margin: auto;">projects</li>
     </ul>
 
     <br />
@@ -285,35 +178,8 @@ require_once('../helpers/db-connection.php');
         <div id='cards-container'>
         </div>
 
+    <input type="hidden" id="projectId" value="<?php echo isset($projectId) ? $projectId : ''; ?>">
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span onclick="closeModal()" style="float: right; cursor: pointer;">&times;</span>
-            <!-- Add your modal content here -->
-            <div class = "popupbuttons">
-                <button id = "editButton" class = "editbutton">Edit Project</button>
-                <button class = "deletebutton">Delete Project</button>
-            </div>
-        </div>
-    <script>
-        function closeModal() {
-            var modal = document.getElementById('myModal');
-            modal.style.display = 'none';
-        }
-
-        document.getElementById('editButton').addEventListener('click', function () {
-            // Change the window location to your edit page URL
-            window.location.href = `../fusebox/src/pages/editproject.php?id=${projectId}`;
-        });
-
-        document.getElementById('deleteButton').addEventListener('click', function () {
-            // Change the window location to your edit page URL
-            window.location.href = '../fusebox/src/pages/deleteprojectindb.php';
-        });
-    </script>
-</div>
 </form>
 </body>
 </html>

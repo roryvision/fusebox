@@ -5,6 +5,8 @@ const displayProject = (projectData, cardType, isSaved) => {
   project.setProjectData(data);
   projectContainer.appendChild(project);
 };
+
+let projectId;
 const displayEditProject = (projectData, isSaved) => {
   const projectContainer = document.getElementById('cards-container');
   const project = document.createElement('card-project');
@@ -14,25 +16,13 @@ const displayEditProject = (projectData, isSaved) => {
   const circle = document.createElement('div');
   circle.className = 'circle';
 
-  // Add the click event listener to the circle element
+  // Add a click event listener to the circle element
   circle.addEventListener('click', () => {
     // Replace 'project_id' with the actual property from projectData
-    const projectId = projectData.project_id;
+    projectId = projectData.project_id;
 
-    // Assuming 'myModal' is the ID of your modal
-    const modal = document.getElementById('myModal');
-
-    // Set the display style to block
-    modal.style.display = 'block';
-
-    // Assuming 'closeModalBtn' is the ID of the close button (x) inside your modal
-    const closeModalBtn = document.getElementById('closeModalBtn');
-
-    // Add a click event listener to the close button
-    closeModalBtn.addEventListener('click', () => {
-      // Set the display style to none to hide the modal
-      modal.style.display = 'none';
-    });
+    // Navigate to the editproject.php page with the specific project ID
+    window.location.href = `editproject.php?id=${projectId}`;
   });
 
   // Append the circle inside the shadow DOM of card-project

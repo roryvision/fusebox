@@ -136,6 +136,50 @@ require_once('../helpers/db-connection.php');
             display: block;
         }
 
+        .discardedits{
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            color: #DC1F1F;
+            font-size: 10pt;
+        }
+
+        .saveedits{
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            color: #DC1F1F;
+            font-size: 10pt;
+            white-space: nowrap;
+        }
+
+        .deleteproject{
+            width: fit-content;
+            padding-left: 15px;
+            padding-right: 15px;
+            height: 35px;
+            border: 1px solid #DC1F1F;
+            border-radius: 30px;
+            background-color: #DC1F1F;
+            color: white;
+            font-size: 10pt;
+            white-space: nowrap;
+        }
+
+        .buttons{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            margin-top: 30px;
+
+        }
+
 
 
     </style>
@@ -143,141 +187,193 @@ require_once('../helpers/db-connection.php');
 </head>
 
 <body>
-<div class="outer">
-    <div id='container'>
-        <header-nav></header-nav>
-        <div id="alldathings">
-            <div id="project-details-container" class="card-project">
-                <?php
-                $conn = openCon();
-                $sql = "SELECT p.project_id, p.project_name, p.logline, c.category_name, p.description
+
+    <form action="editprojectindb.php"
+          method ="get">
+        <input type="hidden" name="id" value="<?php echo $_REQUEST["id"]; ?>">
+        <?php
+        $projectId = isset($_GET['id']) ? $_GET['id'] : null;
+        echo "Project ID: " . $projectId;
+        $selectedCategory = isset($_GET['selectedCategory']) ? $_GET['selectedCategory'] : '';
+
+        ?>
+
+
+
+        <div class="outer">
+            <div id='container'>
+                <header-nav></header-nav>
+                <div id="alldathings">
+                    <div id="project-details-container" class="card-project">
+                        <?php
+                        $conn = openCon();
+
+                        if ($projectId === null) {
+                            echo "Error: Project ID is not set.";
+                            exit();
+                        }
+
+                        $sql = "SELECT p.project_id, p.project_name, p.logline, c.category_name, p.description, c.category_id
                           FROM project AS p
                           LEFT JOIN category AS c ON p.category_id = c.category_id
                           WHERE project_id = " . $_REQUEST["id"];
-                $results = $conn->query($sql);
-                $currentrow = $results->fetch_assoc();
 
-                if(!$results) {
-                    echo "SQL error: ". $conn->error;
-                    exit();
-                }
-                ?>
+                        $results = $conn->query($sql);
+                        $currentrow = $results->fetch_assoc();
 
-                <div class='card card-project'>
-
-                    <?php
-                    echo '<p class="category"> ' . $currentrow['category_name'] . '</p>';
-                    ?>
-                    <?php
-                    echo '<h2> ' . $currentrow['project_name'] . '</h2>';
-                    ?>
-                        <?php
-                            echo '<p> ' . $currentrow['logline'] . '</p>';
+                        if(!$results) {
+                            echo "SQL error: ". $conn->error;
+                            exit();
+                        }
                         ?>
-                    <br />
-                    <?php
-                        $role_sql = "SELECT role_name
+
+                        <div class='card card-project'>
+
+                            <?php
+                            echo '<p class="category"> ' . $currentrow['category_name'] . '</p>';
+                            ?>
+                            <?php
+                            echo '<h2> ' . $currentrow['project_name'] . '</h2>';
+                            ?>
+                            <?php
+                            echo '<p> ' . $currentrow['logline'] . '</p>';
+                            ?>
+                            <br />
+                            <?php
+                            $role_sql = "SELECT role_name
                   FROM projects_x_roles AS pxr
                   LEFT JOIN role AS r ON pxr.role_id = r.role_id
                   WHERE " . $currentrow['project_id'] . " = pxr.project_id";
 
-                        $role_results = $conn->query($role_sql);
+                            $role_results = $conn->query($role_sql);
 
-                        $roles = array(); // Reset roles for each project
+                            $roles = array(); // Reset roles for each project
 
-                        while ($role_row = $role_results->fetch_assoc()) {
-                            $roles[] = $role_row['role_name'];
-                        }
+                            while ($role_row = $role_results->fetch_assoc()) {
+                                $roles[] = $role_row['role_name'];
+                            }
 
-                        echo '<div class ="tags"> ';
-                        // Display the roles
-                        foreach ($roles as $role) {
-                            echo '<p class=" tag w-fit"> ' . $role . '</p>';
-                        };
+                            echo '<div class ="tags"> ';
+                            // Display the roles
+                            foreach ($roles as $role) {
+                                echo '<p class=" tag w-fit"> ' . $role . '</p>';
+                            };
 
-                        echo '</div> ';
+                            echo '</div> ';
 
 
-                    ?>
+                            ?>
 
-                </div>
+                        </div>
 
-            </div>
+                        <div class = "buttons">
+                            <button class = "deleteproject" id = "deleteBtn">Delete</button>
+                            <button class = "discardedits" id="discardBtn">Discard</button>
+                            <button class = "saveedits" type = "submit" name = "submit">Save Changes</button>
 
-            <form>
 
-            <div class = "projectinformation">
-                <div class = "projectdetails">Project Title:</div>
-                <input type = text class = "projectname" name="projectname" value="<?php echo
-                $currentrow['project_name']
-                ?>">
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    // Add an event listener to the "Discard" button
+                                    const discardBtn = document.getElementById('discardBtn');
 
-                <div class = "projectdetails">Logline:</div>
-                <input type = text class = "logline" name="logline" value="<?php echo
-                $currentrow['logline']
-                ?>">
+                                    discardBtn.addEventListener('click', () => {
+                                        // Navigate back to dashboard.php
+                                        window.location.href = 'adminpanel.php';
+                                    });
 
-                <div class = "projectdetails">Description:</div>
-                <input type = text class = "description" name="description" value="<?php echo
-                $currentrow['description']
-                ?>">
 
-                <div class = "projectdetails">Category:</div>
-                <select class="category2" class ="dropbtn" name="selectedCategory">
-                    <button class="dropbtn">Select Roles</button>
-                    <div class = "dropdown-content">
-                        <?php
-                        // Fetch all categories from the database
-                        $categoriesQuery = "SELECT * FROM category";
-                        $categoriesResult = $conn->query($categoriesQuery);
+                                });
 
-                        if (!$categoriesResult) {
-                            echo "SQL error: " . $conn->error;
-                            exit();
-                        }
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    // Add an event listener to the "Discard" button
+                                    const discardBtn = document.getElementById('discardBtn');
 
-                        while ($categoryRow = $categoriesResult->fetch_assoc()) {
-                            $categoryName = $categoryRow["category_name"];
-                            $isSelected = ($categoryName == $currentrow['category_name']) ? 'selected' : '';
+                                    discardBtn.addEventListener('click', () => {
+                                        // Navigate back to dashboard.php
+                                        window.location.href = 'adminpanel.php';
+                                    });
 
-                            echo "<option value='$categoryName' $isSelected>$categoryName</option>";
-                        }
-                        ?>
+
+                                });
+                            </script>
+                        </div>
+
+
                     </div>
-                </select>
 
-                <div class = "projectdetails">Roles Needed:</div>
-                <div class="dropdown">
-                    <button class="dropbtn">Select Roles</button>
-                    <div class="dropdown-content">
+        <div class = "projectinformation">
+            <div class = "projectdetails">Project Title:</div>
+            <input type = text class = "projectname" name="projectname" value="<?php echo
+            $currentrow['project_name']
+            ?>">
+
+            <div class = "projectdetails">Logline:</div>
+            <input type = text class = "logline" name="logline" value="<?php echo
+            $currentrow['logline']
+            ?>">
+
+            <div class = "projectdetails">Description:</div>
+            <input type = text class = "description" name="description" value="<?php echo
+            $currentrow['description']
+            ?>">
+
+            <div class = "projectdetails">Category:
                 <?php
                 // Fetch all roles from the database
-                $rolesQuery = "SELECT * FROM role";
-                $rolesResult = $conn->query($rolesQuery);
+                $categoryQuery = "SELECT * FROM category";
+                $categoryResult = $conn->query($categoryQuery);
 
-                if (!$rolesResult) {
+                if (!$categoryResult) {
                     echo "SQL error: " . $conn->error;
                     exit();
                 }
 
-                while ($roleRow = $rolesResult->fetch_assoc()) {
-                    $roleName = $roleRow["role_name"];
-                    $isChecked = in_array($roleName, $roles) ? 'checked' : '';
+                while ($categoryRow = $categoryResult->fetch_assoc()) {
+                    $categoryId = $categoryRow["category_id"];
+                    $categoryName = $categoryRow["category_name"];
+                    $isSelected = ($categoryId == $currentrow['category_id']) ? 'checked' : '';
 
-                    echo "<input type='checkbox' name='selectedRoles[]' value='$roleName' $isChecked> $roleName<br>";
+                    echo "<input type='checkbox' name='selectedCategory' value='$categoryId' $isSelected> $categoryName<br>";
                 }
                 ?>
-                    </div>
-                </div>
-
             </div>
 
-            </form>
+
+            <div class = "projectdetails">Roles Needed:</div>
+            <div class="dropdown">
+                <button class="dropbtn">Select Roles</button>
+                <div class="dropdown-content">
+                    <?php
+                    // Fetch all roles from the database
+                    $rolesQuery = "SELECT * FROM role";
+                    $rolesResult = $conn->query($rolesQuery);
+
+                    if (!$rolesResult) {
+                        echo "SQL error: " . $conn->error;
+                        exit();
+                    }
+
+                    while ($roleRow = $rolesResult->fetch_assoc()) {
+                        $roleId = $roleRow["role_id"];
+                        $roleName = $roleRow["role_name"];
+                        $isChecked = in_array($roleName, $roles) ? 'checked' : '';
+
+                        echo "<input type='checkbox' name='selectedRoles[]' value='$roleId' $isChecked> $roleName<br>";
+                    }
+                    ?>
+                </div>
+            </div>
+
+        </div>
+
+
 
 
         </div>
     </div>
 </div>
+    </form>
 
 </body>
 
