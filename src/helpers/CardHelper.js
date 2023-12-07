@@ -13,7 +13,6 @@ const displayEditProject = (projectData, isSaved) => {
 
   const circle = document.createElement('div');
   circle.className = 'circle';
-  console.log('here');
 
   // Add the click event listener to the circle element
   circle.addEventListener('click', () => {
