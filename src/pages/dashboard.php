@@ -164,6 +164,8 @@ if (!isset($_SESSION["user_id"])) {
         </div>
 
         <div id='cards-container'></div>
+          <a class="arrow round" id="prev-arrow">&#8249;</a>
+          <a class="arrow round" id="next-arrow">&#8250;</a>
       </div>
     </div>
   </body>
