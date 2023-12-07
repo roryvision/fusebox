@@ -29,6 +29,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $_SESSION["user_id"] = $user["profile_id"];
             $_SESSION["user_fname"] = $user["fname"];
             $_SESSION["user_lname"] = $user["lname"];
+            $_SESSION["is_admin"] = $user["is_admin"];
+
+            if ($_SESSION["is_admin"] == 1){
+                header("Location: ../adminpanel.php");
+                exit();
+            }
 
             header("Location: ../dashboard.php");
             exit();
